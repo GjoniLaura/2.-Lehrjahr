@@ -6,11 +6,7 @@ using System.Threading.Tasks;
 
 namespace PasswortManager_UserInterface
 {
-    internal class Program
+    internal class password
     {
-        static void Main(string[] args)
-        {
-        }
-
     }
 }
