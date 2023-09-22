@@ -10,14 +10,11 @@ namespace PasswortManager_UserInterface
     {
         static void Main(string[] args)
         {
-            // Masterpasswort Verifizierung
-            /* 
-             */
         }
 
-        static string Passwordgenerator()
+        static string Passwordgenerator(int len)
         {
-            int lenthOfPassword = 30;
+            int lenthOfPassword = len;
             string password = "";
             int count = 0;
             int currand = 0;
