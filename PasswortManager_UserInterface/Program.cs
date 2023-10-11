@@ -10,6 +10,10 @@ namespace PasswortManager_UserInterface
     {
         static void Main(string[] args)
         {
+            List<password> myPasswords = new List<password>();
+            myPasswords = PasswordManager.ReadPassword();
+
+
             // Masterpasswort Verifizierung
             string Masterpassword = "abc";
             int MaxAttemps = 2;
@@ -34,17 +38,16 @@ namespace PasswortManager_UserInterface
 
             }
 
-            }
-
             if (Attemps == MaxAttemps)
             {
                 Console.WriteLine("Falsche Passworteingabe, der Zugriff wird nicht Gewährt");
                 Console.ReadLine();
             }
+
         }
-        
-    }
 
-
+    }   
 }
+        
+   
 
