@@ -11,6 +11,7 @@ namespace PasswortManager_UserInterface
 {
     internal class PasswordManager
     {
+         string path = "C:\\Users\\xbloc\\OneDrive\\Bilder\\UbisoftConnect\\Textdokument.jason";
 
        public string Passwordgenerator(int len)
         {
@@ -49,18 +50,22 @@ namespace PasswortManager_UserInterface
         }
 
         //Json save and read
-        public static void JsonToFile(object obj, string path)
+        public static void JsonToFile(object obj)
         {
-            JsonSerializerOptions options = new JsonSerializerOptions();
-            options.WriteIndented = true;
+            string path = "C:\\Users\\xbloc\\OneDrive\\Bilder\\UbisoftConnect\\Textdokument.json";
+            JsonSerializerOptions options = new JsonSerializerOptions
+            {
+                WriteIndented = true
+            };
             string json = JsonSerializer.Serialize(obj, options);
             File.WriteAllText(path, json);
         }
 
-        public static passwords read_password(string path)
+        public static List<password> ReadPassword()
         {
+            string path = "C:\\Users\\xbloc\\OneDrive\\Bilder\\UbisoftConnect\\Textdokument.json";
             string json = File.ReadAllText(path);
-            return JsonSerializer.Deserialize<passwords>(json); 
+            return JsonSerializer.Deserialize<List<password>>(json);
         }
     }
 }
