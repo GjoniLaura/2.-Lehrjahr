@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.Json;
+using System.IO;
+using System.Runtime.CompilerServices;
 
 namespace PasswortManager_UserInterface
 {
@@ -43,6 +46,21 @@ namespace PasswortManager_UserInterface
                 count++;
             }
             return password;
+        }
+
+        //Json save and read
+        public static void JsonToFile(object obj, string path)
+        {
+            JsonSerializerOptions options = new JsonSerializerOptions();
+            options.WriteIndented = true;
+            string json = JsonSerializer.Serialize(obj, options);
+            File.WriteAllText(path, json);
+        }
+
+        public static passwords read_password(string path)
+        {
+            string json = File.ReadAllText(path);
+            return JsonSerializer.Deserialize<passwords>(json); 
         }
     }
 }
