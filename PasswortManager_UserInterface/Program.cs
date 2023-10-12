@@ -10,8 +10,7 @@ namespace PasswortManager_UserInterface
     {
         static void Main(string[] args)
         {
-            List<password> myPasswords = new List<password>();
-            myPasswords = PasswordManager.ReadPasswords();
+            PasswordManager.users.Add(new User { Username = "Tom", Masterpassword = "afadfa"}); // Test User muss wieder gelöscht werden
 
             //Login or create new account
             PasswordManager.LoOrRe();

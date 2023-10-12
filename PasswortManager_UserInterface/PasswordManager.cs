@@ -14,6 +14,9 @@ namespace PasswortManager_UserInterface
     {
          string path = "C:\\Users\\xbloc\\OneDrive\\Bilder\\UbisoftConnect\\Textdokument.jason";
 
+        public static List<User> users = new List<User>();
+
+
         public static void LoOrRe()
         {
             int dec = 0;
@@ -24,7 +27,7 @@ namespace PasswortManager_UserInterface
                 Console.WriteLine("1. Für anmelden drücke 1");
                 Console.WriteLine("2. Für Registrieren drücke 2");
 
-                // Verwende TryParse, um die Eingabe zu überprüfen
+                
                 if (!int.TryParse(Console.ReadLine(), out dec) || (dec != 1 && dec != 2))
                 {
                     Console.Clear();
@@ -44,9 +47,41 @@ namespace PasswortManager_UserInterface
         }
 
         public static void Register() {
-          
+            string titel = "Registrieren\n----------------------------------------------------------------";
+            string username;
+            string masterpassword;
+
+            Console.Clear();
+            Console.WriteLine(titel);
+
+            do
+            {
+                Console.Write("Gib deinen Benutzernamen ein: ");
+                username = Console.ReadLine();
+
+                if (users.Any(u => u.Username == username))
+                {
+                    Console.Clear();
+                    Console.WriteLine(titel);
+                    Console.WriteLine("Dieser Benutzername ist bereits vergeben. Bitte wählen Sie einen anderen.\n");
+                }
+            } while (users.Any(u => u.Username == username));
+
+            do
+            {
+                Console.Write("Gib ein sicheres Passwort ein mit mindestens 15 Zeichen: ");
+                masterpassword = Console.ReadLine();
+
+                if (masterpassword.Length < 15)
+                {
+                    Console.WriteLine("\nDas Passwort ist zu kurz.");
+                }
+            } while (masterpassword.Length < 15);
         }
         public static void Login() { }
+
+
+
 
 
         public string Passwordgenerator(int len)
@@ -85,8 +120,12 @@ namespace PasswortManager_UserInterface
             return password;
         }
 
+
+
+
+
         //Json save and read
-        public static void Savepasswords(object obj)
+        public static void SaveUsers(object obj)
         {
             string path = "C:\\Users\\xbloc\\OneDrive\\Bilder\\UbisoftConnect\\Textdokument.json";
             JsonSerializerOptions options = new JsonSerializerOptions
@@ -97,11 +136,11 @@ namespace PasswortManager_UserInterface
             File.WriteAllText(path, json);
         }
 
-        public static List<password> ReadPasswords()
+        public static List<User>ReadUsers()
         {
             string path = "C:\\Users\\xbloc\\OneDrive\\Bilder\\UbisoftConnect\\Textdokument.json";
             string json = File.ReadAllText(path);
-            return JsonSerializer.Deserialize<List<password>>(json);
+            return JsonSerializer.Deserialize<List<User>>(json);
         }
     }
 }
