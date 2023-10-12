@@ -11,11 +11,13 @@ namespace PasswortManager_UserInterface
         static void Main(string[] args)
         {
             List<password> myPasswords = new List<password>();
-            myPasswords = PasswordManager.ReadPassword();
+            myPasswords = PasswordManager.ReadPasswords();
 
+            //Login or create new account
+            PasswordManager.LoOrRe();
 
-            // Masterpasswort Verifizierung
-            string Masterpassword = "abc";
+         // Masterpasswort Verifizierung
+         string Masterpassword = "abc";
             int MaxAttemps = 2;
             int Attemps = 0;
 
@@ -45,7 +47,6 @@ namespace PasswortManager_UserInterface
             }
 
         }
-
     }   
 }
         
