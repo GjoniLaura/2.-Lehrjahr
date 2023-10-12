@@ -8,18 +8,18 @@ namespace PasswortManager_UserInterface
 {
     internal class User
     {
-        public string Username {  get; set; }
-        public string Masterpassword { get; set; }
-        public List<password>Mypasswords { get; set; }
+        public string username {  get; set; }
+        public string masterpassword { get; set; }
+        public List<password>mypasswords { get; set; }
 
         public User(string username, string masterpassword)
         {
-            Username = username;
-            Masterpassword = masterpassword;
+            this.username = username;
+            this.masterpassword = masterpassword;
         }
         public User()
         {
-            Mypasswords = new List<password>();
+            mypasswords = new List<password>();
         }
     }
 }

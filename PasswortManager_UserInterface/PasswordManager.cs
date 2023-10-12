@@ -7,6 +7,8 @@ using System.Text.Json;
 using System.IO;
 using System.Runtime.CompilerServices;
 using System.Threading;
+using BCrypt.Net;
+using System.Net.Http.Headers;
 
 namespace PasswortManager_UserInterface
 {
@@ -59,13 +61,13 @@ namespace PasswortManager_UserInterface
                 Console.Write("Gib deinen Benutzernamen ein: ");
                 username = Console.ReadLine();
 
-                if (users.Any(u => u.Username == username))
+                if (users.Any(u => u.username == username))
                 {
                     Console.Clear();
                     Console.WriteLine(titel);
                     Console.WriteLine("Dieser Benutzername ist bereits vergeben. Bitte wählen Sie einen anderen.\n");
                 }
-            } while (users.Any(u => u.Username == username));
+            } while (users.Any(u => u.username == username));
 
             do
             {
@@ -77,11 +79,63 @@ namespace PasswortManager_UserInterface
                     Console.WriteLine("\nDas Passwort ist zu kurz.");
                 }
             } while (masterpassword.Length < 15);
+
+            masterpassword = HashPasswordBCrypt(masterpassword);
+
+            users.Add(new User{ username = username, masterpassword = masterpassword });
+            SaveUsers(users);
+            Console.WriteLine("--------------------------------------------------------------------------------" +
+                             "\nAccount wurde erfolgreich erstellt.Drücke eine Taste um zum Login zu gelangen.");
+            Console.ReadKey();
+            Login();
         }
-        public static void Login() { }
+        public static void Login()
+        {
+            Console.Clear();
+            string username;
+            string masterpassword;
+            string titel = "Login\n----------------------------------------------------------";
+            int counter = 0;
+            int anztry = 3;
+            Console.WriteLine(titel);
+            do
+            {
+                Console.Write("Benutzernamen: ");
+                username = Console.ReadLine();
 
+                if (!users.Any(u => u.username == username))
+                {
+                    Console.Clear();
+                    Console.WriteLine(titel);
+                    Console.WriteLine("Dieser Benutzer Existiert nicht.\n");
+                }
+            } while (!users.Any(u => u.username == username));
+            User founduser = users.FirstOrDefault(u => u.username == username);
+            do
+            {
+                Console.Write("Passwort: ");
+                masterpassword = Console.ReadLine();
+                if (ValidatePassword(masterpassword, founduser.masterpassword))
+                {
 
+                }
+                else
+                {
+                    Console.WriteLine("\nPasswort ist falsch du hast noch {0} Versuche", anztry - counter);
+                }
+                counter++;
+            } while (counter <= anztry);
+        }
 
+        public static string HashPasswordBCrypt(string password)
+        {
+            return BCrypt.Net.BCrypt.HashPassword(password);
+        }
+
+        public static bool ValidatePassword(string password, string hashedPassword)
+        {
+            return BCrypt.Net.BCrypt.Verify(password, hashedPassword);
+        }
 
 
         public string Passwordgenerator(int len)
@@ -136,7 +190,7 @@ namespace PasswortManager_UserInterface
             File.WriteAllText(path, json);
         }
 
-        public static List<User>ReadUsers()
+        public static List<User> ReadUsers()
         {
             string path = "C:\\Users\\xbloc\\OneDrive\\Bilder\\UbisoftConnect\\Textdokument.json";
             string json = File.ReadAllText(path);
