@@ -10,42 +10,10 @@ namespace PasswortManager_UserInterface
     {
         static void Main(string[] args)
         {
-            List<password> myPasswords = new List<password>();
-            myPasswords = PasswordManager.ReadPasswords();
+            PasswordManager.users = PasswordManager.ReadUsers();
 
             //Login or create new account
             PasswordManager.LoOrRe();
-
-         // Masterpasswort Verifizierung
-         string Masterpassword = "abc";
-            int MaxAttemps = 2;
-            int Attemps = 0;
-
-            Console.Write("Geben Sie das Masterpasswort ein: ");
-            string Password = Console.ReadLine();
-
-            if (Attemps < MaxAttemps && Password == Masterpassword)
-            {
-                Console.WriteLine("Übersicht Ihrer Passwörter: ");
-                Masterpassword = Convert.ToString(Console.ReadLine());
-                // Passworteinträge anzeigen
-                // URl 
-                // Username und Passwort speichern
-            }
-            else
-            {
-                if (Attemps < MaxAttemps && Password != Masterpassword) {
-                    Console.WriteLine("Falsche Passworteingabe, versuchen Sie es erneut (1/2) ");
-                }
-
-            }
-
-            if (Attemps == MaxAttemps)
-            {
-                Console.WriteLine("Falsche Passworteingabe, der Zugriff wird nicht Gewährt");
-                Console.ReadLine();
-            }
-
         }
     }   
 }
