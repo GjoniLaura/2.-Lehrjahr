@@ -63,17 +63,46 @@ namespace PasswortManager_UserInterface
             string password = "";
             string place = "";
             string username = "";
+            string confirmPassword = "";
 
             Console.Clear();
             Console.WriteLine(titel);
             Console.WriteLine("Neues Passwort hinzufügen\n");
 
-            Console.Write("Titel des Passworteintrags: ");
-            password_titel = Console.ReadLine();
+            password_titel = GetInput("Titel des Passworteintrags: ");
+            place = GetInput("Namen oder Url der Webseite vom Passwort: ");
+            username = GetInput("Username der mit dem Passwort benutzt wird: ");
 
-            Console.WriteLine("");
+            do
+            {
+                Console.Write("Gebe das passwort das sie speichern möchten ein: ");
+                password = Console.ReadLine();
 
+                Console.Write("Wiederhole es nochmals zur bestätigung: ");
+                confirmPassword = Console.ReadLine();
 
+                if (string.IsNullOrWhiteSpace(password) || password != confirmPassword)
+                {
+                    Console.WriteLine("Passwörter stimmen nicht überein oder sind leer. Bitte versuchen Sie es erneut.\n");
+                }
+            } while (string.IsNullOrWhiteSpace(password) || password != confirmPassword);
+
+        }
+
+        static string GetInput(string prompt)
+        {
+            string input;
+            do
+            {
+                Console.Write(prompt);
+                input = Console.ReadLine();
+                if (string.IsNullOrWhiteSpace(input))
+                {
+                    Console.WriteLine("Eingabe darf nicht leer sein. Bitte versuchen Sie es erneut.\n");
+                }
+            } while (string.IsNullOrWhiteSpace(input));
+
+            return input;
         }
     }
 }
