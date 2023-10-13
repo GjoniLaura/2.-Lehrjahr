@@ -25,6 +25,8 @@ namespace PasswortManager_UserInterface
 
             while (dec != 1 && dec != 2)
             {
+                Console.WriteLine("Passwortmanager\n" +
+                                   "-----------------------------------------------------");
                 Console.WriteLine("Möchtest du dich anmelden oder Registrieren?");
                 Console.WriteLine("1. Für anmelden drücke 1");
                 Console.WriteLine("2. Für Registrieren drücke 2");
@@ -121,6 +123,8 @@ namespace PasswortManager_UserInterface
                 }
                 else
                 {
+                    if(counter == 3)
+                        Environment.Exit(0);
                     Console.WriteLine("\nPasswort ist falsch du hast noch {0} Versuche", anztry - counter);
                 }
                 counter++;

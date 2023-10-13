@@ -12,7 +12,7 @@ namespace PasswortManager_UserInterface
         {
             PasswordManager.users = PasswordManager.ReadUsers();
 
-            //Login or create new account
+            //Login or create new account method
             PasswordManager.LoOrRe();
         }
     }   
