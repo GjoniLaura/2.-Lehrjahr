@@ -14,7 +14,7 @@ namespace PasswortManager_UserInterface
         {
             Console.Clear();
             int dec;
-
+          
             do
             {
                 Console.WriteLine(titel);
@@ -59,6 +59,7 @@ namespace PasswortManager_UserInterface
 
         static void addpassword()
         {
+            User founduser = PasswordManager.users.FirstOrDefault(u => u.username == PasswordManager.angemeldet);
             string password_titel = "";
             string password = "";
             string place = "";
@@ -87,6 +88,9 @@ namespace PasswortManager_UserInterface
                 }
             } while (string.IsNullOrWhiteSpace(password) || password != confirmPassword);
 
+            founduser.mypasswords.Add(new password(password_titel, password, place, username));
+            PasswordManager.SaveUsers(PasswordManager.users);
+            mainmenu();
         }
 
         static string GetInput(string prompt)

@@ -14,10 +14,10 @@ namespace PasswortManager_UserInterface
 {
     internal class PasswordManager
     {
-         string path = "C:\\Users\\xbloc\\OneDrive\\Bilder\\UbisoftConnect\\Textdokument.jason";
+         static string path = "C:\\Users\\xbloc\\OneDrive\\Bilder\\UbisoftConnect\\Textdokument.json";
 
         public static List<User> users = new List<User>();
-
+        static public string angemeldet = "";
 
         public static void LoOrRe()
         {
@@ -93,6 +93,7 @@ namespace PasswortManager_UserInterface
         }
         public static void Login()
         {
+            angemeldet = "";
             Console.Clear();
             string username;
             string masterpassword;
@@ -114,6 +115,7 @@ namespace PasswortManager_UserInterface
                 }
             } while (!users.Any(u => u.username == username));
             User founduser = users.FirstOrDefault(u => u.username == username);
+            angemeldet = founduser.username;
             do
             {
                 Console.Write("Passwort: ");
@@ -148,7 +150,6 @@ namespace PasswortManager_UserInterface
         //Json save and read
         public static void SaveUsers(object obj)
         {
-            string path = "C:\\Users\\xbloc\\OneDrive\\Bilder\\UbisoftConnect\\Textdokument.json";
             JsonSerializerOptions options = new JsonSerializerOptions
             {
                 WriteIndented = true
@@ -159,7 +160,6 @@ namespace PasswortManager_UserInterface
 
         public static List<User> ReadUsers()
         {
-            string path = "C:\\Users\\xbloc\\OneDrive\\Bilder\\UbisoftConnect\\Textdokument.json";
             string json = File.ReadAllText(path);
             return JsonSerializer.Deserialize<List<User>>(json);
         }
