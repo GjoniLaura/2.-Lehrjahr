@@ -14,10 +14,10 @@ namespace PasswortManager_UserInterface
 {
     internal class PasswordManager
     {
-         string path = "C:\\Users\\xbloc\\OneDrive\\Bilder\\UbisoftConnect\\Textdokument.jason";
+         static string path = "C:\\Users\\xbloc\\OneDrive\\Bilder\\UbisoftConnect\\Textdokument.json";
 
         public static List<User> users = new List<User>();
-
+        static public string angemeldet = "";
 
         public static void LoOrRe()
         {
@@ -93,12 +93,14 @@ namespace PasswortManager_UserInterface
         }
         public static void Login()
         {
+            angemeldet = "";
             Console.Clear();
             string username;
             string masterpassword;
             string titel = "Login\n----------------------------------------------------------";
             int counter = 0;
             int anztry = 3;
+
             Console.WriteLine(titel);
             do
             {
@@ -113,13 +115,14 @@ namespace PasswortManager_UserInterface
                 }
             } while (!users.Any(u => u.username == username));
             User founduser = users.FirstOrDefault(u => u.username == username);
+            angemeldet = founduser.username;
             do
             {
                 Console.Write("Passwort: ");
                 masterpassword = Console.ReadLine();
                 if (ValidatePassword(masterpassword, founduser.masterpassword))
                 {
-
+                    Menu.mainmenu();
                 }
                 else
                 {
@@ -142,50 +145,11 @@ namespace PasswortManager_UserInterface
         }
 
 
-        public string Passwordgenerator(int len)
-        {
-            int lenthOfPassword = len;
-            string password = "";
-            int count = 0;
-            int currand = 0;
-
-            string letters_Lowercase = "abcdefghijklmnopqrstuvwxyz";
-            string letters_Uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-            string symbols = @"!#$?*@\";
-
-            Random ran = new Random();
-
-            while (count < lenthOfPassword)
-            {
-                currand = ran.Next(0, 4);
-                switch (currand)
-                {
-                    case 0:
-                        password += letters_Lowercase[ran.Next(letters_Lowercase.Length)];
-                        break;
-                    case 1:
-                        password += letters_Uppercase[ran.Next(letters_Uppercase.Length)];
-                        break;
-                    case 2:
-                        password += symbols[ran.Next(symbols.Length)];
-                        break;
-                    case 3:
-                        password += Convert.ToString(ran.Next(0, 9));
-                        break;
-                }
-                count++;
-            }
-            return password;
-        }
-
-
-
 
 
         //Json save and read
         public static void SaveUsers(object obj)
         {
-            string path = "C:\\Users\\xbloc\\OneDrive\\Bilder\\UbisoftConnect\\Textdokument.json";
             JsonSerializerOptions options = new JsonSerializerOptions
             {
                 WriteIndented = true
@@ -196,7 +160,6 @@ namespace PasswortManager_UserInterface
 
         public static List<User> ReadUsers()
         {
-            string path = "C:\\Users\\xbloc\\OneDrive\\Bilder\\UbisoftConnect\\Textdokument.json";
             string json = File.ReadAllText(path);
             return JsonSerializer.Deserialize<List<User>>(json);
         }
