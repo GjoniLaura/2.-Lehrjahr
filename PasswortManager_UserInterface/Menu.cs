@@ -170,7 +170,7 @@ namespace PasswortManager_UserInterface
                     addgroup(founduser);
                     break;
                 case 2:
-                    AddpasswordToGroup();
+                    AddpasswordToGroup(founduser);
                     break;
                 case 3:
                     break;
@@ -215,12 +215,38 @@ namespace PasswortManager_UserInterface
             Console.ReadKey();
             PasswordGroupSet(User);
         }
-        static void AddpasswordToGroup()
+        static void AddpasswordToGroup(User User)
         {
+            string groupname = "";
+            string passwordtitel = "";
             Console.Clear();
             Console.WriteLine(titel);
-            Console.WriteLine("Gib den Namen");
-            Console.WriteLine("Gib den titel des Passwortes ein das zu ");
+
+            do
+            {
+                Console.Write("Gib den Namen der Gruppe ein der du was Hinzufügen willst:");
+                groupname = Console.ReadLine();
+
+                if (!User.MyGroups.Any(g => g.GroupName.Equals(groupname, StringComparison.OrdinalIgnoreCase)))
+                {
+                    Console.WriteLine("Es existiert keine Gruppe mit diesem Namen. Bitte versuchen Sie es erneut.");
+                }
+
+            } while (!User.MyGroups.Any(g => g.GroupName.Equals(groupname, StringComparison.OrdinalIgnoreCase)));
+
+            do
+            {
+                Console.Write("Gib den titel des Passwortes ein das zu Hinzufügen willst: ");
+                passwordtitel = Console.ReadLine();
+
+                if (!User.Mypasswords.Any(p => p.Titel.Equals(passwordtitel, StringComparison.OrdinalIgnoreCase)))
+                {
+                    Console.WriteLine("Es existiert kein Passwort mit diesem Titel. Bitte versuchen Sie es erneut.");
+                }
+
+            } while (!User.Mypasswords.Any(p => p.Titel.Equals(passwordtitel, StringComparison.OrdinalIgnoreCase)));
+
+
         }
     }
 }
