@@ -59,6 +59,9 @@ namespace PasswortManager_UserInterface
             }
         }
 
+
+        //Passwörter ausgeben und hinzufügen
+       //-------------------------------------------------------------------
         static void showpasswords(User founduser)
         {
             //Nur vorübergehende lösung
@@ -84,7 +87,17 @@ namespace PasswortManager_UserInterface
             Console.WriteLine(titel);
             Console.WriteLine("Neues Passwort hinzufügen\n");
 
-            password_titel = GetInput("Titel des Passworteintrags: ");
+            do
+            {
+                password_titel = GetInput("Titel des Passworteintrags: ");
+
+                if (founduser.Mypasswords.Any(p => p.Titel.Equals(password_titel, StringComparison.OrdinalIgnoreCase)))
+                {
+                    Console.WriteLine("Ein Passwort mit diesem Titel existiert bereits. Bitte geben Sie einen anderen Titel ein.");
+                }
+
+            } while (founduser.Mypasswords.Any(p => p.Titel.Equals(password_titel, StringComparison.OrdinalIgnoreCase)));
+
             place = GetInput("Namen oder Url der Webseite vom Passwort: ");
             username = GetInput("Username der mit dem Passwort benutzt wird: ");
 
@@ -162,6 +175,7 @@ namespace PasswortManager_UserInterface
                 case 3:
                     break;
                 case 4:
+                    mainmenu();
                     break;
 
             }
@@ -203,7 +217,10 @@ namespace PasswortManager_UserInterface
         }
         static void AddpasswordToGroup()
         {
-
+            Console.Clear();
+            Console.WriteLine(titel);
+            Console.WriteLine("Gib den Namen");
+            Console.WriteLine("Gib den titel des Passwortes ein das zu ");
         }
     }
 }
