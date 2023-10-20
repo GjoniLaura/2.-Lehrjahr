@@ -22,5 +22,10 @@ namespace PasswortManager_UserInterface
             this.Passwords.Add(password);
         }
 
+        public void RemovePassword(Password password)
+        {
+            this.Passwords.Remove(password);
+        }
+
     }
 }

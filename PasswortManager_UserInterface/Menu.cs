@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace PasswortManager_UserInterface
 {
@@ -30,7 +31,7 @@ namespace PasswortManager_UserInterface
                 Console.WriteLine("8.Exit");
                 Console.Write("\nEingabe:");
 
-                if (int.TryParse(Console.ReadLine(), out int input) && input >= 1 && input <= 7)
+                if (int.TryParse(Console.ReadLine(), out int input) && input >= 1 && input <= 8)
                 {
                     dec = input;
                     break;
@@ -45,7 +46,7 @@ namespace PasswortManager_UserInterface
             switch (dec) 
             {
                case 1:
-                    showpasswords(founduser);
+                    ShowAllPasswords(founduser);
                     break;
                case 2:
                     addpassword(founduser);
@@ -60,21 +61,63 @@ namespace PasswortManager_UserInterface
         }
 
 
-        //Passwörter ausgeben und hinzufügen
-       //-------------------------------------------------------------------
-        static void showpasswords(User founduser)
+        //Passwörter ausgeben
+        //-------------------------------------------------------------------
+        static void ShowAllPasswords(User founduser)
         {
-            //Nur vorübergehende lösung
-            foreach (var password in founduser.Mypasswords )
+            Console.Clear();
+            Console.WriteLine(titel);
+            Console.WriteLine("Schreibe exit um zum menu zurück zu kommen");
+            Console.WriteLine("\nPasswörter in Gruppen:\n");
+
+            HashSet<string> displayedPasswordsTitles = new HashSet<string>();
+
+            foreach (var group in founduser.MyGroups)
             {
-                Console.WriteLine($"Titel: {password.Titel}");
-                Console.WriteLine($"Passwort: {password.PasswordInput}");
-                Console.WriteLine($"Ort: {password.Place}");
-                Console.WriteLine($"Benutzername: {password.User_name}");
+                Console.WriteLine($"Gruppe: {group.GroupName}\n");
+
+                foreach (var password in group.Passwords)
+                {
+                    DisplayPassword(password);
+                    displayedPasswordsTitles.Add(password.Titel);
+                }
+
                 Console.WriteLine("-----------------------------");
             }
+
+            Console.WriteLine("\nRestliche Passwörter:\n");
+
+            foreach (var password in founduser.Mypasswords)
+            {
+                if (!displayedPasswordsTitles.Contains(password.Titel))
+                {
+                    DisplayPassword(password);
+                }
+            }
+
+            string eingabe;
+            do
+            {
+                Console.Write("Eingabe: ");
+                eingabe = Console.ReadLine();
+                if(eingabe == "exit")
+                {
+                    break;
+                }
+            }while (true);
+            mainmenu();
+        }
+        static void DisplayPassword(Password password)
+        {
+            Console.WriteLine($"Titel: {password.Titel}");
+            Console.WriteLine($"Passwort: {password.PasswordInput}");
+            Console.WriteLine($"Ort: {password.Place}");
+            Console.WriteLine($"Benutzername: {password.User_name}");
+            Console.WriteLine("-----------------------------");
         }
 
+        //Passwörter hinzufügen
+        //-------------------------------------------------------------------
         static void addpassword(User founduser)
         {
             string password_titel = "";
@@ -149,10 +192,11 @@ namespace PasswortManager_UserInterface
                 Console.WriteLine("1.Neue Gruppe erstellen");
                 Console.WriteLine("2.Passwörter einer Gruppe hinzufügen");
                 Console.WriteLine("3.Passwörter aus einer Gruppe Löschen");
-                Console.WriteLine("4.Back to Menu");
+                Console.WriteLine("4.Gruppe Löschen");
+                Console.WriteLine("5.Back to Menu");
                 Console.Write("\nEingabe:");
 
-                if (int.TryParse(Console.ReadLine(), out int input) && input >= 1 && input <= 4)
+                if (int.TryParse(Console.ReadLine(), out int input) && input >= 1 && input <= 5)
                 {
                     eingabe = input;
                     break;
@@ -176,6 +220,10 @@ namespace PasswortManager_UserInterface
                     deletpasswordfromGroup(founduser);
                     break;
                 case 4:
+                    deletgroup(founduser);
+                    break;
+                case 5:
+                    PasswordManager.SaveUsers(PasswordManager.users);
                     mainmenu();
                     break;
 
@@ -189,7 +237,7 @@ namespace PasswortManager_UserInterface
 
             do
             {
-                Console.Write("\nName der Gruppe:");
+                Console.Write("\nName der Gruppe: ");
                 name = Console.ReadLine();
 
                 if (string.IsNullOrWhiteSpace(name))
@@ -213,6 +261,39 @@ namespace PasswortManager_UserInterface
 
             Console.WriteLine("\nGruppe {0} wurde erfolgreich hinzugefügt", name);
             Console.WriteLine("Drücke irgendeine Taste um zurück zu gehen.");
+            Console.ReadKey();
+            PasswordGroupSet(User);
+        }
+    static void deletgroup(User User)
+        {
+            string groupname;
+            Console.Clear();
+            Console.WriteLine(titel);
+            do
+            {
+                Console.Write("\nName der Gruppe: ");
+                groupname = Console.ReadLine();
+
+                if (string.IsNullOrWhiteSpace(groupname))
+                {
+                    Console.WriteLine("Der Gruppenname darf nicht leer sein. Bitte versuchen Sie es erneut.");
+                    continue;
+                }
+
+                if (!User.MyGroups.Any(g => g.GroupName.Equals(groupname, StringComparison.OrdinalIgnoreCase)))
+                {
+                    Console.WriteLine("Eine Gruppe mit diesem Namen existiert nicht. Bitte geben Sie einen anderen Namen ein.");
+                    continue;
+                }
+
+                break;
+            } while (true);
+            var targetGroup = User.MyGroups.First(g => g.GroupName.Equals(groupname, StringComparison.OrdinalIgnoreCase));
+            User.MyGroups.Remove(targetGroup);
+            PasswordManager.SaveUsers(PasswordManager.users);
+
+            Console.WriteLine("\nGruppe wurde entfernt.");
+            Console.WriteLine("Drücke irgend eine Taste um zum Menu zurück zu kommen");
             Console.ReadKey();
             PasswordGroupSet(User);
         }
@@ -269,7 +350,7 @@ namespace PasswortManager_UserInterface
 
                 do
                 {
-                    Console.Write("Gib den Namen der Gruppe ein von der du ein Passwort Löschen willts:");
+                    Console.Write("Gib den Namen der Gruppe ein von der du ein Passwort Löschen willts: ");
                     groupname = Console.ReadLine();
 
                     if (!User.MyGroups.Any(g => g.GroupName.Equals(groupname, StringComparison.OrdinalIgnoreCase)))
@@ -279,21 +360,29 @@ namespace PasswortManager_UserInterface
 
                 } while (!User.MyGroups.Any(g => g.GroupName.Equals(groupname, StringComparison.OrdinalIgnoreCase)));
 
+                var targetGroup = User.MyGroups.First(g => g.GroupName.Equals(groupname, StringComparison.OrdinalIgnoreCase));
                 do
                 {
-                    Console.Write("Gib den titel des Passwortes ein das du Löschen willst:");
+                    Console.Write("Gib den titel des Passwortes ein das du Löschen willst: ");
                     passwordtitel = Console.ReadLine();
 
-                    if (!User.Mypasswords.Any(p => p.Titel.Equals(passwordtitel, StringComparison.OrdinalIgnoreCase)))
+                    if (!targetGroup.Passwords.Any(p => p.Titel.Equals(passwordtitel, StringComparison.OrdinalIgnoreCase)))
                     {
-                        Console.WriteLine("Es existiert kein Passwort mit diesem Titel. Bitte versuchen Sie es erneut.");
+                        Console.WriteLine("Es existiert kein Passwort mit diesem Titel in diese Gruppe. Bitte versuchen Sie es erneut.");
                     }
 
                 } while (!User.Mypasswords.Any(p => p.Titel.Equals(passwordtitel, StringComparison.OrdinalIgnoreCase)));
 
-                var targetGroup = User.MyGroups.First(g => g.GroupName.Equals(groupname, StringComparison.OrdinalIgnoreCase));
 
                 var targetPassword = User.Mypasswords.First(p => p.Titel.Equals(passwordtitel, StringComparison.OrdinalIgnoreCase));
+                targetGroup.RemovePassword(targetPassword);
+                PasswordManager.SaveUsers(PasswordManager.users);
+
+                Console.WriteLine("\nPasswort wurde entfernt von der Gruppe.");
+                Console.WriteLine("Drücke irgend eine Taste um zurück zu gehen.");
+                Console.ReadKey();
+
+                PasswordGroupSet(User);
             }
         }
     }
