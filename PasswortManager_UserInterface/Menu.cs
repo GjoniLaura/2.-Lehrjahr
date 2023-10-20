@@ -173,6 +173,7 @@ namespace PasswortManager_UserInterface
                     AddpasswordToGroup(founduser);
                     break;
                 case 3:
+                    deletpasswordfromGroup(founduser);
                     break;
                 case 4:
                     mainmenu();
@@ -250,7 +251,50 @@ namespace PasswortManager_UserInterface
 
             var targetPassword = User.Mypasswords.First(p => p.Titel.Equals(passwordtitel, StringComparison.OrdinalIgnoreCase));
 
-            targetGroup.Passwords.Add(targetPassword);
+            targetGroup.AddPassword(targetPassword);
+            PasswordManager.SaveUsers(PasswordManager.users);
+            Console.WriteLine("Passwort wurde erfolgreich hinzugefügt");
+            Console.WriteLine("Drücke irgendeine Taste um zurück zum Menu zu kommen.");
+            Console.ReadKey();
+            PasswordGroupSet(User);
+        }
+
+        static void deletpasswordfromGroup(User User)
+        {
+            {
+                string groupname = "";
+                string passwordtitel = "";
+                Console.Clear();
+                Console.WriteLine(titel);
+
+                do
+                {
+                    Console.Write("Gib den Namen der Gruppe ein von der du ein Passwort Löschen willts:");
+                    groupname = Console.ReadLine();
+
+                    if (!User.MyGroups.Any(g => g.GroupName.Equals(groupname, StringComparison.OrdinalIgnoreCase)))
+                    {
+                        Console.WriteLine("Es existiert keine Gruppe mit diesem Namen. Bitte versuchen Sie es erneut.");
+                    }
+
+                } while (!User.MyGroups.Any(g => g.GroupName.Equals(groupname, StringComparison.OrdinalIgnoreCase)));
+
+                do
+                {
+                    Console.Write("Gib den titel des Passwortes ein das du Löschen willst:");
+                    passwordtitel = Console.ReadLine();
+
+                    if (!User.Mypasswords.Any(p => p.Titel.Equals(passwordtitel, StringComparison.OrdinalIgnoreCase)))
+                    {
+                        Console.WriteLine("Es existiert kein Passwort mit diesem Titel. Bitte versuchen Sie es erneut.");
+                    }
+
+                } while (!User.Mypasswords.Any(p => p.Titel.Equals(passwordtitel, StringComparison.OrdinalIgnoreCase)));
+
+                var targetGroup = User.MyGroups.First(g => g.GroupName.Equals(groupname, StringComparison.OrdinalIgnoreCase));
+
+                var targetPassword = User.Mypasswords.First(p => p.Titel.Equals(passwordtitel, StringComparison.OrdinalIgnoreCase));
+            }
         }
     }
 }
