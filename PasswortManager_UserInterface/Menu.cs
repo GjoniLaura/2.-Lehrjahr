@@ -246,7 +246,11 @@ namespace PasswortManager_UserInterface
 
             } while (!User.Mypasswords.Any(p => p.Titel.Equals(passwordtitel, StringComparison.OrdinalIgnoreCase)));
 
+            var targetGroup = User.MyGroups.First(g => g.GroupName.Equals(groupname, StringComparison.OrdinalIgnoreCase));
 
+            var targetPassword = User.Mypasswords.First(p => p.Titel.Equals(passwordtitel, StringComparison.OrdinalIgnoreCase));
+
+            targetGroup.Passwords.Add(targetPassword);
         }
     }
 }
