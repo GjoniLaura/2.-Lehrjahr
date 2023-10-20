@@ -12,6 +12,7 @@ namespace PasswortManager_UserInterface
                            "-----------------------------------------------";
         public static void mainmenu()
         {
+            User founduser = PasswordManager.users.FirstOrDefault(u => u.Username == PasswordManager.angemeldet);
             Console.Clear();
             int dec;
           
@@ -22,10 +23,11 @@ namespace PasswortManager_UserInterface
                 Console.WriteLine("1.Alle meine Passwörter anzeigen lassen");
                 Console.WriteLine("2.Ein neues Passwort hinzufügen");
                 Console.WriteLine("3.Ein Passwort Löschen");
-                Console.WriteLine("4.Passwort generieren lassen");
-                Console.WriteLine("5.Passwort mit url/webseitename suchen");
-                Console.WriteLine("6.Benutzer Account Löschen");
-                Console.WriteLine("7.Exit");
+                Console.WriteLine("4.Passwort Gruppen");
+                Console.WriteLine("5.Passwort generieren lassen");
+                Console.WriteLine("6.Passwort mit url/webseitename suchen");
+                Console.WriteLine("7.Benutzer Account Löschen");
+                Console.WriteLine("8.Exit");
                 Console.Write("\nEingabe:");
 
                 if (int.TryParse(Console.ReadLine(), out int input) && input >= 1 && input <= 7)
@@ -43,23 +45,35 @@ namespace PasswortManager_UserInterface
             switch (dec) 
             {
                case 1:
-                    showpasswords();
+                    showpasswords(founduser);
                     break;
                case 2:
-                    addpassword();
+                    addpassword(founduser);
+                    break;
+               case 3:
+                    break;
+               case 4:
+                    PasswordGroupSet(founduser);
                     break;
 
             }
         }
 
-        static void showpasswords()
+        static void showpasswords(User founduser)
         {
-
+            //Nur vorübergehende lösung
+            foreach (var password in founduser.Mypasswords )
+            {
+                Console.WriteLine($"Titel: {password.Titel}");
+                Console.WriteLine($"Passwort: {password.PasswordInput}");
+                Console.WriteLine($"Ort: {password.Place}");
+                Console.WriteLine($"Benutzername: {password.User_name}");
+                Console.WriteLine("-----------------------------");
+            }
         }
 
-        static void addpassword()
+        static void addpassword(User founduser)
         {
-            User founduser = PasswordManager.users.FirstOrDefault(u => u.username == PasswordManager.angemeldet);
             string password_titel = "";
             string password = "";
             string place = "";
@@ -88,7 +102,7 @@ namespace PasswortManager_UserInterface
                 }
             } while (string.IsNullOrWhiteSpace(password) || password != confirmPassword);
 
-            founduser.mypasswords.Add(new password(password_titel, password, place, username));
+            founduser.Mypasswords.Add(new Password(password_titel, password, place, username));
             PasswordManager.SaveUsers(PasswordManager.users);
             mainmenu();
         }
@@ -107,6 +121,89 @@ namespace PasswortManager_UserInterface
             } while (string.IsNullOrWhiteSpace(input));
 
             return input;
+        }
+
+        //Password Gruppen
+        //-------------------------------------------------------------------------------------
+        static void PasswordGroupSet(User founduser)
+        {
+            int eingabe;
+            Console.Clear();
+            do
+            {
+                Console.WriteLine(titel);
+                Console.WriteLine("Was möchtest du machen?");
+                Console.WriteLine("1.Neue Gruppe erstellen");
+                Console.WriteLine("2.Passwörter einer Gruppe hinzufügen");
+                Console.WriteLine("3.Passwörter aus einer Gruppe Löschen");
+                Console.WriteLine("4.Back to Menu");
+                Console.Write("\nEingabe:");
+
+                if (int.TryParse(Console.ReadLine(), out int input) && input >= 1 && input <= 4)
+                {
+                    eingabe = input;
+                    break;
+                }
+                else
+                {
+                    Console.Clear();
+                    Console.WriteLine("Ungültige Eingabe. Bitte geben Sie eine Zahl zwischen 1 und 7 ein.\n");
+                }
+            } while (true);
+
+            switch (eingabe)
+            {
+                case 1:
+                    addgroup(founduser);
+                    break;
+                case 2:
+                    AddpasswordToGroup();
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    break;
+
+            }
+        }
+    static void addgroup(User User)
+        {
+            string name = "";
+            Console.Clear();
+            Console.WriteLine(titel);
+
+            do
+            {
+                Console.Write("\nName der Gruppe:");
+                name = Console.ReadLine();
+
+                if (string.IsNullOrWhiteSpace(name))
+                {
+                    Console.WriteLine("Der Gruppenname darf nicht leer sein. Bitte versuchen Sie es erneut.");
+                    continue;
+                }
+
+                if (User.MyGroups.Any(g => g.GroupName.Equals(name, StringComparison.OrdinalIgnoreCase)))
+                {
+                    Console.WriteLine("Eine Gruppe mit diesem Namen existiert bereits. Bitte geben Sie einen anderen Namen ein.");
+                    continue;
+                }
+
+                break;
+
+            } while (true);
+
+            User.MyGroups.Add(new PasswordGroup(name));
+            PasswordManager.SaveUsers(PasswordManager.users);
+
+            Console.WriteLine("\nGruppe {0} wurde erfolgreich hinzugefügt", name);
+            Console.WriteLine("Drücke irgendeine Taste um zurück zu gehen.");
+            Console.ReadKey();
+            PasswordGroupSet(User);
+        }
+        static void AddpasswordToGroup()
+        {
+
         }
     }
 }

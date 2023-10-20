@@ -6,19 +6,22 @@ using System.Threading.Tasks;
 
 namespace PasswortManager_UserInterface
 {
-    internal class password
+    internal class Password
     {
-        public string _titel { get; set; }
-        public string _password { get; set; }
-        public string _place { get; set; }
-        public string _user_name { get; set; }
+        public string Titel { get; set; }
+        public string PasswordInput { get; set; }
+        public string Place { get; set; }
+        public string User_name { get; set; }
 
-        public password(string _titel, string _password, string _place, string _User_Name)
+        public Password(string _titel, string _password, string _place, string _User_Name)
         {
-            this._titel = _titel;
-            this._password = _password;
-            this._place = _place;
-            this._user_name = _User_Name;
+            this.Titel = _titel;
+            this.PasswordInput = _password;
+            this.Place = _place;
+            this.User_name = _User_Name;
+        }
+        public Password()
+        {
         }
 
         public static string Passwordgenerator(int len)

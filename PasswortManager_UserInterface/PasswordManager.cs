@@ -14,7 +14,7 @@ namespace PasswortManager_UserInterface
 {
     internal class PasswordManager
     {
-         static string path = "C:\\Users\\xbloc\\OneDrive\\Bilder\\UbisoftConnect\\Textdokument.json";
+         static readonly string path = "C:\\Users\\Aurel\\Documents\\dokumente\\test.json";
 
         public static List<User> users = new List<User>();
         static public string angemeldet = "";
@@ -30,8 +30,8 @@ namespace PasswortManager_UserInterface
                 Console.WriteLine("Möchtest du dich anmelden oder Registrieren?");
                 Console.WriteLine("1. Für anmelden drücke 1");
                 Console.WriteLine("2. Für Registrieren drücke 2");
+                Console.Write("\nEingabe:");
 
-                
                 if (!int.TryParse(Console.ReadLine(), out dec) || (dec != 1 && dec != 2))
                 {
                     Console.Clear();
@@ -63,13 +63,13 @@ namespace PasswortManager_UserInterface
                 Console.Write("Gib deinen Benutzernamen ein: ");
                 username = Console.ReadLine();
 
-                if (users.Any(u => u.username == username))
+                if (users.Any(u => u.Username == username))
                 {
                     Console.Clear();
                     Console.WriteLine(titel);
                     Console.WriteLine("Dieser Benutzername ist bereits vergeben. Bitte wählen Sie einen anderen.\n");
                 }
-            } while (users.Any(u => u.username == username));
+            } while (users.Any(u => u.Username == username));
 
             do
             {
@@ -84,7 +84,7 @@ namespace PasswortManager_UserInterface
 
             masterpassword = HashPasswordBCrypt(masterpassword);
 
-            users.Add(new User{ username = username, masterpassword = masterpassword });
+            users.Add(new User{ Username = username, Masterpassword = masterpassword });
             SaveUsers(users);
             Console.WriteLine("--------------------------------------------------------------------------------" +
                              "\nAccount wurde erfolgreich erstellt.Drücke eine Taste um zum Login zu gelangen.");
@@ -107,20 +107,20 @@ namespace PasswortManager_UserInterface
                 Console.Write("Benutzernamen: ");
                 username = Console.ReadLine();
 
-                if (!users.Any(u => u.username == username))
+                if (!users.Any(u => u.Username == username))
                 {
                     Console.Clear();
                     Console.WriteLine(titel);
                     Console.WriteLine("Dieser Benutzer Existiert nicht.\n");
                 }
-            } while (!users.Any(u => u.username == username));
-            User founduser = users.FirstOrDefault(u => u.username == username);
-            angemeldet = founduser.username;
+            } while (!users.Any(u => u.Username == username));
+            User founduser = users.FirstOrDefault(u => u.Username == username);
+            angemeldet = founduser.Username;
             do
             {
                 Console.Write("Passwort: ");
                 masterpassword = Console.ReadLine();
-                if (ValidatePassword(masterpassword, founduser.masterpassword))
+                if (ValidatePassword(masterpassword, founduser.Masterpassword))
                 {
                     Menu.mainmenu();
                 }
