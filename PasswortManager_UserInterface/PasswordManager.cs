@@ -123,7 +123,7 @@ namespace PasswortManager_UserInterface
             do
             {
                 Console.Write("Passwort: ");
-                masterpassword = Console.ReadLine();
+                masterpassword = ReadPasswordWithDots();
                 if (ValidatePassword(masterpassword, founduser.Masterpassword))
                 {
                     Menu.mainmenu();
@@ -148,7 +148,27 @@ namespace PasswortManager_UserInterface
             return BCrypt.Net.BCrypt.Verify(password, hashedPassword);
         }
 
-
+        public static string ReadPasswordWithDots()
+        {
+            List<char> passwordChars = new List<char>();
+            ConsoleKeyInfo keyInfo;
+            do
+            {
+                keyInfo = Console.ReadKey(true);
+                if (keyInfo.Key != ConsoleKey.Backspace && keyInfo.Key != ConsoleKey.Enter)
+                {
+                    passwordChars.Add(keyInfo.KeyChar);
+                    Console.Write("*");
+                }
+                else if (keyInfo.Key == ConsoleKey.Backspace && passwordChars.Count > 0)
+                {
+                    passwordChars.RemoveAt(passwordChars.Count - 1);
+                    Console.Write("\b \b"); 
+                }
+            }
+            while (keyInfo.Key != ConsoleKey.Enter);
+            return new string(passwordChars.ToArray());
+        }
 
 
         //Json save and read
