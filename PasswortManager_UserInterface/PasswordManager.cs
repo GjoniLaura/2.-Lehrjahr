@@ -9,14 +9,17 @@ using System.Runtime.CompilerServices;
 using System.Threading;
 using BCrypt.Net;
 using System.Net.Http.Headers;
+using System.Security.Cryptography;
 
 namespace PasswortManager_UserInterface
 {
     internal class PasswordManager
     {
-         static readonly string path = "C:\\Users\\xbloc\\OneDrive\\Bilder\\UbisoftConnect\\Textdokument.json";
+         static readonly string path = "C:\\Users\\xbloc\\OneDrive\\Bilder\\UbisoftConnect\\values.json";
+        // static string passwordforkey = Environment.GetEnvironmentVariable("secretPass");
+        static string passwordforkey = "qyTY3wE2ureUy4cCb6r3ymL2F2R3bWqrnhEykwrU2YraQKR80X6UEoJ8LdAraCVZmutgXnW3Pg7VetEN0ryCMWGPeTsYF4XP9sRd"; //Ist so nicht sicher und wird nur wegen test zwecken gebraucht.
 
-        public static List<User> users = new List<User>();
+        public static List<User> users = new List<User>(); 
         static public string angemeldet = "";
 
         public static void LoOrRe()
@@ -155,13 +158,91 @@ namespace PasswortManager_UserInterface
                 WriteIndented = true
             };
             string json = JsonSerializer.Serialize(obj, options);
-            File.WriteAllText(path, json);
+            byte[] encryptedData = EncryptStringToBytes_Aes(json, passwordforkey);
+            File.WriteAllBytes(path, encryptedData);
         }
+
+
 
         public static List<User> ReadUsers()
         {
-            string json = File.ReadAllText(path);
-            return JsonSerializer.Deserialize<List<User>>(json);
+            if (File.Exists(path))
+            {
+                byte[] encryptedData = File.ReadAllBytes(path);
+                string decryptedData = DecryptStringFromBytes_Aes(encryptedData, passwordforkey);
+                return JsonSerializer.Deserialize<List<User>>(decryptedData);
+            }
+            else
+            {
+                return new List<User>();
+            }
         }
+
+        static byte[] EncryptStringToBytes_Aes(string plainText, string password)
+        {
+            byte[] encrypted;
+
+            using (Aes aesAlg = Aes.Create())
+            {
+                byte[] salt = new byte[16]; 
+                using (var rng = new RNGCryptoServiceProvider())
+                {
+                    rng.GetBytes(salt);
+                }
+
+                aesAlg.Key = DeriveKeyFromPassword(password, salt);
+                aesAlg.Mode = CipherMode.CBC;
+
+                ICryptoTransform encryptor = aesAlg.CreateEncryptor(aesAlg.Key, aesAlg.IV);
+
+                using (MemoryStream msEncrypt = new MemoryStream())
+                {
+                    msEncrypt.Write(salt, 0, salt.Length); 
+                    msEncrypt.Write(aesAlg.IV, 0, aesAlg.IV.Length); 
+
+                    using (CryptoStream csEncrypt = new CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write))
+                    using (StreamWriter swEncrypt = new StreamWriter(csEncrypt))
+                    {
+                        swEncrypt.Write(plainText);
+                    }
+
+                    encrypted = msEncrypt.ToArray();
+                }
+            }
+
+            return encrypted;
+        }
+
+        public static byte[] DeriveKeyFromPassword(string password, byte[] salt, int iterations = 10000, int keyLength = 32) 
+        {
+            using (var rfc2898 = new Rfc2898DeriveBytes(password, salt, iterations))
+            {
+                return rfc2898.GetBytes(keyLength);
+            }
+        }
+
+        static string DecryptStringFromBytes_Aes(byte[] cipherText, string password)
+        {
+            string plaintext = null;
+
+            using (Aes aesAlg = Aes.Create())
+            {
+                byte[] salt = cipherText.Take(16).ToArray(); 
+                aesAlg.Key = DeriveKeyFromPassword(password, salt);
+                aesAlg.IV = cipherText.Skip(16).Take(16).ToArray(); 
+
+                ICryptoTransform decryptor = aesAlg.CreateDecryptor(aesAlg.Key, aesAlg.IV);
+
+                using (MemoryStream msDecrypt = new MemoryStream(cipherText.Skip(32).ToArray())) 
+                using (CryptoStream csDecrypt = new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read))
+                using (StreamReader srDecrypt = new StreamReader(csDecrypt))
+                {
+                    plaintext = srDecrypt.ReadToEnd();
+                }
+            }
+
+            return plaintext;
+        }
+
     }
 }
