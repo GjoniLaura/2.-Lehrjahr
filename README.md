@@ -16,4 +16,5 @@ Der Passwort-Manager ist eine Konsolenanwendung die mit .net 6.0 funktioniert. Z
 2. Das BCrypt.Net-Next NuGet -Paket herunterladen
 3. In die Klasse PasswordManager gehen und in die Variabel Path der Pfad der Json Datei angeben in der du die Passwörter speichern willst.
 <img src= https://gitlab.com/uploads/-/system/personal_snippet/3613634/b1f7fd17c650acbf320ca12bfe5310ef/Unbenannt.PNG>
+
 4. Starte das Programm und registriere dich
