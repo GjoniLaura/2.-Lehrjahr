@@ -16,6 +16,7 @@ namespace PasswortManager_UserInterface
     internal class PasswordManager
     {
          static readonly string path = "C:\\Users\\xbloc\\OneDrive\\Bilder\\UbisoftConnect\\values.json";
+
         // static string passwordforkey = Environment.GetEnvironmentVariable("secretPass");
         static string passwordforkey = "qyTY3wE2ureUy4cCb6r3ymL2F2R3bWqrnhEykwrU2YraQKR80X6UEoJ8LdAraCVZmutgXnW3Pg7VetEN0ryCMWGPeTsYF4XP9sRd"; //Ist so nicht sicher und wird nur wegen test zwecken gebraucht.
 
@@ -187,16 +188,14 @@ namespace PasswortManager_UserInterface
 
         public static List<User> ReadUsers()
         {
-            if (File.Exists(path))
+            if (!File.Exists(path) || new FileInfo(path).Length == 0)
             {
+                SaveUsers(new List<User>());
+            }
                 byte[] encryptedData = File.ReadAllBytes(path);
                 string decryptedData = DecryptStringFromBytes_Aes(encryptedData, passwordforkey);
                 return JsonSerializer.Deserialize<List<User>>(decryptedData);
-            }
-            else
-            {
-                return new List<User>();
-            }
+
         }
 
         static byte[] EncryptStringToBytes_Aes(string plainText, string password)
