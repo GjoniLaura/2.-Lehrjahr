@@ -52,9 +52,13 @@ namespace PasswortManager_UserInterface
                     addpassword(founduser);
                     break;
                case 3:
+                    deletepassword(founduser);
                     break;
                case 4:
                     PasswordGroupSet(founduser);
+                    break;
+                case 5:
+                    GeneratePassword(founduser);
                     break;
 
             }
@@ -100,7 +104,7 @@ namespace PasswortManager_UserInterface
             {
                 Console.Write("Eingabe: ");
                 eingabe = Console.ReadLine();
-                if(eingabe == "exit")
+                if(eingabe.Equals("exit", StringComparison.OrdinalIgnoreCase))
                 {
                     break;
                 }
@@ -177,6 +181,60 @@ namespace PasswortManager_UserInterface
             } while (string.IsNullOrWhiteSpace(input));
 
             return input;
+        }
+        //Passwörter Löschen
+        //-------------------------------------------------------------------
+        static void deletepassword(User founduser)
+        {
+            Console.Clear();
+            Console.WriteLine(titel);
+            Console.WriteLine("Passwort löschen\n");
+
+
+            do
+            {
+                Console.Write("Geben Sie den Titel des Passworts ein, das Sie löschen möchten: ");
+                string passwordTitleToDelete = Console.ReadLine();
+
+
+
+                Password passwordToDelete = founduser.Mypasswords.FirstOrDefault(p => p.Titel.Equals(passwordTitleToDelete, StringComparison.OrdinalIgnoreCase));
+                if (passwordToDelete != null)
+                {
+                    Console.WriteLine("Sind Sie sicher, dass Sie das Passwort löschen möchten? (Ja/Nein): ");
+                    string confirmation = Console.ReadLine();
+
+
+
+                    if (confirmation.Equals("Ja", StringComparison.OrdinalIgnoreCase))
+                    {
+                        founduser.Mypasswords.Remove(passwordToDelete);
+                        PasswordManager.SaveUsers(PasswordManager.users);
+                        Console.WriteLine("Passwort wurde erfolgreich gelöscht.");
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Passwort wurde nicht gelöscht.");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Das angegebene Passwort wurde nicht gefunden.");
+                }
+
+            } while (true);
+
+            Console.WriteLine("Drücken Sie eine beliebige Taste, um zum Hauptmenü zurückzukehren.");
+            Console.ReadKey();
+            mainmenu();
+        }
+
+        //Password Generieren
+        //-------------------------------------------------------------------------------------
+        static void GeneratePassword(User user)
+        {
+
         }
 
         //Password Gruppen
