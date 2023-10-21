@@ -27,11 +27,12 @@ namespace PasswortManager_UserInterface
                 Console.WriteLine("4.Passwort Gruppen");
                 Console.WriteLine("5.Passwort generieren lassen");
                 Console.WriteLine("6.Passwort mit url/webseitename suchen");
-                Console.WriteLine("7.Benutzer Account Löschen");
-                Console.WriteLine("8.Exit");
+                Console.WriteLine("7.Benutzer wechseln");
+                Console.WriteLine("8.Benutzer Account Löschen");
+                Console.WriteLine("9.Exit");
                 Console.Write("\nEingabe:");
 
-                if (int.TryParse(Console.ReadLine(), out int input) && input >= 1 && input <= 8)
+                if (int.TryParse(Console.ReadLine(), out int input) && input >= 1 && input <= 9)
                 {
                     dec = input;
                     break;
@@ -60,6 +61,15 @@ namespace PasswortManager_UserInterface
                 case 5:
                     GeneratePassword(founduser);
                     break;
+                case 6:
+                    searchPasswordByURL(founduser);
+                    break;
+                case 7:
+                    PasswordManager.LoOrRe();
+                    break;
+                case 8:
+
+
 
             }
         }
@@ -226,6 +236,7 @@ namespace PasswortManager_UserInterface
             } while (true);
 
             Console.WriteLine("Drücken Sie eine beliebige Taste, um zum Hauptmenü zurückzukehren.");
+            PasswordManager.SaveUsers(PasswordManager.users);
             Console.ReadKey();
             mainmenu();
         }
@@ -234,7 +245,28 @@ namespace PasswortManager_UserInterface
         //-------------------------------------------------------------------------------------
         static void GeneratePassword(User user)
         {
+            int length;
+            Console.Clear();
+            Console.WriteLine(titel);
+            Console.WriteLine("Passwort Generieren\n");
 
+            while (true)
+            {
+                Console.Write("Geben sie an wie lange das Passwort sein soll: ");
+                string input = Console.ReadLine();
+
+                if (!string.IsNullOrEmpty(input) && int.TryParse(input, out length) && length > 0)
+                {
+                    break;
+                }
+
+                Console.WriteLine("Bitte geben Sie eine gültige Nummer größer als 0 ein!");
+            }
+
+            Console.WriteLine("Dein Passwort ist: " + Password.Passwordgenerator(length));
+            Console.WriteLine("Drücken Sie eine beliebige Taste, um zum Hauptmenü zurückzukehren.");
+            Console.ReadKey();
+            mainmenu();
         }
 
         //Password Gruppen
@@ -361,7 +393,6 @@ namespace PasswortManager_UserInterface
             string passwordtitel = "";
             Console.Clear();
             Console.WriteLine(titel);
-
             do
             {
                 Console.Write("Gib den Namen der Gruppe ein der du was Hinzufügen willst:");
@@ -373,7 +404,6 @@ namespace PasswortManager_UserInterface
                 }
 
             } while (!User.MyGroups.Any(g => g.GroupName.Equals(groupname, StringComparison.OrdinalIgnoreCase)));
-
             do
             {
                 Console.Write("Gib den titel des Passwortes ein das zu Hinzufügen willst: ");
@@ -443,5 +473,52 @@ namespace PasswortManager_UserInterface
                 PasswordGroupSet(User);
             }
         }
+        static void searchPasswordByURL(User founduser)
+        {
+            Console.Clear();
+            Console.WriteLine(titel);
+            Console.WriteLine("Passwort mit URL/Webseitename suchen\n");
+
+            string searchTerm;
+            do
+            {
+                Console.Write("Geben Sie die URL oder den Webseitennamen ein: ");
+                searchTerm = Console.ReadLine();
+
+                if (string.IsNullOrEmpty(searchTerm))
+                {
+                    Console.WriteLine("Eingabe darf nicht leer sein!");
+                }
+            }
+            while (string.IsNullOrEmpty(searchTerm));
+
+            bool passwortGefunden = false;
+
+            Console.WriteLine("\nGefundene Passwörter:");
+            foreach (var password in founduser.Mypasswords)
+            {
+                if (password.Place.Contains(searchTerm, StringComparison.OrdinalIgnoreCase))
+                {
+                    Console.WriteLine($"Titel: {password.Titel}");
+                    Console.WriteLine($"Passwort: {password.PasswordInput}");
+                    Console.WriteLine($"Ort: {password.Place}");
+                    Console.WriteLine($"Benutzername: {password.User_name}");
+                    Console.WriteLine("-----------------------------");
+                    passwortGefunden = true;
+                }
+            }
+
+            if (!passwortGefunden)
+            {
+                Console.WriteLine("Keine Passwörter gefunden!");
+            }
+
+            Console.WriteLine("Drücken Sie eine beliebige Taste, um zum Hauptmenü zurückzukehren.");
+            Console.ReadKey();
+            mainmenu();
+
+        }
+        
     }
+
 }
