@@ -40,7 +40,7 @@ namespace PasswortManager_UserInterface
                 else
                 {
                     Console.Clear();
-                    Console.WriteLine("Ungültige Eingabe. Bitte geben Sie eine Zahl zwischen 1 und 7 ein.\n");
+                    Console.WriteLine("Ungültige Eingabe. Bitte geben Sie eine Zahl zwischen 1 und 9 ein.\n");
                 }
             } while (true);
 
@@ -68,6 +68,12 @@ namespace PasswortManager_UserInterface
                     PasswordManager.LoOrRe();
                     break;
                 case 8:
+                    deleteUserAccount(founduser);
+                    break;
+                case 9:
+                    PasswordManager.SaveUsers(PasswordManager.users);
+                    Environment.Exit(0);
+                    break;
 
 
 
@@ -473,6 +479,9 @@ namespace PasswortManager_UserInterface
                 PasswordGroupSet(User);
             }
         }
+
+        //Password Suchen
+        //-------------------------------------------------------------------------------------   
         static void searchPasswordByURL(User founduser)
         {
             Console.Clear();
@@ -518,7 +527,31 @@ namespace PasswortManager_UserInterface
             mainmenu();
 
         }
-        
+        //Benutzer Löschen
+        //-------------------------------------------------------------------------------------
+        static void deleteUserAccount(User userToDelete)
+        {
+            Console.Clear();
+            Console.WriteLine("Benutzer löschen");
+            Console.WriteLine("Sind Sie sicher, dass Sie Ihr Benutzerkonto löschen möchten? (Ja/Nein): ");
+            string confirmation = Console.ReadLine();
+            if (confirmation.Equals("Ja", StringComparison.OrdinalIgnoreCase))
+            {
+                PasswordManager.users.Remove(userToDelete);
+                PasswordManager.SaveUsers(PasswordManager.users);
+                Console.WriteLine("Ihr Benutzerkonto wurde erfolgreich gelöscht.");
+                Console.WriteLine("Drücken Sie eine beliebige Taste, um zum Login zu gelangen");
+                Console.ReadKey();
+                PasswordManager.LoOrRe();
+            }
+            else
+            {
+                Console.WriteLine("\nBenutzerkonto wurde nicht gelöscht.");
+                Console.WriteLine("Drücken Sie eine beliebige Taste, um zum Menu zu gelangen");
+                Console.ReadKey();
+                mainmenu();
+            }
+        }
     }
 
 }

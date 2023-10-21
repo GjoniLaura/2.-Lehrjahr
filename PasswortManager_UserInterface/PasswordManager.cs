@@ -24,6 +24,7 @@ namespace PasswortManager_UserInterface
 
         public static void LoOrRe()
         {
+            Console.Clear();
             int dec = 0;
 
             while (dec != 1 && dec != 2)
