@@ -15,7 +15,7 @@ namespace PasswortManager_UserInterface
 {
     internal class PasswordManager
     {
-         static readonly string path = "C:\\Users\\xbloc\\OneDrive\\Bilder\\UbisoftConnect\\values.json";
+         static readonly string path = "C:\\Users\\Aurel\\values.json";
 
         // static string passwordforkey = Environment.GetEnvironmentVariable("secretPass");
         static string passwordforkey = "qyTY3wE2ureUy4cCb6r3ymL2F2R3bWqrnhEykwrU2YraQKR80X6UEoJ8LdAraCVZmutgXnW3Pg7VetEN0ryCMWGPeTsYF4XP9sRd"; //Ist so nicht sicher und wird nur wegen test zwecken gebraucht.
