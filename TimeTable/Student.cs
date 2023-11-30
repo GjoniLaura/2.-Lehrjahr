@@ -1,17 +1,20 @@
 ﻿using System;
+using TimeTable;
 
 namespace TimeTable
 {
   
     public class Student : Person
-    {
+    {//you don't have to do underlines
       private string _Education;
       private string _Teacher;
-      private int _Id;
+      private int _StudentId;       
       private int _NumberOfLessons;
       private int _EducationSemester;
-      private string _Modules;
-      private string _Subject;
+      private string _Modules; //Muss eine Liste werden
+      private string _Subject; //Muss eine Liste werden
+      //private List<Subject> _Subjects = new List<Subject>();
+      //Man muss auf die n zu n beziehung zwischen student und modules/subjects achten
       private string _Class;
 
       public Student(string fn, string ln, bool av, string education, string teacher, int id, int numberoflesson, int educationsemester, string modules, string subjet, string Class) : base(fn, ln, av)
