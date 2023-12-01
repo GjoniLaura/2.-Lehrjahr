@@ -5,15 +5,13 @@ namespace TimeTable
 {
   
     public class Student : Person
-    {//you don't have to do underlines
+    {
       private string _Education;
       private string _Teacher;
       private int _StudentId;       
       private int _NumberOfLessons;
       private int _EducationSemester;
-      private string _Modules; //Muss eine Liste werden
-      private string _Subject; //Muss eine Liste werden
-      //private List<Subject> _Subjects = new List<Subject>();
+      private List<Subject> _Subjects = new List<Subject>();
       //Man muss auf die n zu n beziehung zwischen student und modules/subjects achten
       private string _Class;
 
@@ -24,8 +22,6 @@ namespace TimeTable
         setId(id);
         setNumberOfLessons(numberoflesson);
         setEducationSemester(educationsemester);
-        setModules(modules);
-        setSubjects(subjet);
         setClass(Class);
       }
 
