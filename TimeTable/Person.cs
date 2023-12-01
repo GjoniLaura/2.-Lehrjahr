@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TableTime
+namespace TimeTable
 {
     public abstract class Person
     {

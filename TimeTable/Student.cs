@@ -1,9 +1,12 @@
 ﻿using System;
 using TimeTable;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace TimeTable
 {
-  
     public class Student : Person
     {
       private string _Education;
@@ -19,7 +22,6 @@ namespace TimeTable
       {
         setEducation(education);
         setTeacher(teacher);
-        setId(id);
         setNumberOfLessons(numberoflesson);
         setEducationSemester(educationsemester);
         setClass(Class);
@@ -41,14 +43,6 @@ namespace TimeTable
       {
         return _Teacher;
       }
-      public void setId(int value)
-      {
-        _Id = value;
-      }
-      public int getId()
-      {
-        return _Id;
-      }
       public void setNumberOfLessons(int value)
       {
         _NumberOfLessons = value;
@@ -65,22 +59,7 @@ namespace TimeTable
       {
         return _EducationSemester;
       }
-      public void setModules(string value)
-      {
-        _Modules = value;
-      }
-      public string getModules()
-      {
-        return _Modules;
-      }
-      public void setSubjects(string value)
-      {
-        _Subject = value;
-      }
-      public string getSubjects()
-      {
-        return _Subject;
-      }
+
       public void setClass(string value)
       {
         _Class = value;
