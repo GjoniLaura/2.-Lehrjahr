@@ -6,6 +6,8 @@ namespace TimeTable
   
     public class Student : Person
     {
+      private  int Id { get; set; }
+
       private string _Education;
       private string _Teacher;
       private int _StudentId;       

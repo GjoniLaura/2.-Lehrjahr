@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
+using Microsoft.EntityFrameworkCore;
 using TimeTable.Data;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,6 +9,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddSingleton<WeatherForecastService>();
+
+//Datenbank Service
+builder.Services.AddDbContext<TimeTableContext>(opions =>
+     opions.UseSqlServer(builder.Configuration.GetConnectionString("conection string")));
 
 var app = builder.Build();
 
