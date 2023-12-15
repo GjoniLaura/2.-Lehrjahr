@@ -1,9 +1,20 @@
 ﻿@page "/"
+@using Microsoft.EntityFrameworkCore;
+@using TimeTable.DatabaseConnection;
+@inject IDbContextFactory<TimeTableContext> DbFactory
 
 <PageTitle>Index</PageTitle>
 
-<h1>Hello, world!</h1>
 
-Welcome to your new app.
 
-<SurveyPrompt Title="How is Blazor working for you?" />
+@code{
+	protected override async Task OnInitializedAsync()
+	{
+		await base.OnInitializedAsync();
+
+		using var context = DbFactory.CreateDbContext();
+
+		context.Subjects.Add(new Subject("string1", "string2", "string3"));
+		await context.SaveChangesAsync();
+	}
+}

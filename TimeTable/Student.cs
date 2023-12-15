@@ -6,14 +6,14 @@ namespace TimeTable
   
     public class Student : Person
     {
-      private  int Id { get; set; }
+      private int Id { get; set; }
 
       private string _Education;
       private string _Teacher;
       private int _StudentId;       
       private int _NumberOfLessons;
       private int _EducationSemester;
-      private List<Subject> _Subjects = new List<Subject>();
+      List<Subject> Subjects { get; set; }
       //Man muss auf die n zu n beziehung zwischen student und modules/subjects achten
       private string _Class;
 
@@ -21,7 +21,7 @@ namespace TimeTable
       {
         setEducation(education);
         setTeacher(teacher);
-        setId(id);
+        Id = id;
         setNumberOfLessons(numberoflesson);
         setEducationSemester(educationsemester);
         setClass(Class);
@@ -43,14 +43,6 @@ namespace TimeTable
       {
         return _Teacher;
       }
-      public void setId(int value)
-      {
-        _Id = value;
-      }
-      public int getId()
-      {
-        return _Id;
-      }
       public void setNumberOfLessons(int value)
       {
         _NumberOfLessons = value;
@@ -66,22 +58,6 @@ namespace TimeTable
       public int getEducationSemester()
       {
         return _EducationSemester;
-      }
-      public void setModules(string value)
-      {
-        _Modules = value;
-      }
-      public string getModules()
-      {
-        return _Modules;
-      }
-      public void setSubjects(string value)
-      {
-        _Subject = value;
-      }
-      public string getSubjects()
-      {
-        return _Subject;
       }
       public void setClass(string value)
       {

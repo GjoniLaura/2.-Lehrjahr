@@ -1,19 +1,21 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Pomelo.EntityFrameworkCore.MySql;
+
 namespace TimeTable.DatabaseConnection
 {
-    public class TimeTableContext
+    public class TimeTableContext : DbContext
     {
         public DbSet<Subject> Subjects { get; set; }
         public DbSet<Student> Addresses { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySql("your-connection-string", ServerVersion.AutoDetect("your-connection-string"));
+            optionsBuilder.UseMySql("server = localhost; database = timetable; uid = root; pwd = Luna07wenn!", ServerVersion.AutoDetect("server = localhost; database = timetable; uid = root; pwd = Luna07wenn!"));
         }
 
         public void InitializeDatabase()
         {
-            Migrate();
+            Database.Migrate();
         }
     }
 }
