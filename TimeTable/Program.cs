@@ -17,11 +17,18 @@ builder.Services.AddSingleton<WeatherForecastService>();
 	 options.UseMySql(builder.Configuration.GetConnectionString("TimeTables"),
 	 MySqlServerVersion.AutoDetect(builder.Configuration.GetConnectionString("TimeTables")))
 );*/
-
+/*
 builder.Services.AddDbContextFactory<TimeTableContext>(opt =>
-	opt.UseMySql(builder.Configuration.GetConnectionString("TimeTables"),
-	 MySqlServerVersion.AutoDetect(builder.Configuration.GetConnectionString("TimeTables")
-	)));
+	opt.UseMySql(builder.Configuration.GetConnectionString("TimdfafeTables"),
+	 MySqlServerVersion.AutoDetect(builder.Configuration.GetConnectionString("TimeTaafdafbles")
+	)));*/
+builder.Services.AddDbContextFactory<TimeTableContext>(opt =>
+	opt.UseMySql(
+		 "server = localhost; database = timetabel; persistsecurityinfo=True;  uid = root; pwd = Luna07wenn!",
+		MySqlServerVersion.AutoDetect("server = localhost; database = timetabel; persistsecurityinfo=True;  uid = root; pwd = Luna07wenn!")
+	)
+);
+
 
 
 var app = builder.Build();

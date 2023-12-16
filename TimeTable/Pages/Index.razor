@@ -12,7 +12,9 @@
 	{
 		await base.OnInitializedAsync();
 
+
 		using var context = DbFactory.CreateDbContext();
+		context.InitializeDatabase();
 
 		context.Subjects.Add(new Subject("string1", "string2", "string3"));
 		await context.SaveChangesAsync();

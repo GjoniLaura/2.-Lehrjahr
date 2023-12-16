@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
+using System.ComponentModel.DataAnnotations;
 using TimeTable;
 
 namespace TimeTable
@@ -6,16 +8,17 @@ namespace TimeTable
   
     public class Student : Person
     {
-      private int Id { get; set; }
+      public int Id { get; set; }
 
       private string _Education;
-      private string _Teacher;
-      private int _StudentId;       
+      private string _Teacher;       
       private int _NumberOfLessons;
       private int _EducationSemester;
       List<Subject> Subjects { get; set; }
       //Man muss auf die n zu n beziehung zwischen student und modules/subjects achten
       private string _Class;
+
+     public Student() { }
 
       public Student(string fn, string ln, bool av, string education, string teacher, int id, int numberoflesson, int educationsemester, string modules, string subjet, string Class) : base(fn, ln, av)
       {

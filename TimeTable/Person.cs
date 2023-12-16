@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,10 +9,13 @@ namespace TimeTable
 {
     public abstract class Person
     {
+        [Key]
+        private int id { get; set; }
         private string _firstname;
         private string _lastname;
         private bool _available;
 
+        public Person() { }
         public Person(string fn, string ln, bool av)
         {
             setFirstname(fn);
