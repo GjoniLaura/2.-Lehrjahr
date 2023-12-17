@@ -18,7 +18,7 @@ namespace TimeTable.DatabaseConnection
 
         public void InitializeDatabase()
         {
-            Database.Migrate();
+            this.Database.Migrate();
         }
     }
 }
