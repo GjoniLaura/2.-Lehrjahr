@@ -8,9 +8,13 @@ namespace TimeTable
 {
     public class Teacher : Person
     {
+        public int Id { get; set; }
         private string _teachedSubject;
         private bool _teached;
         private int _numberOfWorkDays;
+
+        public Teacher() { }
+
         public Teacher(string fn, string ln, bool av, string teachedSubject, bool teached, int numberOfWorkDays) : base(fn, ln, av)
         {
             setTeachedSubject(teachedSubject);

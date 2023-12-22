@@ -9,8 +9,7 @@ namespace TimeTable
 {
     public abstract class Person
     {
-        [Key]
-        private int id { get; set; }
+        public int Id { get; set; }
         private string _firstname;
         private string _lastname;
         private bool _available;

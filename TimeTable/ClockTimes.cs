@@ -2,10 +2,7 @@
 {
     public class ClockTimes
     {
-        //Diese Klasse muss nochmals überarbeitet werden sobalt wir 
-        //mehr gedankten über den Algorythmus und der eingabe der Daten 
-        //gemacht haben.
-
+        public int Id { get; set; }
         private string Bezeichnung { get; set; }
         private int Hour;
         private int Minutes;

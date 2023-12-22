@@ -8,8 +8,12 @@ namespace TimeTable.DatabaseConnection
     {
         string connectionstring = "server = localhost;  database = timetabel; persistsecurityinfo=True; uid = root; pwd = Luna07wenn!";
 
-		public DbSet<Subject> Subjects { get; set; }
-        public DbSet<Student> students { get; set; }
+		public DbSet<Subject> subject { get; set; }
+        public DbSet<Student> student { get; set; }
+        public DbSet<Teacher> teacher { get; set; }
+        public DbSet<Education> education { get; set; }
+        public DBSet<ClockTimes> time { get; set; }
+
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
