@@ -1,4 +1,4 @@
-﻿namespace TimeTable
+﻿namespace TimeTable.Moduls
 {
     public class Subject
     {

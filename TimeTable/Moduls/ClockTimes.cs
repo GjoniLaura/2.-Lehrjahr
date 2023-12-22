@@ -1,4 +1,4 @@
-﻿namespace TimeTable
+﻿namespace TimeTable.Moduls
 {
     public class ClockTimes
     {
@@ -6,7 +6,7 @@
         //mehr gedankten über den Algorythmus und der eingabe der Daten 
         //gemacht haben.
 
-        private string Bezeichnung { get; set; }
+        string Bezeichnung { get; set; }
         private int Hour;
         private int Minutes;
 
