@@ -12,7 +12,7 @@ namespace TimeTable.DatabaseConnection
         public DbSet<Student> student { get; set; }
         public DbSet<Teacher> teacher { get; set; }
         public DbSet<Education> education { get; set; }
-        public DBSet<ClockTimes> time { get; set; }
+        public DbSet<ClockTimes> time { get; set; }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

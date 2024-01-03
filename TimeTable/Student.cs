@@ -10,15 +10,14 @@ namespace TimeTable
     {
       public int Id { get; set; }
 
-      private string _Education;
-      private string _Teacher;       
-      private int _NumberOfLessons;
-      private int _EducationSemester;
-      List<Subject> Subjects { get; set; }
-      //Man muss auf die n zu n beziehung zwischen student und modules/subjects achten
-      private string _Class;
+        public string _Education { get; set; }
+		public string _Teacher { get; set; }
+		public int _NumberOfLessons { get; set; }
+		public int _EducationSemester { get; set; }
+		public List<Subject> Subjects { get; set; }
+		public string _Class { get; set; }
 
-     public Student() { }
+		public Student() { }
 
       public Student(string fn, string ln, bool av, string education, string teacher, int id, int numberoflesson, int educationsemester, string modules, string subjet, string Class) : base(fn, ln, av)
       {

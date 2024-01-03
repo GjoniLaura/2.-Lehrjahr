@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TimeTable.DatabaseConnection;
 
@@ -10,9 +11,11 @@ using TimeTable.DatabaseConnection;
 namespace TimeTable.Migrations
 {
     [DbContext(typeof(TimeTableContext))]
-    partial class TimeTableContextModelSnapshot : ModelSnapshot
+    [Migration("20240103195939_Initial-Create")]
+    partial class InitialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

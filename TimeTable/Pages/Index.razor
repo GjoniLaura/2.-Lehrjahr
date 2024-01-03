@@ -16,7 +16,9 @@
 		using var context = DbFactory.CreateDbContext();
 		context.InitializeDatabase();
 
-		context.Subjects.Add(new Subject("string1", "string2", "string3"));
+		context.subject.Add(new Subject("string1", "string2", "string3"));
 		await context.SaveChangesAsync();
+
+		AddTeacher.setteacher("fda","hdfs",true, "math", true, 4);
 	}
 }

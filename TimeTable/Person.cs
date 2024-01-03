@@ -9,19 +9,18 @@ namespace TimeTable
 {
     public abstract class Person
     {
-        public int Id { get; set; }
-        private string _firstname;
-        private string _lastname;
-        private bool _available;
+        public string _firstname { get; set; }
+		public string _lastname { get; set; }
+		public bool _available { get; set; }
 
         public Person() { }
         public Person(string fn, string ln, bool av)
         {
-            setFirstname(fn);
-            setLastname(ln);
-            setAvailability(av);
+            _firstname = fn;
+            _lastname = ln;
+            _available = av;
         }
-
+/*
         public string getFirstname()
         {
             return _firstname;
@@ -46,6 +45,6 @@ namespace TimeTable
         public void setAvailability(bool av)
         {
             _available = av;
-        }
+        }*/
     }
 }
