@@ -5,9 +5,10 @@
 
 <PageTitle>Index</PageTitle>
 
-
+<button @onclick="AddTeacherMethod">Add Teacher</button>
 
 @code{
+
 	protected override async Task OnInitializedAsync()
 	{
 		await base.OnInitializedAsync();
@@ -21,4 +22,9 @@
 
 		AddTeacher.setteacher("fda","hdfs",true, "math", true, 4);
 	}
+	private void AddTeacherMethod()
+	{
+		AddTeacher.setteacher("fda", "hdfs", true, "math", true, 4);
+	}
+
 }

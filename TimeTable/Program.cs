@@ -22,6 +22,7 @@ builder.Services.AddDbContextFactory<TimeTableContext>(opt =>
 	opt.UseMySql(builder.Configuration.GetConnectionString("TimdfafeTables"),
 	 MySqlServerVersion.AutoDetect(builder.Configuration.GetConnectionString("TimeTaafdafbles")
 	)));*/
+
 builder.Services.AddDbContextFactory<TimeTableContext>(opt =>
 	opt.UseMySql(
 		 "server = localhost; database = timetabel; persistsecurityinfo=True;  uid = root; pwd = Luna07wenn!",
