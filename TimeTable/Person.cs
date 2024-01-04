@@ -7,44 +7,21 @@ using System.Threading.Tasks;
 
 namespace TimeTable
 {
-    public abstract class Person
-    {
-        public string _firstname { get; set; }
-		public string _lastname { get; set; }
-		public bool _available { get; set; }
+	public class Person
+	{
+		public int Id { get; set; }
+		public string Firstname { get; set; }
+		public string Lastname { get; set; }
+		public bool Available { get; set; }
 
-        public Person() { }
-        public Person(string fn, string ln, bool av)
-        {
-            _firstname = fn;
-            _lastname = ln;
-            _available = av;
-        }
-/*
-        public string getFirstname()
-        {
-            return _firstname;
-        }
-        public void setFirstname(string fn)
-        {
-            _firstname = fn;
-        }
-        public string getLastname()
-        {
-            return _lastname;
-        }
-        public void setLastname(string ln)
-        {
-            _lastname = ln;
-        }
-        public bool getAvailability()
-        {
-            return _available;
-        }
+		public Person() { }
 
-        public void setAvailability(bool av)
-        {
-            _available = av;
-        }*/
-    }
+		public Person(string firstname, string lastname, bool available)
+		{
+			Firstname = firstname;
+			Lastname = lastname;
+			Available = available;
+		}
+	}
+
 }

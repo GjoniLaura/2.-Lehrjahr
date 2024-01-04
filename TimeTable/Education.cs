@@ -2,17 +2,19 @@
 {
     public class Education
     {
-        public int Id { get; set; }
-        public string _participant { get; set; }
-        public string _subject { get; set; }
-        public int _lessons { get; set; }
+  		public string Id { get; set; }
+		public string Name { get; set; }
+		public List<Subject> Subjects { get; set; }
+		public int AnzLessons { get; set; }
 
+			
+		public Education() { }
+		public Education(string name, List<Subject> subjects, int anzLessons)
+		{
+			Name = name;
+			Subjects = subjects;
+			AnzLessons = anzLessons;
+		}
 
-        public Education(string participant, string subject, int lessons)
-        {
-            _participant = participant;
-            _subject = subject;
-            _lessons = lessons;
-        }
     }
 }

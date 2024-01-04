@@ -6,25 +6,37 @@
 <PageTitle>Index</PageTitle>
 
 <button @onclick="AddTeacherMethod">Add Teacher</button>
+@foreach(Teacher t in techers)
+{
+	@foreach(Subject s in t.TeachedSubject)
+	{
+				<h1>@s._premises</h1>
+	}
+}
 
 @code{
+	Subject k1 = new Subject("string1", "string2", "string3");
+	List<Subject> sub = new List<Subject>();
+	List<Teacher> techers = new List<Teacher>();
 
 	protected override async Task OnInitializedAsync()
 	{
+		sub.Add(k1);
 		await base.OnInitializedAsync();
 
 
 		using var context = DbFactory.CreateDbContext();
 		context.InitializeDatabase();
 
-		context.subject.Add(new Subject("string1", "string2", "string3"));
-		await context.SaveChangesAsync();
+		techers = TeacherDatabaseConnection.getTeacher();
 
-		AddTeacher.setteacher("fda","hdfs",true, "math", true, 4);
+		TeacherDatabaseConnection.setTeacher("fda","hdfs",true, sub, true, 4);
+
+		techers = TeacherDatabaseConnection.getTeacher();
 	}
 	private void AddTeacherMethod()
 	{
-		AddTeacher.setteacher("fda", "hdfs", true, "math", true, 4);
+		TeacherDatabaseConnection.setTeacher("fda", "hdfs", true, sub, true, 4);
 	}
 
 }
