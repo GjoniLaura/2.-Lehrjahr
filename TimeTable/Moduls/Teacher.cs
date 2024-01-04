@@ -8,17 +8,17 @@ namespace TimeTable.Moduls
 {
     public class Teacher : Person
     {
-        List<Subject> TeachedSubject { get; set; }
-        bool Teached { get; set; }
-        int NumberOfWorkDays { get; set; }
-        public Teacher(string firstname, string lastname, bool available, List<Subject> teachedSubject, bool teached, int numberOfWorkDays) : base(firstname, lastname, available)
-        {
-            TeachedSubject = teachedSubject;
-            Teached = teached;
-            NumberOfWorkDays = numberOfWorkDays;
-        }
+		public List<Subject> TeachedSubject { get; set; }
+		public bool Teached { get; set; }
+		 public	int NumberOfWorkDays { get; set; }
+		public Teacher(string firstname, string lastname, bool available, List<Subject> teachedSubject, bool teached, int numberOfWorkDays) : base(firstname, lastname, available)
+		{
+			TeachedSubject = teachedSubject;
+			Teached = teached;
+			NumberOfWorkDays = numberOfWorkDays;
+		}
 
-    }
+	}
 
 
 }
