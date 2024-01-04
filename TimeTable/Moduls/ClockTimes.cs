@@ -2,35 +2,19 @@
 {
     public class ClockTimes
     {
-        //Diese Klasse muss nochmals überarbeitet werden sobalt wir 
-        //mehr gedankten über den Algorythmus und der eingabe der Daten 
-        //gemacht haben.
+		//Diese Klasse muss nochmals überarbeitet werden sobalt wir 
+		//mehr gedankten über den Algorythmus und der eingabe der Daten 
+		//gemacht haben.
 
-        string Bezeichnung { get; set; }
-        private int Hour;
-        private int Minutes;
+		public string Bezeichnung { get; set; }
+        public int Hour { get; set; }
+		public int Minutes { get; set; }
 
-        public ClockTimes(int Hour, int Minutes, string bezeichnung)
+        public ClockTimes(int hour, int minutes, string bezeichnung)
         {
-            SetHour(Hour);
-            SetMinutes(Minutes);
+            Hour = hour;
+            Minutes= minutes;
             Bezeichnung = bezeichnung;
-        }
-        public void SetHour(int Hour)
-        {
-            this.Hour = Hour;
-        }
-        public int GetHour()
-        {
-            return Hour;
-        }
-        public void SetMinutes(int Minutes)
-        {
-            this.Minutes = Minutes;
-        }
-        public int GetMinutes()
-        {
-            return Minutes;
         }
 
     }
