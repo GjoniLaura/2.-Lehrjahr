@@ -42,8 +42,9 @@ namespace TimeTable.Migrations
 
             modelBuilder.Entity("TimeTable.Education", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("varchar(255)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
 
                     b.Property<int>("AnzLessons")
                         .HasColumnType("int");
@@ -66,10 +67,6 @@ namespace TimeTable.Migrations
                     b.Property<bool>("Available")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<string>("Discriminator")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
                     b.Property<string>("Firstname")
                         .IsRequired()
                         .HasColumnType("longtext");
@@ -82,9 +79,7 @@ namespace TimeTable.Migrations
 
                     b.ToTable("person");
 
-                    b.HasDiscriminator<string>("Discriminator").HasValue("Person");
-
-                    b.UseTphMappingStrategy();
+                    b.UseTptMappingStrategy();
                 });
 
             modelBuilder.Entity("TimeTable.Subject", b =>
@@ -93,8 +88,8 @@ namespace TimeTable.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<string>("EducationId")
-                        .HasColumnType("varchar(255)");
+                    b.Property<int?>("EducationId")
+                        .HasColumnType("int");
 
                     b.Property<int?>("TeacherId")
                         .HasColumnType("int");
@@ -128,9 +123,8 @@ namespace TimeTable.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<string>("EducationId")
-                        .IsRequired()
-                        .HasColumnType("varchar(255)");
+                    b.Property<int>("EducationId")
+                        .HasColumnType("int");
 
                     b.Property<int>("EducationSemester")
                         .HasColumnType("int");
@@ -140,7 +134,7 @@ namespace TimeTable.Migrations
 
                     b.HasIndex("EducationId");
 
-                    b.HasDiscriminator().HasValue("Student");
+                    b.ToTable("student", (string)null);
                 });
 
             modelBuilder.Entity("TimeTable.Teacher", b =>
@@ -158,7 +152,7 @@ namespace TimeTable.Migrations
 
                     b.HasIndex("StudentId");
 
-                    b.HasDiscriminator().HasValue("Teacher");
+                    b.ToTable("teacher", (string)null);
                 });
 
             modelBuilder.Entity("TimeTable.Subject", b =>
@@ -180,14 +174,30 @@ namespace TimeTable.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("TimeTable.Person", "Person")
+                        .WithOne()
+                        .HasForeignKey("TimeTable.Student", "Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Education");
+
+                    b.Navigation("Person");
                 });
 
             modelBuilder.Entity("TimeTable.Teacher", b =>
                 {
+                    b.HasOne("TimeTable.Person", "Person")
+                        .WithOne()
+                        .HasForeignKey("TimeTable.Teacher", "Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("TimeTable.Student", null)
                         .WithMany("Teachers")
                         .HasForeignKey("StudentId");
+
+                    b.Navigation("Person");
                 });
 
             modelBuilder.Entity("TimeTable.Education", b =>

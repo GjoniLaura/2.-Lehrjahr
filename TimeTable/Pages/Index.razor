@@ -16,12 +16,17 @@
 
 @code{
 	Subject k1 = new Subject("string1", "string2", "string3");
+	Subject k2 = new Subject("string1", "string2", "string3");
+
 	List<Subject> sub = new List<Subject>();
+	List<Subject> sub2 = new List<Subject>();
 	List<Teacher> techers = new List<Teacher>();
+	List<Student> students = new List<Student>();
 
 	protected override async Task OnInitializedAsync()
 	{
 		sub.Add(k1);
+		sub2.Add(k2);
 		await base.OnInitializedAsync();
 
 
@@ -33,6 +38,14 @@
 		TeacherDatabaseConnection.setTeacher("fda","hdfs",true, sub, true, 4);
 
 		techers = TeacherDatabaseConnection.getTeacher();
+
+		Education ed1 = new Education("bminfromatik", sub2, 23);
+		StudentDatabaseConnection.setStudent("aurel", "bieri", true, ed1, techers, 42, 1, "b32");
+
+		students = StudentDatabaseConnection.getStudent();
+
+
+		
 	}
 	private void AddTeacherMethod()
 	{

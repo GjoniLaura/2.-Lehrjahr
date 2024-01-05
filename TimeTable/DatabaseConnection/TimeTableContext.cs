@@ -21,7 +21,24 @@ namespace TimeTable.DatabaseConnection
             optionsBuilder.UseMySql(connectionstring, ServerVersion.AutoDetect(connectionstring));
         }
 
-        public void InitializeDatabase()
+		protected override void OnModelCreating(ModelBuilder modelBuilder)
+		{
+			modelBuilder.Entity<Teacher>().ToTable("teacher");
+			modelBuilder.Entity<Student>().ToTable("student");
+
+			modelBuilder.Entity<Teacher>()
+	        .HasOne(t => t.Person)
+	        .WithOne()
+	        .HasForeignKey<Teacher>(t => t.Id);
+
+			modelBuilder.Entity<Student>()
+	        .HasOne(s => s.Person)
+	        .WithOne()
+	        .HasForeignKey<Student>(s => s.Id);
+
+		}
+
+		public void InitializeDatabase()
         {
             this.Database.Migrate();
         }

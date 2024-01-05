@@ -18,8 +18,8 @@ namespace TimeTable.Migrations
                 name: "education",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "varchar(255)", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     AnzLessons = table.Column<int>(type: "int", nullable: false)
@@ -27,6 +27,24 @@ namespace TimeTable.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_education", x => x.Id);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "person",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Firstname = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Lastname = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Available = table.Column<bool>(type: "tinyint(1)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_person", x => x.Id);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -48,41 +66,56 @@ namespace TimeTable.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "person",
+                name: "student",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Firstname = table.Column<string>(type: "longtext", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    Lastname = table.Column<string>(type: "longtext", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    Available = table.Column<bool>(type: "tinyint(1)", nullable: false),
-                    Discriminator = table.Column<string>(type: "longtext", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    EducationId = table.Column<string>(type: "varchar(255)", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    NumberOfLessons = table.Column<int>(type: "int", nullable: true),
-                    EducationSemester = table.Column<int>(type: "int", nullable: true),
-                    Class = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    Teached = table.Column<bool>(type: "tinyint(1)", nullable: true),
-                    NumberOfWorkDays = table.Column<int>(type: "int", nullable: true),
-                    StudentId = table.Column<int>(type: "int", nullable: true)
+                    Id = table.Column<int>(type: "int", nullable: false),
+                    EducationId = table.Column<int>(type: "int", nullable: false),
+                    NumberOfLessons = table.Column<int>(type: "int", nullable: false),
+                    EducationSemester = table.Column<int>(type: "int", nullable: false),
+                    Class = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4")
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_person", x => x.Id);
+                    table.PrimaryKey("PK_student", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_person_education_EducationId",
+                        name: "FK_student_education_EducationId",
                         column: x => x.EducationId,
                         principalTable: "education",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_person_person_StudentId",
-                        column: x => x.StudentId,
+                        name: "FK_student_person_Id",
+                        column: x => x.Id,
                         principalTable: "person",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "teacher",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false),
+                    Teached = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    NumberOfWorkDays = table.Column<int>(type: "int", nullable: false),
+                    StudentId = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_teacher", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_teacher_person_Id",
+                        column: x => x.Id,
+                        principalTable: "person",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_teacher_student_StudentId",
+                        column: x => x.StudentId,
+                        principalTable: "student",
                         principalColumn: "Id");
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
@@ -99,8 +132,7 @@ namespace TimeTable.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     _premises = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    EducationId = table.Column<string>(type: "varchar(255)", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    EducationId = table.Column<int>(type: "int", nullable: true),
                     TeacherId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
@@ -112,22 +144,17 @@ namespace TimeTable.Migrations
                         principalTable: "education",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_subject_person_TeacherId",
+                        name: "FK_subject_teacher_TeacherId",
                         column: x => x.TeacherId,
-                        principalTable: "person",
+                        principalTable: "teacher",
                         principalColumn: "Id");
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateIndex(
-                name: "IX_person_EducationId",
-                table: "person",
+                name: "IX_student_EducationId",
+                table: "student",
                 column: "EducationId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_person_StudentId",
-                table: "person",
-                column: "StudentId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_subject_EducationId",
@@ -138,6 +165,11 @@ namespace TimeTable.Migrations
                 name: "IX_subject_TeacherId",
                 table: "subject",
                 column: "TeacherId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_teacher_StudentId",
+                table: "teacher",
+                column: "StudentId");
         }
 
         /// <inheritdoc />
@@ -150,10 +182,16 @@ namespace TimeTable.Migrations
                 name: "time");
 
             migrationBuilder.DropTable(
-                name: "person");
+                name: "teacher");
+
+            migrationBuilder.DropTable(
+                name: "student");
 
             migrationBuilder.DropTable(
                 name: "education");
+
+            migrationBuilder.DropTable(
+                name: "person");
         }
     }
 }

@@ -18,7 +18,7 @@ namespace TimeTable.DatabaseConnection
 			{
 				Teacher Teacher = new Teacher(_firstname, _lastname, _available, teachedSubject, teached, numberOfWorkDays);
 
-				dbContext.person.Add(Teacher);
+				dbContext.teacher.Add(Teacher);
 				dbContext.SaveChanges();
 			}
 		}
@@ -27,14 +27,39 @@ namespace TimeTable.DatabaseConnection
 		{
 			using (var dbContext = new TimeTableContext())
 			{
-				List<Teacher> teachers = dbContext.person.OfType<Teacher>().Include(t => t.TeachedSubject).ToList();
+				List<Teacher> teachers = dbContext.teacher.Include(t => t.TeachedSubject).ToList();
 				return teachers;
 			}
 		}
      }
 
-	public class AddStudent
+	public class StudentDatabaseConnection
 	{
+		public static void setStudent(string firstname, string lastname, bool available, Education education, List<Teacher> teacher, int numberoflesson, int educationsemester, string classe)
+		{
+			using (var dbContext = new TimeTableContext())
+			{
+				foreach(Teacher t in teacher)
+				{
+					dbContext.Attach(t);
+				}
 
+				Student student = new Student(firstname, lastname, available, education, teacher, numberoflesson, educationsemester, classe);
+
+				dbContext.student.Add(student);
+				dbContext.SaveChanges();
+			}
+
+
+		}
+
+		public static List<Student> getStudent()
+		{
+			using (var dbContext = new TimeTableContext())
+			{
+				List<Student> students = dbContext.student.Include(t => t.Teachers).ToList();
+				return students;
+			}
+		}
 	}
 }

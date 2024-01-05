@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,10 +9,10 @@ namespace TimeTable
 {
     public class Teacher : Person
     {
-		public int Id { get; set; }
 		public List<Subject> TeachedSubject { get; set; }
 		public bool Teached { get; set; }
 		public int NumberOfWorkDays { get; set; }
+		public Person Person { get; set; }
 
 		public Teacher() { }
 

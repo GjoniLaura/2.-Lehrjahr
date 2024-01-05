@@ -1,8 +1,10 @@
-﻿namespace TimeTable
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace TimeTable
 {
     public class Education
     {
-  		public string Id { get; set; }
+  		public int Id { get; set; }
 		public string Name { get; set; }
 		public List<Subject> Subjects { get; set; }
 		public int AnzLessons { get; set; }
@@ -12,7 +14,7 @@
 		public Education(string name, List<Subject> subjects, int anzLessons)
 		{
 			Name = name;
-			Subjects = subjects;
+			Subjects = subjects ?? new List<Subject>();
 			AnzLessons = anzLessons;
 		}
 
