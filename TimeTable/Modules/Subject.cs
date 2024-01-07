@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 
-namespace TimeTable
+namespace TimeTable.Modules
 {
     public class Subject
     {

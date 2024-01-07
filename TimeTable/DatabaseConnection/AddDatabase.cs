@@ -2,11 +2,11 @@
 using System.Net.NetworkInformation;
 using Microsoft.EntityFrameworkCore;
 using TimeTable.DatabaseConnection;
-
+using TimeTable.Modules;
 
 namespace TimeTable.DatabaseConnection
 {
-	public class AddDatabase
+    public class AddDatabase
 	{
 	}
 
