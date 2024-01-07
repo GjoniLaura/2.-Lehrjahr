@@ -1,21 +1,23 @@
-﻿namespace TimeTable.Moduls
+﻿namespace TimeTable.Modules
 {
-    public class ClockTimes
-    {
-		//Diese Klasse muss nochmals überarbeitet werden sobalt wir 
-		//mehr gedankten über den Algorythmus und der eingabe der Daten 
-		//gemacht haben.
+	public class ClockTimes
+	{
 
+		public int Id { get; set; }
 		public string Bezeichnung { get; set; }
-        public int Hour { get; set; }
-		public int Minutes { get; set; }
+		public DayOfWeek DayOfWeek { get; set; }
+		public TimeSpan StartTime { get; set; }
+		public TimeSpan EndTime { get; set; }
 
-        public ClockTimes(int hour, int minutes, string bezeichnung)
-        {
-            Hour = hour;
-            Minutes= minutes;
-            Bezeichnung = bezeichnung;
-        }
+		public ClockTimes() { }
 
-    }
+		public ClockTimes(TimeSpan starTime, TimeSpan endTime, DayOfWeek dayofweek, string bezeichnung)
+		{
+			StartTime = starTime;
+			EndTime = endTime;
+			DayOfWeek = dayofweek;
+			Bezeichnung = bezeichnung;
+		}
+	}
+
 }

@@ -1,22 +1,27 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TimeTable.Moduls
+namespace TimeTable.Modules
 {
-    public abstract class Person
-    {
-        string Firstname { get; set; }
-        string Lastname { get; set; }
-        bool Available { get; set; }
+	public class Person
+	{
+		public int Id { get; set; }
+		public string Firstname { get; set; }
+		public string Lastname { get; set; }
+		public bool Available { get; set; }
 
-        public Person(string firstname, string lastname, bool available)
-        {
-            Firstname = firstname;
-            Lastname = lastname;
-            Available = available;
-        }
-    }
+		public Person() { }
+
+		public Person(string firstname, string lastname, bool available)
+		{
+			Firstname = firstname;
+			Lastname = lastname;
+			Available = available;
+		}
+	}
+
 }
