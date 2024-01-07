@@ -14,42 +14,59 @@
 	}
 }
 
-@code{
-	Subject k1 = new Subject("string1", "string2", "string3");
-	Subject k2 = new Subject("string1", "string2", "string3");
+@foreach (Student s in students)
+{
+	<h1>@s.Education.AnzLessons</h1>
+}
 
+@code{
 	List<Subject> sub = new List<Subject>();
-	List<Subject> sub2 = new List<Subject>();
 	List<Teacher> techers = new List<Teacher>();
 	List<Student> students = new List<Student>();
+	List<Education> educations = new List<Education>();
+	List<ClockTimes> clocktime = new List<ClockTimes>();
+	List<Room> rooms = new List<Room>();
 
 	protected override async Task OnInitializedAsync()
 	{
-		sub.Add(k1);
-		sub2.Add(k2);
 		await base.OnInitializedAsync();
 
 
 		using var context = DbFactory.CreateDbContext();
 		context.InitializeDatabase();
 
+
+		SubjectDatabaseConnection.setSubject("string1", "string2", "string3");
+		SubjectDatabaseConnection.setSubject("math", "string2", "string3");
+		sub = SubjectDatabaseConnection.getSubject();
+
+		ClockTimeDatabaseConnection.setClockTime(new(13, 0, 0), new(18, 0, 0), DayOfWeek.Monday, "confrence");
+
+		clocktime = ClockTimeDatabaseConnection.getClockTimes();
+
+
 		techers = TeacherDatabaseConnection.getTeacher();
 
-		TeacherDatabaseConnection.setTeacher("fda","hdfs",true, sub, true, 4);
+		TeacherDatabaseConnection.setTeacher("fda", "hdfs", true, sub, true, 4, clocktime);
 
 		techers = TeacherDatabaseConnection.getTeacher();
 
-		Education ed1 = new Education("bminfromatik", sub2, 23);
-		StudentDatabaseConnection.setStudent("aurel", "bieri", true, ed1, techers, 42, 1, "b32");
+		EducationDatabaseConnection.setEducation("bminfromatik", sub, 23);
+		educations = EducationDatabaseConnection.getEducation();
+
+		Education eductation = educations[1];
+
+		StudentDatabaseConnection.setStudent("aurel", "bieri", true, eductation, techers, 42, 1, "b32");
 
 		students = StudentDatabaseConnection.getStudent();
 
+		RoomDatabaseConnection.setRoom("computerRoom", 25);
+		rooms = RoomDatabaseConnection.getRoom();
 
-		
 	}
 	private void AddTeacherMethod()
 	{
-		TeacherDatabaseConnection.setTeacher("fda", "hdfs", true, sub, true, 4);
+		TeacherDatabaseConnection.setTeacher("fda", "hdfs", true, sub, true, 4, clocktime);
 	}
 
 }

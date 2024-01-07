@@ -6,7 +6,7 @@ namespace TimeTable.DatabaseConnection
 {
     public class TimeTableContext : DbContext
     {
-        string connectionstring = "server = localhost;  database = timetabel; persistsecurityinfo=True; uid = root; pwd = Luna07wenn!";
+        string connectionstring = "server = localhost;  database = timetable; persistsecurityinfo=True; uid = root; pwd = Luna07wenn!";
 
 		public DbSet<Subject> subject { get; set; }
         public DbSet<Student> student { get; set; }
@@ -14,6 +14,7 @@ namespace TimeTable.DatabaseConnection
         public DbSet<Education> education { get; set; }
         public DbSet<ClockTimes> time { get; set; }
         public DbSet<Person> person { get; set; }
+        public DbSet<Room> room { get; set; }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -36,11 +37,12 @@ namespace TimeTable.DatabaseConnection
 	        .WithOne()
 	        .HasForeignKey<Student>(s => s.Id);
 
+
 		}
 
 		public void InitializeDatabase()
         {
-            this.Database.Migrate();
+           Database.Migrate();
         }
     }
 }

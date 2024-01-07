@@ -5,16 +5,19 @@
 
 		public int Id { get; set; }
 		public string Bezeichnung { get; set; }
-		public int Hour { get; set; }
-		public int Minutes { get; set; }
+		public DayOfWeek DayOfWeek { get; set; }
+		public TimeSpan StartTime { get; set; }
+		public TimeSpan EndTime { get; set; }
 
-		public ClockTimes(int hour, int minutes, string bezeichnung)
+		public ClockTimes() { }
+
+		public ClockTimes(TimeSpan starTime, TimeSpan endTime, DayOfWeek dayofweek,string bezeichnung)
 		{
-			Hour = hour;
-			Minutes = minutes;
-			Bezeichnung = bezeichnung;
+			StartTime= starTime;
+			EndTime= endTime;
+			DayOfWeek= dayofweek;
+			Bezeichnung= bezeichnung;
 		}
-
 	}
 
 }

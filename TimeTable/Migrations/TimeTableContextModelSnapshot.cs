@@ -29,13 +29,21 @@ namespace TimeTable.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<int>("Hour")
+                    b.Property<int>("DayOfWeek")
                         .HasColumnType("int");
 
-                    b.Property<int>("Minutes")
+                    b.Property<TimeSpan>("EndTime")
+                        .HasColumnType("time(6)");
+
+                    b.Property<TimeSpan>("StartTime")
+                        .HasColumnType("time(6)");
+
+                    b.Property<int?>("TeacherId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("TeacherId");
 
                     b.ToTable("time");
                 });
@@ -80,6 +88,24 @@ namespace TimeTable.Migrations
                     b.ToTable("person");
 
                     b.UseTptMappingStrategy();
+                });
+
+            modelBuilder.Entity("TimeTable.Room", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Designation")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("NumberOfSeats")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("room");
                 });
 
             modelBuilder.Entity("TimeTable.Subject", b =>
@@ -155,6 +181,13 @@ namespace TimeTable.Migrations
                     b.ToTable("teacher", (string)null);
                 });
 
+            modelBuilder.Entity("TimeTable.ClockTimes", b =>
+                {
+                    b.HasOne("TimeTable.Teacher", null)
+                        .WithMany("UnavailableTimeSlots")
+                        .HasForeignKey("TeacherId");
+                });
+
             modelBuilder.Entity("TimeTable.Subject", b =>
                 {
                     b.HasOne("TimeTable.Education", null)
@@ -213,6 +246,8 @@ namespace TimeTable.Migrations
             modelBuilder.Entity("TimeTable.Teacher", b =>
                 {
                     b.Navigation("TeachedSubject");
+
+                    b.Navigation("UnavailableTimeSlots");
                 });
 #pragma warning restore 612, 618
         }
