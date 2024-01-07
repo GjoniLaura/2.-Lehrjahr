@@ -3,30 +3,34 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TimeTable.Modules;
 
 namespace TimeTable.Moduls
 {
     public class Student : Person
     {
 		public Education Education { get; set; }
-        public List<Teacher> Teachers { get; set; }
-        public int StudentId { get; set; }
+		public List<Teacher> Teachers { get; set; }
 		public int NumberOfLessons { get; set; }
 		public int EducationSemester { get; set; }
+		public Person Person { get; set; }
 
-        public string Class { get; set; }
+		public string Class { get; set; }
 
-        public Student(string firstname, string lastname, bool available, Education education, List<Teacher> teacher, int numberoflesson, int educationsemester, string classe) : base(firstname, lastname, available)
-        {
-            Education = education;
-			Teachers = teacher;
-            NumberOfLessons = numberoflesson;
-            EducationSemester = educationsemester;
-            Class = classe;
-        }
+		public Student() { }
+
+		public Student(string firstname, string lastname, bool available, Education education, List<Teacher> teacher, int numberoflesson, int educationsemester, string classe) : base(firstname, lastname, available)
+		{
+			Education = education;
+			Teachers = teacher ?? new List<Teacher>();
+			NumberOfLessons = numberoflesson;
+			EducationSemester = educationsemester;
+			Class = classe;
+		}
 
 
-    }
+
+	}
 }
 
 

@@ -1,17 +1,21 @@
-﻿namespace TimeTable.Moduls
+﻿using System.ComponentModel.DataAnnotations;
+namespace TimeTable.Moduls
 {
     public class Education
     {
-		public string Id { get; set; }
+		public int Id { get; set; }
 		public string Name { get; set; }
 		public List<Subject> Subjects { get; set; }
 		public int AnzLessons { get; set; }
 
+
+		public Education() { }
 		public Education(string name, List<Subject> subjects, int anzLessons)
 		{
 			Name = name;
-			Subjects = subjects;
+			Subjects = subjects ?? new List<Subject>();
 			AnzLessons = anzLessons;
 		}
+
 	}
 }
