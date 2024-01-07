@@ -1,7 +1,8 @@
-﻿namespace TimeTable.Moduls
+﻿namespace TimeTable.Modules
 {
-    public class ClockTimes
-    {
+	public class ClockTimes
+	{
+
 		public int Id { get; set; }
 		public string Bezeichnung { get; set; }
 		public DayOfWeek DayOfWeek { get; set; }
@@ -17,6 +18,6 @@
 			DayOfWeek = dayofweek;
 			Bezeichnung = bezeichnung;
 		}
-
 	}
+
 }
