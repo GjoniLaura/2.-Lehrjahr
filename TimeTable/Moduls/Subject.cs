@@ -1,4 +1,6 @@
-﻿namespace TimeTable.Moduls
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace TimeTable.Modules
 {
     public class Subject
     {

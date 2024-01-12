@@ -1,4 +1,4 @@
-﻿namespace TimeTable.Moduls
+﻿namespace TimeTable.Modules
 {
 	public class Room
 	{
@@ -12,6 +12,5 @@
 			Designation = designation;
 			NumberOfSeats = numberOfSeats;
 		}
-
 	}
 }

@@ -5,7 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using TimeTable.Modules;
 
-namespace TimeTable.Moduls
+
+namespace TimeTable.Modules
 {
     public class Student : Person
     {
