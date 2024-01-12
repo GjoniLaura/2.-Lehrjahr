@@ -20,4 +20,27 @@
         }
     }
 
+    public class Lesson
+    {
+        public Teacher Teacher { get; set; }
+        public Student Student { get; set; }
+        public Subject Subject { get; set; }
+        public ClockTimes TimeSlot { get; set; }
+
+        public Lesson(Teacher teacher, Subject subject, ClockTimes timeSlot, Student student)
+        {
+            Teacher = teacher;
+            Student = student;
+            Subject = subject;
+            TimeSlot = timeSlot;
+        }
+
+        public Lesson(Teacher teacher, Student student, Subject subject, ClockTimes timeSlot)
+        {
+            Teacher = teacher;
+            Student = student;
+            Subject = subject;
+            TimeSlot = timeSlot;
+        }
+    }
 }
