@@ -64,8 +64,6 @@ namespace TimeTable.DatabaseConnection
 				dbContext.student.Add(student);
 				dbContext.SaveChanges();
 			}
-
-
 		}
 
 		public static List<Student> getStudent()
