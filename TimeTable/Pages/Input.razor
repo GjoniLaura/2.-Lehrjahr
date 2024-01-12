@@ -1,6 +1,6 @@
 ﻿@page "/input"
 @using TimeTable.Data
-@inject WeatherForecastService ForecastService
+
 
 <PageTitle>Input</PageTitle>
 
@@ -13,6 +13,7 @@
         <option value="Student">Student</option>
         <option value="Subject">Subject</option>
         <option value="Teacher">Teacher</option>
+        <option value="ClockTime">ClockTime</option>
     </select>
 
     @if (SelectedOption == "Education")
@@ -23,7 +24,22 @@
             <br />
             <br />
             <div>
-                <input @bind="Subject" placeholder="Subject" />
+                @if (ShowSubjectDropdown)
+                {
+                    <label for="subjectDropdown">Select Subject:</label>
+                    <select id="subjectDropdown" @bind="SelectedSubject">
+                        <option value="Select">Select Subject</option>
+                        @foreach (var subject in SubjectsList)
+                        {
+                            <option value="@subject.Name">@subject.Name</option>
+                        }
+                    </select>
+                }
+                else
+                {
+                    <input @bind="SelectedSubject" placeholder="Subject" />
+                }
+
                 <input @bind="NumberOfLessons" type="number" placeholder="Number of Lessons" />
                 <button @onclick="AddSubject">Add Subject</button>
             </div>
@@ -43,15 +59,40 @@
             <button @onclick="Submit">Submit</button>
         </div>
     }
+    else if (SelectedOption == "ClockTime")
+    {
+        <div>
+            <h4>ClockTime Details</h4>
+            <input @bind="ClockTimeId" placeholder="ClockTime ID" />
+            <br />
+            <input @bind="ClockTimeDescription" placeholder="ClockTime Description" />
+            <br />
+            <input @bind="ClockTimeDayOfWeek" placeholder="Day of Week" />
+            <br />
+            <input @bind="ClockTimeStartTime" placeholder="Start Time" />
+            <br />
+            <input @bind="ClockTimeEndTime" placeholder="End Time" />
+            <br />
+            <button @onclick="SubmitClockTime">Submit ClockTime</button>
+        </div>
+    }
 </div>
 
 @code {
     private string SelectedOption { get; set; } = "Select";
     private string Participant { get; set; }
-    private string Subject { get; set; }
+    private string SelectedSubject { get; set; }
     private int NumberOfLessons { get; set; }
 
     private List<SubjectDetails> Subjects { get; set; } = new List<SubjectDetails>();
+    private List<SubjectDetails> SubjectsList { get; set; } = new List<SubjectDetails>
+    {
+        new SubjectDetails { Name = "Math", NumberOfLessons = 0 },
+        new SubjectDetails { Name = "Science", NumberOfLessons = 0 },
+        // Weitere Fächer entsprechend deiner Liste
+    };
+
+    private bool ShowSubjectDropdown { get; set; } = true;
 
     private class SubjectDetails
     {
@@ -59,16 +100,47 @@
         public int NumberOfLessons { get; set; }
     }
 
+    private string ClockTimeId { get; set; }
+    private string ClockTimeDescription { get; set; }
+    private string ClockTimeDayOfWeek { get; set; }
+    private string ClockTimeStartTime { get; set; }
+    private string ClockTimeEndTime { get; set; }
+
     private void AddSubject()
     {
-        Subjects.Add(new SubjectDetails { Name = Subject, NumberOfLessons = NumberOfLessons });
-        Subject = string.Empty;
+        if (SelectedSubject == "Select")
+        {
+            ShowSubjectDropdown = false;
+        }
+        else
+        {
+            ShowSubjectDropdown = true;
+
+            // Überprüfe, ob das Fach bereits hinzugefügt wurde
+            var existingSubject = Subjects.FirstOrDefault(s => s.Name == SelectedSubject);
+
+            if (existingSubject == null)
+            {
+                Subjects.Add(new SubjectDetails { Name = SelectedSubject, NumberOfLessons = NumberOfLessons });
+            }
+            else
+            {
+                // Falls das Fach bereits vorhanden ist, erhöhe nur die Anzahl der Stunden
+                existingSubject.NumberOfLessons += NumberOfLessons;
+            }
+        }
+
+        SelectedSubject = "Select";
         NumberOfLessons = 0;
     }
 
     private void Submit()
     {
-
         // Wird später durch die tatsächliche Datenbankverbindung ersetzt
+    }
+
+    private void SubmitClockTime()
+    {
+        // Verarbeite die eingegebenen Uhrzeitdetails hier
     }
 }
