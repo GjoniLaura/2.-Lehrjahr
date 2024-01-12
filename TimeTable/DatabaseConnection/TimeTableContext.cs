@@ -37,8 +37,6 @@ namespace TimeTable.DatabaseConnection
 	        .HasOne(s => s.Person)
 	        .WithOne()
 	        .HasForeignKey<Student>(s => s.Id);
-
-
 		}
 
 		public void InitializeDatabase()
