@@ -2,8 +2,8 @@
 
 namespace TimeTable.Modules
 {
-	public class Subject
-	{
+    public class Subject
+    {
 		public int Id { get; set; }
 		public string _designation { get; set; }
 		public string _description { get; set; }
@@ -17,5 +17,6 @@ namespace TimeTable.Modules
 			_description = description;
 			_premises = premises;
 		}
+
 	}
 }

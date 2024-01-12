@@ -1,0 +1,74 @@
+﻿@page "/input"
+@using TimeTable.Data
+@inject WeatherForecastService ForecastService
+
+<PageTitle>Input</PageTitle>
+
+<div class="content">
+    <h1>Insert Data</h1>
+
+    <select @bind="SelectedOption">
+        <option value="Select">Select Data</option>
+        <option value="Education">Education</option>
+        <option value="Student">Student</option>
+        <option value="Subject">Subject</option>
+        <option value="Teacher">Teacher</option>
+    </select>
+
+    @if (SelectedOption == "Education")
+    {
+        <div>
+            <h4>Education Details</h4>
+            <input @bind="Participant" placeholder="Participant" />
+            <br />
+            <br />
+            <div>
+                <input @bind="Subject" placeholder="Subject" />
+                <input @bind="NumberOfLessons" type="number" placeholder="Number of Lessons" />
+                <button @onclick="AddSubject">Add Subject</button>
+            </div>
+            <br />
+            <br />
+            @if (Subjects.Any())
+            {
+                @foreach (var subject in Subjects)
+                {
+                    <div>
+                        <input @bind="subject.Name" placeholder="Subject" />
+                        <input @bind="subject.NumberOfLessons" type="number" placeholder="Number of Lessons" />
+                    </div>
+                }
+            }
+            <br />
+            <button @onclick="Submit">Submit</button>
+        </div>
+    }
+</div>
+
+@code {
+    private string SelectedOption { get; set; } = "Select";
+    private string Participant { get; set; }
+    private string Subject { get; set; }
+    private int NumberOfLessons { get; set; }
+
+    private List<SubjectDetails> Subjects { get; set; } = new List<SubjectDetails>();
+
+    private class SubjectDetails
+    {
+        public string Name { get; set; }
+        public int NumberOfLessons { get; set; }
+    }
+
+    private void AddSubject()
+    {
+        Subjects.Add(new SubjectDetails { Name = Subject, NumberOfLessons = NumberOfLessons });
+        Subject = string.Empty;
+        NumberOfLessons = 0;
+    }
+
+    private void Submit()
+    {
+
+        // Wird später durch die tatsächliche Datenbankverbindung ersetzt
+    }
+}

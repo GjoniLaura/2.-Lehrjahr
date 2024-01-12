@@ -1,12 +1,15 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using TimeTable.Modules;
 
 
 namespace TimeTable.Modules
 {
-
-	public class Student : Person
-	{
+    public class Student : Person
+    {
 		public Education Education { get; set; }
 		public List<Teacher> Teachers { get; set; }
 		public int NumberOfLessons { get; set; }
@@ -27,8 +30,8 @@ namespace TimeTable.Modules
 		}
 
 
-	}
 
+	}
 }
 
 
