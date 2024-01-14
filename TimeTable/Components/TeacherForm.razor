@@ -1,0 +1,22 @@
+﻿@using TimeTable.Modules
+
+<div class="card m-2" style="width: 18rem;">
+ <div class="card-body">
+		<h5 class="card-title">Teacher</h5>
+	<p class="card-text">Name: @teacher.Firstname  @teacher.Lastname</p>
+	<p class="card-text">Number of WorkDays: @teacher.NumberOfWorkDays</p>
+	<h6 class="card-title">Subjects taught</h6>
+		@foreach(Subject s in teacher.TeachedSubject)
+		{
+				  <p class="card-text">@s._designation</p>
+		}
+
+ </div>
+</div>
+
+
+
+@code {
+	[Parameter]
+	public Teacher teacher { get; set; }
+}

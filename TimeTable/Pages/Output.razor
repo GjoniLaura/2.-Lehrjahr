@@ -1,23 +1,84 @@
 ﻿@page "/Output"
 @using TimeTable.Data
+@using TimeTable.Modules
+@using TimeTable.DatabaseConnection
+@using TimeTable.Components
 
-<PageTitle>Output</PageTitle>
+<PageTitle>Custom Output Page</PageTitle>
 
-   <h1>Output Data</h1>
+<div class="container mt-4">
+    <h1 class="display-4 text-center mb-4">Übersicht</h1>
 
-<div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+    <div class="btn-group d-flex justify-content-center" role="group" aria-label="Basic radio toggle button group">
+        <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked @onclick="() => ChangeSelection(SelectionType.Teachers)">
+        <label class="btn btn-outline-primary" for="btnradio1">Teachers</label>
 
-  <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
-  <label class="btn btn-outline-primary" for="btnradio1">Teachers</label>
+        <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" @onclick="() => ChangeSelection(SelectionType.Students)">
+        <label class="btn btn-outline-primary" for="btnradio2">Students</label>
 
-  <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
-  <label class="btn btn-outline-primary" for="btnradio2">Students</label>
+        <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off" @onclick="() => ChangeSelection(SelectionType.Educations)">
+        <label class="btn btn-outline-primary" for="btnradio3">Educations</label>
+    </div>
 
-  <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
-  <label class="btn btn-outline-primary" for="btnradio3">Educations</label>
+    <div class="mt-4 d-flex flex-row flex-wrap">
+        @if (selectedType == SelectionType.Teachers)
+        {
+            @if (Teachers.Count == 0)
+            {
+                        <h6>Es wurden noch keine Lehrer in die Datenbank gespeichert.</h6>
+            }
+            else
+            {
+                @foreach (Teacher t in Teachers)
+                {
+                    <TeacherForm teacher="t"></TeacherForm>
+                }
+            }
+        }
+        else if (selectedType == SelectionType.Students)
+        {
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Students Data</h5>
+                        <!-- Your content for Students here -->
+                    </div>
+                </div>
+        }
+        else if (selectedType == SelectionType.Educations)
+        {
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Educations Data</h5>
+                        <!-- Your content for Educations here -->
+                    </div>
+                </div>
+        }
+    </div>
 </div>
 
-
 @code {
+    public List<Teacher> Teachers = new List<Teacher>();
+    public List<Student> Students = new List<Student>();
+    public List<Education> Educations = new List<Education>();
 
+    protected override async Task OnInitializedAsync()
+    {
+        Teachers = TeacherDatabaseConnection.getTeacher();
+        Students = StudentDatabaseConnection.getStudent();
+        Educations = EducationDatabaseConnection.getEducation();
+    }
+
+    private enum SelectionType
+    {
+        Teachers,
+        Students,
+        Educations
+    }
+
+    private SelectionType selectedType = SelectionType.Teachers;
+
+    private void ChangeSelection(SelectionType type)
+    {
+        selectedType = type;
+    }
 }

@@ -21,7 +21,8 @@ namespace TimeTable.DatabaseConnection
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseMySql(connectionstring, ServerVersion.AutoDetect(connectionstring));
-        }
+
+		}
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
@@ -32,6 +33,7 @@ namespace TimeTable.DatabaseConnection
 	        .HasOne(t => t.Person)
 	        .WithOne()
 	        .HasForeignKey<Teacher>(t => t.Id);
+
 
 			modelBuilder.Entity<Student>()
 	        .HasOne(s => s.Person)

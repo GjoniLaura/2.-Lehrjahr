@@ -11,8 +11,8 @@ using TimeTable.DatabaseConnection;
 namespace TimeTable.Migrations
 {
     [DbContext(typeof(TimeTableContext))]
-    [Migration("20240107185643_Initial-Create")]
-    partial class InitialCreate
+    [Migration("20240114203533_Initial-Database")]
+    partial class InitialDatabase
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -22,7 +22,7 @@ namespace TimeTable.Migrations
                 .HasAnnotation("ProductVersion", "7.0.14")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
-            modelBuilder.Entity("TimeTable.ClockTimes", b =>
+            modelBuilder.Entity("TimeTable.Modules.ClockTimes", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -51,7 +51,7 @@ namespace TimeTable.Migrations
                     b.ToTable("time");
                 });
 
-            modelBuilder.Entity("TimeTable.Education", b =>
+            modelBuilder.Entity("TimeTable.Modules.Education", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -69,7 +69,7 @@ namespace TimeTable.Migrations
                     b.ToTable("education");
                 });
 
-            modelBuilder.Entity("TimeTable.Person", b =>
+            modelBuilder.Entity("TimeTable.Modules.Person", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -93,7 +93,7 @@ namespace TimeTable.Migrations
                     b.UseTptMappingStrategy();
                 });
 
-            modelBuilder.Entity("TimeTable.Room", b =>
+            modelBuilder.Entity("TimeTable.Modules.Room", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -111,7 +111,7 @@ namespace TimeTable.Migrations
                     b.ToTable("room");
                 });
 
-            modelBuilder.Entity("TimeTable.Subject", b =>
+            modelBuilder.Entity("TimeTable.Modules.Subject", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -144,9 +144,9 @@ namespace TimeTable.Migrations
                     b.ToTable("subject");
                 });
 
-            modelBuilder.Entity("TimeTable.Student", b =>
+            modelBuilder.Entity("TimeTable.Modules.Student", b =>
                 {
-                    b.HasBaseType("TimeTable.Person");
+                    b.HasBaseType("TimeTable.Modules.Person");
 
                     b.Property<string>("Class")
                         .IsRequired()
@@ -166,9 +166,9 @@ namespace TimeTable.Migrations
                     b.ToTable("student", (string)null);
                 });
 
-            modelBuilder.Entity("TimeTable.Teacher", b =>
+            modelBuilder.Entity("TimeTable.Modules.Teacher", b =>
                 {
-                    b.HasBaseType("TimeTable.Person");
+                    b.HasBaseType("TimeTable.Modules.Person");
 
                     b.Property<int>("NumberOfWorkDays")
                         .HasColumnType("int");
@@ -184,35 +184,35 @@ namespace TimeTable.Migrations
                     b.ToTable("teacher", (string)null);
                 });
 
-            modelBuilder.Entity("TimeTable.ClockTimes", b =>
+            modelBuilder.Entity("TimeTable.Modules.ClockTimes", b =>
                 {
-                    b.HasOne("TimeTable.Teacher", null)
+                    b.HasOne("TimeTable.Modules.Teacher", null)
                         .WithMany("UnavailableTimeSlots")
                         .HasForeignKey("TeacherId");
                 });
 
-            modelBuilder.Entity("TimeTable.Subject", b =>
+            modelBuilder.Entity("TimeTable.Modules.Subject", b =>
                 {
-                    b.HasOne("TimeTable.Education", null)
+                    b.HasOne("TimeTable.Modules.Education", null)
                         .WithMany("Subjects")
                         .HasForeignKey("EducationId");
 
-                    b.HasOne("TimeTable.Teacher", null)
+                    b.HasOne("TimeTable.Modules.Teacher", null)
                         .WithMany("TeachedSubject")
                         .HasForeignKey("TeacherId");
                 });
 
-            modelBuilder.Entity("TimeTable.Student", b =>
+            modelBuilder.Entity("TimeTable.Modules.Student", b =>
                 {
-                    b.HasOne("TimeTable.Education", "Education")
+                    b.HasOne("TimeTable.Modules.Education", "Education")
                         .WithMany()
                         .HasForeignKey("EducationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("TimeTable.Person", "Person")
+                    b.HasOne("TimeTable.Modules.Person", "Person")
                         .WithOne()
-                        .HasForeignKey("TimeTable.Student", "Id")
+                        .HasForeignKey("TimeTable.Modules.Student", "Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -221,32 +221,32 @@ namespace TimeTable.Migrations
                     b.Navigation("Person");
                 });
 
-            modelBuilder.Entity("TimeTable.Teacher", b =>
+            modelBuilder.Entity("TimeTable.Modules.Teacher", b =>
                 {
-                    b.HasOne("TimeTable.Person", "Person")
+                    b.HasOne("TimeTable.Modules.Person", "Person")
                         .WithOne()
-                        .HasForeignKey("TimeTable.Teacher", "Id")
+                        .HasForeignKey("TimeTable.Modules.Teacher", "Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("TimeTable.Student", null)
+                    b.HasOne("TimeTable.Modules.Student", null)
                         .WithMany("Teachers")
                         .HasForeignKey("StudentId");
 
                     b.Navigation("Person");
                 });
 
-            modelBuilder.Entity("TimeTable.Education", b =>
+            modelBuilder.Entity("TimeTable.Modules.Education", b =>
                 {
                     b.Navigation("Subjects");
                 });
 
-            modelBuilder.Entity("TimeTable.Student", b =>
+            modelBuilder.Entity("TimeTable.Modules.Student", b =>
                 {
                     b.Navigation("Teachers");
                 });
 
-            modelBuilder.Entity("TimeTable.Teacher", b =>
+            modelBuilder.Entity("TimeTable.Modules.Teacher", b =>
                 {
                     b.Navigation("TeachedSubject");
 
