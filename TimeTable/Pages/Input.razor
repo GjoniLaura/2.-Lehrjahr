@@ -1,5 +1,7 @@
 ﻿@page "/input"
 @using TimeTable.Data
+@using TimeTable.Modules
+@using TimeTable.DatabaseConnection
 
 
 <PageTitle>Input</PageTitle>
@@ -14,19 +16,21 @@
         <option value="Subject">Subject</option>
         <option value="Teacher">Teacher</option>
         <option value="ClockTime">ClockTime</option>
+        <option value="Room">Room</option>
     </select>
 
     @if (SelectedOption == "Education")
     {
         <div>
             <h4>Education Details</h4>
-            <input @bind="Participant" placeholder="Participant" />
+            <label for="Name">Name:</label>
+            <input @bind="Name" placeholder="" />
             <br />
             <br />
             <div>
                 @if (ShowSubjectDropdown)
                 {
-                    <label for="subjectDropdown">Select Subject:</label>
+                    <label for="subjectDropdown">Subject:</label>
                     <select id="subjectDropdown" @bind="SelectedSubject">
                         <option value="Select">Select Subject</option>
                         @foreach (var subject in SubjectsList)
@@ -39,7 +43,7 @@
                 {
                     <input @bind="SelectedSubject" placeholder="Subject" />
                 }
-
+                <label for="numberoflessons">Number of Lessons:</label>
                 <input @bind="NumberOfLessons" type="number" placeholder="Number of Lessons" />
                 <button @onclick="AddSubject">Add Subject</button>
             </div>
@@ -63,8 +67,6 @@
     {
         <div>
             <h4>ClockTime Details</h4>
-            <input @bind="ClockTimeId" placeholder="ClockTime ID" />
-            <br />
             <input @bind="ClockTimeDescription" placeholder="ClockTime Description" />
             <br />
             <input @bind="ClockTimeDayOfWeek" placeholder="Day of Week" />
@@ -76,23 +78,202 @@
             <button @onclick="SubmitClockTime">Submit ClockTime</button>
         </div>
     }
+    else if (SelectedOption == "Room")
+    {
+        <div>
+            <h4>Room Details</h4>
+
+            <label for="designation">Designation:</label>
+            <input @bind="RoomDesignation" placeholder="" />
+            <br />
+
+            <label for="numberOfSeats">Number of Seats:</label>
+            <input id="numberOfSeats" @bind="NumberOfSeats" type="number" placeholder="Number of Seats" />
+            <br />
+
+            <button @onclick="SubmitRoom">Submit Room</button>
+        </div>
+    }
+    else if (SelectedOption == "Student")
+    {
+        <div>
+            <h4>Student Details</h4>
+            <label for="firstName">First Name:</label>
+            <input id="firstName" @bind="FirstName" placeholder="" />
+            <br />
+
+            <label for="lastName">Last Name:</label>
+            <input id="lastName" @bind="LastName" placeholder="" />
+            <br />
+
+            <label for="isAvailable">Available:</label>
+            <input id="isAvailable" @bind="IsAvailable" type="checkbox" />
+            <br />
+
+            <label for="education">Education:</label>
+            <input @bind="Education" placeholder="" />
+            <br />
+
+            <label for="teacher">Teacher:</label>
+            <input @bind="Teacher" placeholder="" />
+            <br />
+
+            <label for="numberOfLessons">Number of Lessons:</label>
+            <input id="numberOfLessons" @bind="NumberOfLessons" type="number" placeholder="Number of Lessons" />
+            <br />
+
+            <label for="educationSemester">Education Semester:</label>
+            <input id="educationSemester" @bind="EducationSemester" type="number" placeholder="Education Semester" />
+            <br />
+
+            <label for="class">Class:</label>
+            <input @bind="Class" placeholder="" />
+            <br />
+
+            <button @onclick="SubmitStudent">Submit Student</button>
+        </div>
+    }
+    else if (SelectedOption == "Teacher")
+    {
+        <div>
+            <h4>Teacher Details</h4>
+            <label for="firstName">First Name:</label>
+            <input id="firstName" @bind="FirstName" placeholder="" />
+            <br />
+
+            <label for="lastName">Last Name:</label>
+            <input id="lastName" @bind="LastName" placeholder="" />
+            <br />
+
+            <label for="isAvailable">Available:</label>
+            <input id="isAvailable" @bind="IsAvailable" type="checkbox" />
+            <br />
+
+            <div>
+                @if (ShowSubjectDropdown)
+                {
+                    <label for="subjectDropdown">Subject:</label>
+                    <select id="subjectDropdown" @bind="SelectedSubject">
+                        <option value="Select">Select Subject</option>
+                        @foreach (var subject in SubjectsList)
+                        {
+                            <option value="@subject.Name">@subject.Name</option>
+                        }
+                    </select>
+                }
+                else
+                {
+                    <input @bind="SelectedSubject" placeholder="Subject" />
+                }
+                <label for="numberoflessons">Number of Lessons:</label>
+                <input @bind="NumberOfLessons" type="number" placeholder="Number of Lessons" />
+                <button @onclick="AddSubject">Add Subject</button>
+            </div>
+            <br />
+            <br />
+            @if (Subjects.Any())
+            {
+                @foreach (var subject in Subjects)
+                {
+                    <div>
+                        <input @bind="subject.Name" placeholder="Subject" />
+                        <input @bind="subject.NumberOfLessons" type="number" placeholder="Number of Lessons" />
+                    </div>
+                }
+            }
+            <br />
+
+            <label for="teached">Teached:</label>
+            <input id="teached" @bind="Teached" type="checkbox" />
+            <br />
+
+            <label for="numberOfWorkDays">Number of Work Days:</label>
+            <input id="numberOfWorkDays" @bind="NumberOfWorkDays" type="number" placeholder="Number of Work Days" />
+            <br />
+
+            <div>
+                @if (ShowStartTimeDropdown)
+                {
+                    <label for="startDropdown">StartTime: </label>
+                    <select id="startDropdown" @bind="SelectedStartTime">
+                        <option value="Select">Select StartTime</option>
+                        @foreach (var start in ClockTimeList)
+                        {
+                            <option value="@start.StartTime">@start.StartTime</option>
+                        }
+                    </select>
+                }
+                else
+                {
+                    <input @bind="SelectedStartTime" placeholder="Start" />
+                }
+                @if (ShowEndTimeDropdown)
+                {
+                    <label for="endDropdown">EndTime: </label>
+                    <select id="EndDropdown" @bind="SelectedEndTime">
+                        <option value="Select">Select EndTime</option>
+                        @foreach (var end in ClockTimeList)
+                        {
+                            <option value="@end.EndTime">@end.EndTime</option>
+                        }
+                    </select>
+                }
+                else
+                {
+                    <input @bind="SelectedEndTime" placeholder="End" />
+                }
+                <label for="weekdayDropdown">Day Of Week: </label>
+                <select @bind="SelectedWeekDay">
+                    <option value="Select">Select Day Of Week</option>
+                    <option value="Monday">Monday</option>
+                    <option value="Tuesday">Tuesday</option>
+                    <option value="Wednesday">Wednesday</option>
+                    <option value="Thursday">Thursday</option>
+                    <option value="Friday">Friday</option>
+                </select>
+                <button @onclick="AddClockTime">Add ClockTime</button>
+            </div>
+
+            <button @onclick="SubmitTeacher">Submit Teacher</button>
+        </div>
+    }
+    else if (SelectedOption == "Subject")
+    {
+        <div>
+            <h4>Subject Details</h4>
+            <label for="designation">Designation:</label>
+            <input id="designation" @bind="Designation" placeholder="" />
+            <br />
+
+            <label for="description">Description:</label>
+            <input id="description" @bind="Description" placeholder="" />
+            <br />
+
+            <label for="premises">Premises:</label>
+            <input @bind="Premises" placeholder="" />
+            <br />
+
+            <button @onclick="SubmitSubject">Submit Subject</button>
+        </div>
+    }
 </div>
 
 @code {
     private string SelectedOption { get; set; } = "Select";
-    private string Participant { get; set; }
+    private string Name { get; set; }
+    private string SelectedWeekDay { get; set; }
     private string SelectedSubject { get; set; }
+    private string SelectedStartTime { get; set; }
+    private string SelectedEndTime { get; set; }
     private int NumberOfLessons { get; set; }
 
     private List<SubjectDetails> Subjects { get; set; } = new List<SubjectDetails>();
-    private List<SubjectDetails> SubjectsList { get; set; } = new List<SubjectDetails>
-    {
-        new SubjectDetails { Name = "Math", NumberOfLessons = 0 },
-        new SubjectDetails { Name = "Science", NumberOfLessons = 0 },
-        // Weitere Fächer entsprechend deiner Liste
-    };
+
 
     private bool ShowSubjectDropdown { get; set; } = true;
+    private bool ShowStartTimeDropdown { get; set; } = true;
+    private bool ShowEndTimeDropdown { get; set; } = true;
+    private bool ShowWeekDayDropdown { get; set; } = true;
 
     private class SubjectDetails
     {
@@ -100,11 +281,23 @@
         public int NumberOfLessons { get; set; }
     }
 
+    private class ClockDetails
+    {
+        public TimeSpan StartTime { get; set; }
+        public TimeSpan EndTime { get; set; }
+
+    }
+    
+
     private string ClockTimeId { get; set; }
     private string ClockTimeDescription { get; set; }
     private string ClockTimeDayOfWeek { get; set; }
     private string ClockTimeStartTime { get; set; }
     private string ClockTimeEndTime { get; set; }
+
+    private int RoomId { get; set; }
+    private string RoomDesignation { get; set; }
+    private int NumberOfSeats { get; set; }
 
     private void AddSubject()
     {
@@ -134,6 +327,103 @@
         NumberOfLessons = 0;
     }
 
+    private void AddClockTime()
+    {
+        if (SelectedStartTime == "Select")
+        {
+            ShowStartTimeDropdown = false;
+        }
+        else
+        {
+            ShowStartTimeDropdown = true;
+
+        }
+
+        if (SelectedEndTime == "Select")
+        {
+            ShowEndTimeDropdown = false;
+        }
+        else
+        {
+            ShowEndTimeDropdown = true;
+        }
+        if (SelectedWeekDay == "Select")
+        {
+            ShowWeekDayDropdown = false;
+        }
+        else
+        {
+            ShowWeekDayDropdown = true;
+        }
+
+        SelectedStartTime = "Select";
+        SelectedEndTime = "Select";
+        SelectedWeekDay = "Select";
+        
+    }
+    private string FirstName { get; set; }
+    private string LastName { get; set; }
+    private bool IsAvailable { get; set; }
+    private string Education { get; set; }
+    private string Teacher { get; set; }
+    private int EducationSemester { get; set; }
+    private string Class { get; set; }
+
+    private string Subject { get; set; }
+    private bool Teached { get; set; }
+    private int NumberOfWorkDays { get; set; }
+    private string ClockTime { get; set; }
+
+    private string Designation { get; set; }
+    private string Description { get; set; }
+    private string Premises { get; set; }
+
+    private List<Subject> GetSubjectsFromDatabase()
+    {
+        // Call your method from the database connection to get the list of subjects
+        return SubjectDatabaseConnection.getSubject();
+    }
+
+    private List<SubjectDetails> SubjectsList { get; set; }
+
+    // Initialize the SubjectsList in OnInitializedAsync lifecycle method
+    protected override async Task OnInitializedAsync()
+    {
+        SubjectsList = GetSubjectsFromDatabase()
+            .Select(subject => new SubjectDetails { Name = subject._designation, NumberOfLessons = 0 })
+            .ToList();
+
+        ClockTimeList = GetClockTimesFromDatabase()
+        .Select(clocktime => new ClockDetails { StartTime = clocktime.StartTime, EndTime = clocktime.EndTime })
+        .ToList();
+    }
+
+    private List<ClockTimes> GetClockTimesFromDatabase()
+    {
+        // Call your method from the database connection to get the list of subjects
+        return ClockTimeDatabaseConnection.getClockTimes();
+    }
+
+    private List<ClockDetails> ClockTimeList { get; set; }
+    
+
+    // Initialize the SubjectsList in OnInitializedAsync lifecycle method
+    
+
+    private void SubmitSubject()
+    {
+        // Process the entered subject details here
+    }
+
+    private void SubmitTeacher()
+    {
+        // Process the entered teacher details here
+    }
+
+    private void SubmitStudent()
+    {
+        // Process the entered student details here
+    }
     private void Submit()
     {
         // Wird später durch die tatsächliche Datenbankverbindung ersetzt
@@ -142,5 +432,9 @@
     private void SubmitClockTime()
     {
         // Verarbeite die eingegebenen Uhrzeitdetails hier
+    }
+    private void SubmitRoom()
+    {
+        // Process the entered room details here
     }
 }
