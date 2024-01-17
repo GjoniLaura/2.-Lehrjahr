@@ -114,8 +114,46 @@
             <input @bind="Education" placeholder="" />
             <br />
 
-            <label for="teacher">Teacher:</label>
-            <input @bind="Teacher" placeholder="" />
+            <div>
+                @if (ShowTeacherDropdown)
+                {
+                    <label for="firstnameDropdown">Teachers Firstname:</label>
+                    <select id="firstnameDropdown" @bind="SelectedTeacherfirstname">
+                        <option value="Select">Select Teachers Firstname</option>
+                        @foreach (var firstname in Teachers)
+                        {
+                            <option value="@firstname._firstname">@firstname._firstname</option>
+                        }
+                    </select>
+                    <label for="lastnameDropdown">Teachers Lastname:</label>
+                    <select id="lastnameDropdown" @bind="SelectedTeacherlastname">
+                        <option value="Select">Select Teachers Lastname</option>
+                        @foreach (var lastname in Teachers)
+                        {
+                            <option value="@lastname._lastname">@lastname._lastname</option>
+                        }
+                    </select>
+                }
+                else
+                {
+                    <input @bind="SelectedTeacherfirstname" placeholder="Teachers Firstname" />
+                    <input @bind="SelectedTeacherlastname" placeholder="Teachers Lastname" />
+                }
+                <button @onclick="AddTeacher">Add Teacher</button>
+            </div>
+            <br />
+            <br />
+            @if (Teachers.Any())
+            {
+                @foreach (var teacher in Teachers)
+                {
+                    <div>
+                        <input @bind="teacher._firstname" placeholder="Teachers Firstname" />
+                        <input @bind="teacher._lastname" placeholder="Teachers Lastname" />
+                        
+                    </div>
+                }
+            }
             <br />
 
             <label for="numberOfLessons">Number of Lessons:</label>
@@ -192,6 +230,7 @@
             <br />
 
             <div>
+                @if (ShowClockTimeForm){
                 @if (ShowStartTimeDropdown)
                 {
                     <label for="startDropdown">StartTime: </label>
@@ -231,7 +270,19 @@
                     <option value="Thursday">Thursday</option>
                     <option value="Friday">Friday</option>
                 </select>
+                }
                 <button @onclick="AddClockTime">Add ClockTime</button>
+                @if (AddedClockTimes.Any())
+                {
+                    <h4>Added ClockTimes</h4>
+                    @foreach (var clockTime in AddedClockTimes)
+                    {
+                        <div>
+                            <span>Start Time: @clockTime.StartTime</span>
+                            <span>End Time: @clockTime.EndTime</span>
+                        </div>
+                    }
+                }
             </div>
 
             <button @onclick="SubmitTeacher">Submit Teacher</button>
@@ -263,14 +314,22 @@
     private string Name { get; set; }
     private string SelectedWeekDay { get; set; }
     private string SelectedSubject { get; set; }
+    private string SelectedTeacherfirstname { get; set; }
+    private string SelectedTeacherlastname { get; set; }
     private string SelectedStartTime { get; set; }
     private string SelectedEndTime { get; set; }
     private int NumberOfLessons { get; set; }
 
+    private bool ShowClockTimeForm { get; set; } = false;
+    private List<ClockDetails> AddedClockTimes { get; set; } = new List<ClockDetails>();
+
+
     private List<SubjectDetails> Subjects { get; set; } = new List<SubjectDetails>();
+    private List<TeacherDetails> Teachers { get; set; } = new List<TeacherDetails>();
 
 
     private bool ShowSubjectDropdown { get; set; } = true;
+    private bool ShowTeacherDropdown { get; set; } = true;
     private bool ShowStartTimeDropdown { get; set; } = true;
     private bool ShowEndTimeDropdown { get; set; } = true;
     private bool ShowWeekDayDropdown { get; set; } = true;
@@ -279,6 +338,12 @@
     {
         public string Name { get; set; }
         public int NumberOfLessons { get; set; }
+    }
+
+    private class TeacherDetails
+    {
+        public string _firstname { get; set; }
+        public string _lastname { get; set; }
     }
 
     private class ClockDetails
@@ -327,6 +392,36 @@
         NumberOfLessons = 0;
     }
 
+    private void AddTeacher()
+    {
+        if (SelectedTeacherfirstname == "Select" & SelectedTeacherlastname == "Select")
+        {
+            ShowTeacherDropdown = false;
+        }
+        else
+        {
+            ShowTeacherDropdown = true;
+
+            // Überprüfe, ob das Fach bereits hinzugefügt wurde
+            var existingTeacherfirstname = Teachers.FirstOrDefault(f => f._firstname == SelectedTeacherfirstname);
+            var existingTeacherlastname = Teachers.FirstOrDefault(l => l._lastname == SelectedTeacherlastname);
+
+            if (existingTeacherfirstname == null & existingTeacherlastname == null)
+            {
+                Teachers.Add(new TeacherDetails { _firstname = SelectedTeacherfirstname, _lastname = SelectedTeacherlastname });
+            }
+            else
+            {
+                // Falls das Fach bereits vorhanden ist, erhöhe nur die Anzahl der Stunden
+                existingTeacherfirstname._firstname = SelectedTeacherfirstname;
+                existingTeacherlastname._lastname = SelectedTeacherlastname;
+            }
+        }
+
+        SelectedTeacherfirstname = "Select";
+        SelectedTeacherlastname = "Select";
+    }
+
     private void AddClockTime()
     {
         if (SelectedStartTime == "Select")
@@ -359,6 +454,7 @@
         SelectedStartTime = "Select";
         SelectedEndTime = "Select";
         SelectedWeekDay = "Select";
+        ShowClockTimeForm = true;
         
     }
     private string FirstName { get; set; }
