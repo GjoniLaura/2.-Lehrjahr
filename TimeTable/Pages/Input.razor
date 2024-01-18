@@ -60,7 +60,7 @@
                 }
             }
             <br />
-            <button @onclick="Submit">Submit</button>
+            <button @onclick="SubmitEducation">Submit</button>
         </div>
     }
     else if (SelectedOption == "ClockTime")
@@ -352,13 +352,13 @@
         public TimeSpan EndTime { get; set; }
 
     }
-    
+
 
     private string ClockTimeId { get; set; }
     private string ClockTimeDescription { get; set; }
-    private string ClockTimeDayOfWeek { get; set; }
-    private string ClockTimeStartTime { get; set; }
-    private string ClockTimeEndTime { get; set; }
+    private DayOfWeek ClockTimeDayOfWeek { get; set; }
+    private TimeSpan ClockTimeStartTime { get; set; }
+    private TimeSpan ClockTimeEndTime { get; set; }
 
     private int RoomId { get; set; }
     private string RoomDesignation { get; set; }
@@ -455,7 +455,7 @@
         SelectedEndTime = "Select";
         SelectedWeekDay = "Select";
         ShowClockTimeForm = true;
-        
+
     }
     private string FirstName { get; set; }
     private string LastName { get; set; }
@@ -501,36 +501,49 @@
     }
 
     private List<ClockDetails> ClockTimeList { get; set; }
-    
+
+
 
     // Initialize the SubjectsList in OnInitializedAsync lifecycle method
-    
+    private Student student = new Student(); 
+    Education education = new Education(); // Annahme: Education ist eine Klasse oder ein Datentyp
+    List<Teacher> teachers = new List<Teacher>();
+    List<Subject> subjects = new List<Subject>(); 
+    List<ClockTimes> UnavailableTimes = new List<ClockTimes>();
+
 
     private void SubmitSubject()
     {
+        SubjectDatabaseConnection.setSubject(Designation, Description, Premises); 
+
         // Process the entered subject details here
     }
 
     private void SubmitTeacher()
     {
+        TeacherDatabaseConnection.setTeacher(FirstName, LastName, IsAvailable, subjects, Teached, NumberOfWorkDays, UnavailableTimes); 
         // Process the entered teacher details here
     }
 
     private void SubmitStudent()
     {
+        StudentDatabaseConnection.setStudent(FirstName, LastName, IsAvailable, education, teachers, NumberOfLessons, EducationSemester, Class);
         // Process the entered student details here
     }
-    private void Submit()
+    private void SubmitEducation()
     {
+        EducationDatabaseConnection.setEducation(Name, subjects, NumberOfLessons);
         // Wird später durch die tatsächliche Datenbankverbindung ersetzt
     }
 
     private void SubmitClockTime()
     {
+        ClockTimeDatabaseConnection.setClockTime(ClockTimeStartTime, ClockTimeEndTime, ClockTimeDayOfWeek,ClockTimeDescription );
         // Verarbeite die eingegebenen Uhrzeitdetails hier
     }
     private void SubmitRoom()
     {
+        RoomDatabaseConnection.setRoom(Designation, NumberOfSeats);
         // Process the entered room details here
     }
 }
