@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using TimeTable.Data;
 using TimeTable.DatabaseConnection;
 using Pomelo.EntityFrameworkCore.MySql;
+using System;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,10 +28,8 @@ builder.Services.AddDbContextFactory<TimeTableContext>(opt =>
 	opt.UseMySql(
 		 "server = localhost; database = timetable; persistsecurityinfo=True;  uid = root; pwd = Luna07wenn!",
 		MySqlServerVersion.AutoDetect("server = localhost; database = timetable; persistsecurityinfo=True;  uid = root; pwd = Luna07wenn!")
-	)
+)
 );
-
-
 
 var app = builder.Build();
 

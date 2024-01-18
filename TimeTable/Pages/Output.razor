@@ -63,9 +63,9 @@
 
     protected override async Task OnInitializedAsync()
     {
-        Teachers = TeacherDatabaseConnection.getTeacher();
-        Students = StudentDatabaseConnection.getStudent();
-        Educations = EducationDatabaseConnection.getEducation();
+        Teachers = await TeacherDatabaseConnection.getTeacher();
+        Students = await StudentDatabaseConnection.getStudent();
+        Educations = await EducationDatabaseConnection.getEducation();
     }
 
     private enum SelectionType

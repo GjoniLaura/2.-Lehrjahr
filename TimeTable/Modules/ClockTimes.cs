@@ -9,6 +9,8 @@
         public TimeSpan StartTime { get; set; }
         public TimeSpan EndTime { get; set; }
 
+        public ICollection<Teacher> teachers { get; set; }
+
         public ClockTimes() { }
 
         public ClockTimes(TimeSpan starTime, TimeSpan endTime, DayOfWeek dayofweek, string bezeichnung)

@@ -9,12 +9,14 @@ namespace TimeTable.Modules
 {
     public class Teacher : Person
     {
-        public List<Subject> TeachedSubject { get; set; }
+        [Key]
+        public int Id { get; set; }
+        public ICollection<Subject> TeachedSubject { get; set; }
         public bool Teached { get; set; }
         public int NumberOfWorkDays { get; set; }
         public Person Person { get; set; }
-
-        public List<ClockTimes> UnavailableTimeSlots { get; set; }
+        public ICollection<ClockTimes> UnavailableTimeSlots { get; set; }
+        public ICollection<Student> Students { get; set; }
 
         public Teacher() { }
 

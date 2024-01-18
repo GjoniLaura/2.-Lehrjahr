@@ -46,20 +46,20 @@
 		clocktime = ClockTimeDatabaseConnection.getClockTimes();
 
 
-		techers = TeacherDatabaseConnection.getTeacher();
+		techers = await TeacherDatabaseConnection.getTeacher();
 
 		TeacherDatabaseConnection.setTeacher("fda", "hdfs", true, sub, true, 4, clocktime);
 
-		techers = TeacherDatabaseConnection.getTeacher();
+		techers = await TeacherDatabaseConnection.getTeacher();
 
 		EducationDatabaseConnection.setEducation("bminfromatik", sub, 23);
-		educations = EducationDatabaseConnection.getEducation();
+		 educations = await EducationDatabaseConnection.getEducation();
 
 		Education eductation = educations[1];
 
 		StudentDatabaseConnection.setStudent("aurel", "bieri", true, eductation, techers, 42, 1, "b32");
 
-		students = StudentDatabaseConnection.getStudent();
+		students = await StudentDatabaseConnection.getStudent();
 
 		RoomDatabaseConnection.setRoom("computerRoom", 25);
 		rooms = RoomDatabaseConnection.getRoom();

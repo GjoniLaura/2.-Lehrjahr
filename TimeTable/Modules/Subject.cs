@@ -4,10 +4,14 @@ namespace TimeTable.Modules
 {
     public class Subject
     {
+		[Key]
 		public int Id { get; set; }
 		public string _designation { get; set; }
 		public string _description { get; set; }
 		public string _premises { get; set; }
+
+		public ICollection<Teacher> teachers { get; set; }
+		public ICollection<Education> educations { get; set; }
 
 		public Subject() { }
 
