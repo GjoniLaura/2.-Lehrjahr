@@ -11,7 +11,7 @@ using TimeTable.DatabaseConnection;
 namespace TimeTable.Migrations
 {
     [DbContext(typeof(TimeTableContext))]
-    [Migration("20240118214533_initial-migration")]
+    [Migration("20240119093646_initial-migration")]
     partial class initialmigration
     {
         /// <inheritdoc />

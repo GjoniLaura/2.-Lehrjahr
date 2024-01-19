@@ -54,8 +54,7 @@
                 @foreach (var subject in Subjects)
                 {
                     <div>
-                        <input @bind="subject.Name" placeholder="Subject" />
-                        <input @bind="subject.NumberOfLessons" type="number" placeholder="Number of Lessons" />
+                        <input @bind="subject._designation" placeholder="Subject" />
                     </div>
                 }
             }
@@ -214,8 +213,7 @@
                 @foreach (var subject in Subjects)
                 {
                     <div>
-                        <input @bind="subject.Name" placeholder="Subject" />
-                        <input @bind="subject.NumberOfLessons" type="number" placeholder="Number of Lessons" />
+                        <input @bind="subject._designation" placeholder="Subject" />
                     </div>
                 }
             }
@@ -324,7 +322,7 @@
     private List<ClockDetails> AddedClockTimes { get; set; } = new List<ClockDetails>();
 
 
-    private List<SubjectDetails> Subjects { get; set; } = new List<SubjectDetails>();
+     List<Subject> Subjects { get; set; } = new List<Subject>();
     private List<TeacherDetails> Teachers { get; set; } = new List<TeacherDetails>();
 
 
@@ -374,17 +372,10 @@
         {
             ShowSubjectDropdown = true;
 
-            // Überprüfe, ob das Fach bereits hinzugefügt wurde
-            var existingSubject = Subjects.FirstOrDefault(s => s.Name == SelectedSubject);
-
+            var existingSubject = Subjects.FirstOrDefault(s => s._designation == SelectedSubject);
             if (existingSubject == null)
             {
-                Subjects.Add(new SubjectDetails { Name = SelectedSubject, NumberOfLessons = NumberOfLessons });
-            }
-            else
-            {
-                // Falls das Fach bereits vorhanden ist, erhöhe nur die Anzahl der Stunden
-                existingSubject.NumberOfLessons += NumberOfLessons;
+                Subjects.Add(new Subject { _designation = SelectedSubject});
             }
         }
 
@@ -532,7 +523,7 @@
     }
     private void SubmitEducation()
     {
-        EducationDatabaseConnection.setEducation(Name, subjects, NumberOfLessons);
+        EducationDatabaseConnection.setEducation(Name, Subjects, NumberOfLessons);
         // Wird später durch die tatsächliche Datenbankverbindung ersetzt
     }
 
