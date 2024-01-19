@@ -317,8 +317,38 @@
     private string SelectedStartTime { get; set; }
     private string SelectedEndTime { get; set; }
     private int NumberOfLessons { get; set; }
-
     private bool ShowClockTimeForm { get; set; } = false;
+    private bool ShowSubjectDropdown { get; set; } = true;
+    private bool ShowTeacherDropdown { get; set; } = true;
+    private bool ShowStartTimeDropdown { get; set; } = true;
+    private bool ShowEndTimeDropdown { get; set; } = true;
+    private bool ShowWeekDayDropdown { get; set; } = true;
+    private string ClockTimeId { get; set; }
+    private string ClockTimeDescription { get; set; }
+    private DayOfWeek ClockTimeDayOfWeek { get; set; }
+    private TimeSpan ClockTimeStartTime { get; set; }
+    private TimeSpan ClockTimeEndTime { get; set; }
+    private string FirstName { get; set; }
+    private string LastName { get; set; }
+    private bool IsAvailable { get; set; }
+    private string Education { get; set; }
+    private string Teacher { get; set; }
+    private int EducationSemester { get; set; }
+    private string Class { get; set; }
+
+    private string Subject { get; set; }
+    private bool Teached { get; set; }
+    private int NumberOfWorkDays { get; set; }
+    private string ClockTime { get; set; }
+
+    private string Designation { get; set; }
+    private string Description { get; set; }
+    private string Premises { get; set; }
+
+    private int RoomId { get; set; }
+    private string RoomDesignation { get; set; }
+    private int NumberOfSeats { get; set; }
+
     private List<ClockDetails> AddedClockTimes { get; set; } = new List<ClockDetails>();
 
 
@@ -326,11 +356,7 @@
     private List<TeacherDetails> Teachers { get; set; } = new List<TeacherDetails>();
 
 
-    private bool ShowSubjectDropdown { get; set; } = true;
-    private bool ShowTeacherDropdown { get; set; } = true;
-    private bool ShowStartTimeDropdown { get; set; } = true;
-    private bool ShowEndTimeDropdown { get; set; } = true;
-    private bool ShowWeekDayDropdown { get; set; } = true;
+    
 
     private class SubjectDetails
     {
@@ -352,15 +378,7 @@
     }
 
 
-    private string ClockTimeId { get; set; }
-    private string ClockTimeDescription { get; set; }
-    private DayOfWeek ClockTimeDayOfWeek { get; set; }
-    private TimeSpan ClockTimeStartTime { get; set; }
-    private TimeSpan ClockTimeEndTime { get; set; }
-
-    private int RoomId { get; set; }
-    private string RoomDesignation { get; set; }
-    private int NumberOfSeats { get; set; }
+    
 
     private void AddSubject()
     {
@@ -448,22 +466,7 @@
         ShowClockTimeForm = true;
 
     }
-    private string FirstName { get; set; }
-    private string LastName { get; set; }
-    private bool IsAvailable { get; set; }
-    private string Education { get; set; }
-    private string Teacher { get; set; }
-    private int EducationSemester { get; set; }
-    private string Class { get; set; }
-
-    private string Subject { get; set; }
-    private bool Teached { get; set; }
-    private int NumberOfWorkDays { get; set; }
-    private string ClockTime { get; set; }
-
-    private string Designation { get; set; }
-    private string Description { get; set; }
-    private string Premises { get; set; }
+    
 
     private List<Subject> GetSubjectsFromDatabase()
     {
