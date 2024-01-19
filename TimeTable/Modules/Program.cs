@@ -25,8 +25,8 @@ builder.Services.AddDbContextFactory<TimeTableContext>(opt =>
 
 builder.Services.AddDbContextFactory<TimeTableContext>(opt =>
 	opt.UseMySql(
-		 "server = localhost; database = timetable; persistsecurityinfo=True;  uid = root; pwd = Luna07wenn!",
-		MySqlServerVersion.AutoDetect("server = localhost; database = timetable; persistsecurityinfo=True;  uid = root; pwd = Luna07wenn!")
+         "server = localhost; database = timetable; persistsecurityinfo=True;  uid = root; pwd = LjF170711!",
+		MySqlServerVersion.AutoDetect("server = localhost; database = timetable; persistsecurityinfo=True;  uid = root; pwd = LjF170711!")
 	)
 );
 
