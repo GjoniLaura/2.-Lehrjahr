@@ -25,7 +25,7 @@
         {
             @if (Teachers.Count == 0)
             {
-                        <h6>Es wurden noch keine Lehrer in die Datenbank gespeichert.</h6>
+               <h6>No teachers have been saved in the database yet.</h6>
             }
             else
             {
@@ -37,12 +37,17 @@
         }
         else if (selectedType == SelectionType.Students)
         {
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Students Data</h5>
-                        <!-- Your content for Students here -->
-                    </div>
-                </div>
+            @if(Students.Count == 0)
+            {
+                <h6>There are currently no students saved.</h6>
+            }
+            else
+            {
+                @foreach(Student s in Students)
+                {
+                    <StudentForm student="s"></StudentForm>
+                }
+            }
         }
         else if (selectedType == SelectionType.Educations)
         {
