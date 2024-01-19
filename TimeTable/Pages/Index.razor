@@ -5,12 +5,27 @@
 @inject IDbContextFactory<TimeTableContext> DbFactory
 
 <PageTitle>Home</PageTitle>
-<center>
-<h1 style= "font-family:Comic Sans MS; color: #daa520;  ">Home</h1>
-<h3 style="font-family: Comic Sans MS; color: #daa520; ">Welcome to the golden Timetable </h3>
-<br />
-<img src="https://us.123rf.com/450wm/snhandini/snhandini2210/snhandini221000105/192628713-welcome-word-hand-lettering-for-posters-and-greeting-cards-design.jpg?ver=6 heigt="80%" width="80%">
-</center>
+
+<div class="container text-center mt-4">
+	<h1 class="text-gold">Home</h1>
+	<h3 class="text-gold mb-4">Welcome to the golden Timetable</h3>
+	<img src="https://us.123rf.com/450wm/snhandini/snhandini2210/snhandini221000105/192628713-welcome-word-hand-lettering-for-posters-and-greeting-cards-design.jpg?ver=6" class="img-fluid" alt="Welcome Image">
+</div>
+
+<style>
+	.text-gold {
+		color: #daa520;
+		font-family: 'Comic Sans MS', cursive, sans-serif;
+	}
+	.container {
+		max-width: 80%;
+	}
+	.img-fluid {
+		max-width: 80%;
+		height: auto;
+	}
+</style>
+
 
 @*<button @onclick="AddTeacherMethod">Add Teacher</button>
 @foreach(Teacher t in techers)
