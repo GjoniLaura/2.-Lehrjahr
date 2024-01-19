@@ -49,37 +49,64 @@ namespace TimeTable.DatabaseConnection
 
 	public class StudentDatabaseConnection
 	{
-		public static void setStudent(string firstname, string lastname, bool available, Education education, List<Teacher> teacher, int numberoflesson, int educationsemester, string classe)
-		{
-			using (var dbContext = new TimeTableContext())
-			{
-				dbContext.ChangeTracker.Clear();
-				foreach(Teacher t in teacher)
-				{
-					dbContext.Attach(t);
-				}
+        public static void setStudent(string firstname, string lastname, bool available, Education education, List<Teacher> teacher, int numberoflesson, int educationsemester, string classe)
+        {
+            using (var dbContext = new TimeTableContext())
+            {
+                // Bearbeitung der Subjekte für Education
+                var educationSubjects = new List<Subject>(education.Subjects);
+                education.Subjects.Clear();
 
-                dbContext.Attach(education);
-                foreach (var subject in education.Subjects)
+                foreach (var subject in educationSubjects)
                 {
-                    dbContext.Entry(subject).State = EntityState.Unchanged;
+                    if (!dbContext.subject.Any(s => s.Id == subject.Id))
+                    {
+                        dbContext.subject.Add(subject);
+                    }
                 }
 
+                // Bearbeitung der Subjekte für jeden Teacher
+                foreach (Teacher t in teacher)
+                {
+                    var teacherSubjects = new List<Subject>(t.TeachedSubject);
+                    t.TeachedSubject.Clear();
+
+                    foreach (var subject in teacherSubjects)
+                    {
+                        if (!dbContext.subject.Any(s => s.Id == subject.Id))
+                        {
+                            dbContext.subject.Add(subject);
+                        }
+                    }
+                }
+
+                // Anhängen der Education und Teacher Objekte
+                dbContext.Attach(education);
+                foreach (Teacher t in teacher)
+                {
+                    dbContext.Attach(t);
+                }
+
+                // Erstellen und Hinzufügen des Studenten
                 Student student = new Student(firstname, lastname, available, education, teacher, numberoflesson, educationsemester, classe);
-
                 dbContext.student.Add(student);
-				dbContext.SaveChanges();
-			}
-		}
+                dbContext.SaveChanges();
+            }
+        }
 
-		public static async Task<List<Student>> getStudent()
-		{
-			using (var dbContext = new TimeTableContext())
-			{
-				List<Student> students = await dbContext.student.Include("Teachers").Include(s => s.Education).ToListAsync();
-				return students;
-			}
-		}
+
+public static async Task<List<Student>> getStudent()
+{
+    using (var dbContext = new TimeTableContext())
+    {
+        List<Student> students = await dbContext.student
+            .Include("Teachers")
+            .Include(s => s.Education)
+                .ThenInclude(e => e.Subjects)
+            .ToListAsync();
+        return students;
+    }
+}
 	}
 
 	public class SubjectDatabaseConnection
