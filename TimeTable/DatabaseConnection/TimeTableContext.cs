@@ -7,7 +7,7 @@ namespace TimeTable.DatabaseConnection
 {
     public class TimeTableContext : DbContext
     {
-        string connectionstring = "server = localhost;  database = timetable; persistsecurityinfo=True; uid = root; pwd = LjF170711!";
+        string connectionstring = "server = localhost; database = timetable; persistsecurityinfo=True;  uid = root; pwd = Luna07wenn!";
 
 		public DbSet<Subject> subject { get; set; }
         public DbSet<Student> student { get; set; }
