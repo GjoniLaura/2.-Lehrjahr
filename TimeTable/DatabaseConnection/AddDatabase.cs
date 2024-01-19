@@ -53,7 +53,6 @@ namespace TimeTable.DatabaseConnection
         {
             using (var dbContext = new TimeTableContext())
             {
-                // Bearbeitung der Subjekte für Education
                 var educationSubjects = new List<Subject>(education.Subjects);
                 education.Subjects.Clear();
 
@@ -65,7 +64,6 @@ namespace TimeTable.DatabaseConnection
                     }
                 }
 
-                // Bearbeitung der Subjekte für jeden Teacher
                 foreach (Teacher t in teacher)
                 {
                     var teacherSubjects = new List<Subject>(t.TeachedSubject);
@@ -79,15 +77,12 @@ namespace TimeTable.DatabaseConnection
                         }
                     }
                 }
-
-                // Anhängen der Education und Teacher Objekte
                 dbContext.Attach(education);
                 foreach (Teacher t in teacher)
                 {
                     dbContext.Attach(t);
                 }
 
-                // Erstellen und Hinzufügen des Studenten
                 Student student = new Student(firstname, lastname, available, education, teacher, numberoflesson, educationsemester, classe);
                 dbContext.student.Add(student);
                 dbContext.SaveChanges();
