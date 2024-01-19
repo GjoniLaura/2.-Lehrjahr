@@ -2,7 +2,7 @@
 @using TimeTable.Data
 @using TimeTable.Modules
 @using TimeTable.DatabaseConnection
-
+@inject NavigationManager NavigationManager
 
 <PageTitle>Input</PageTitle>
 
@@ -33,10 +33,10 @@
                         <label for="subjectDropdown">Subject:</label>
                     <select id="subjectDropdown" @bind="SelectedSubjectId">
                         <option value="">Select Subject</option>
-                                    @foreach (var subject in AllSubjects)
-                                    {
-                                <option value="@subject.Id">@subject._designation</option>
-                                    }
+                        @foreach (var subject in AllSubjects.GroupBy(s => s._designation).Select(g => g.First()))
+                        {
+                        <option value="@subject.Id">@subject._designation</option>
+                        }
                     </select>
 
                 }
@@ -67,10 +67,20 @@
             <h4>ClockTime Details</h4>
             <input @bind="ClockTimeDescription" placeholder="ClockTime Description" />
             <br />
-            <input @bind="ClockTimeDayOfWeek" placeholder="Day of Week" />
+            <label>Select Day Of Week</label>
+               <select @bind="SelectedWeekDayClock">
+                            <option value="">Select Day Of Week</option>
+                        <option value="Monday">Monday</option>
+                        <option value="Tuesday">Tuesday</option>
+                        <option value="Wednesday">Wednesday</option>
+                        <option value="Thursday">Thursday</option>
+                        <option value="Friday">Friday</option>
+            </select>
             <br />
+            <label>Start Time</label>
             <input @bind="ClockTimeStartTime" placeholder="Start Time" />
             <br />
+            <label>EndTime</label>
             <input @bind="ClockTimeEndTime" placeholder="End Time" />
             <br />
             <button @onclick="SubmitClockTime">Submit ClockTime</button>
@@ -104,7 +114,7 @@
             <input id="lastName" @bind="LastName" placeholder="" />
             <br />
 
-            <label for="isAvailable">Available:</label>
+            <label for="isAvailable">Available for the following Semester:</label>
             <input id="isAvailable" @bind="IsAvailable" type="checkbox" />
             <br />
 
@@ -113,7 +123,7 @@
             <label for="educationDropdown">Education:</label>
             <select id="educationDropdown" @bind="SelectedEducationId">
                 <option value="">Select Education</option>
-                    @foreach (var edu in AlleEducation)
+                    @foreach (var edu in AlleEducation.GroupBy(e => e.Name).Select(g => g.First()))
                     {
                         <option value="@edu.Id">@edu.Name</option>
                     }
@@ -123,32 +133,6 @@
             {
             <p>Loading educations...</p>
             }
-
-            <br />
-            @if (Teachers.Any())
-            {
-                @foreach (var teacher in Teachers)
-                {
-                    <div>
-                        <input @bind="teacher._firstname" placeholder="Teachers Firstname" />
-                        <input @bind="teacher._lastname" placeholder="Teachers Lastname" />
-                    </div>
-                }
-            }
-            <br />
-
-            <label for="numberOfLessons">Number of Lessons:</label>
-            <input id="numberOfLessons" @bind="NumberOfLessons" type="number" placeholder="Number of Lessons" />
-            <br />
-
-            <label for="educationSemester">Education Semester:</label>
-            <input id="educationSemester" @bind="EducationSemester" type="number" placeholder="Education Semester" />
-            <br />
-
-            <label for="class">Class:</label>
-            <input @bind="Class" placeholder="" />
-            <br />
-
             <button @onclick="SubmitStudent">Submit Student</button>
         </div>
     }
@@ -164,19 +148,15 @@
             <input id="lastName" @bind="LastName" placeholder="" />
             <br />
 
-            <label for="isAvailable">Available:</label>
-            <input id="isAvailable" @bind="IsAvailable" type="checkbox" />
-            <br />
-
             <div>
                 @if (ShowSubjectDropdown)
                 {
                             <label for="subjectDropdown">Subject:</label>
                                     <select id="subjectDropdown" @bind="SelectedSubjectId">
                                         <option value="">Select Subject</option>
-                        @foreach (var subject in AllSubjects)
+                        @foreach (var subject in AllSubjects.DistinctBy(s => s._designation))
                         {
-                                       <option value="@subject.Id">@subject._designation</option>
+                    <option value="@subject.Id">@subject._designation</option>
                         }
                                 </select>
                 }
@@ -184,8 +164,6 @@
                 {
                     <input @bind="SelectedSubject" placeholder="Subject" />
                 }
-                <label for="numberoflessons">Number of Lessons:</label>
-                <input @bind="NumberOfLessons" type="number" placeholder="Number of Lessons" />
                 <button @onclick="AddSubject">Add Subject</button>
             </div>
             <br />
@@ -201,10 +179,6 @@
             }
             <br />
 
-            <label for="teached">Teached:</label>
-            <input id="teached" @bind="Teached" type="checkbox" />
-            <br />
-
             <label for="numberOfWorkDays">Number of Work Days:</label>
             <input id="numberOfWorkDays" @bind="NumberOfWorkDays" type="number" placeholder="Number of Work Days" />
             <br />
@@ -216,11 +190,11 @@
                     <label for="startDropdown">StartTime: </label>
                     <select id="startDropdown" @bind="SelectedStartTime">
                         <option value="Select">Select StartTime</option>
-                        @foreach (var start in ClockTimeList)
+                        @foreach (var startTime in uniqueStartTimes)
                         {
-                            <option value="@start.StartTime">@start.StartTime</option>
+                            <option value="@startTime">@startTime</option>
                         }
-                    </select>
+                                    </select>
                 }
                 else
                 {
@@ -231,9 +205,9 @@
                     <label for="endDropdown">EndTime: </label>
                     <select id="EndDropdown" @bind="SelectedEndTime">
                         <option value="Select">Select EndTime</option>
-                        @foreach (var end in ClockTimeList)
+                            @foreach (var Endtime in uniqueEndTimes)
                         {
-                            <option value="@end.EndTime">@end.EndTime</option>
+                            <option value="@Endtime">@Endtime</option>
                         }
                     </select>
                 }
@@ -251,10 +225,10 @@
                     <option value="Friday">Friday</option>
                 </select>
                 }
-                <button @onclick="AddClockTime">Add ClockTime</button>
+                <button @onclick="AddClockTime">Add Unavailabel Time</button>
                 @if (AddedClockTimes.Any())
                 {
-                    <h4>Added ClockTimes</h4>
+                    <h4>Added Unavailabel Times</h4>
                     @foreach (var clockTime in AddedClockTimes)
                     {
                         <div>
@@ -331,8 +305,12 @@
     private int RoomId { get; set; }
     private string RoomDesignation { get; set; }
     private int NumberOfSeats { get; set; }
+    private DayOfWeek SelectedWeekDayClock { get; set; }
 
-    private List<ClockDetails> AddedClockTimes { get; set; } = new List<ClockDetails>();
+    private ClockTimes clocktimetemp { get; set; }
+    private List<ClockTimes> AddedClockTimes { get; set; } = new List<ClockTimes>();
+    private List<TimeSpan> uniqueStartTimes { get; set; }
+    private List<TimeSpan> uniqueEndTimes { get; set; }
 
 
     List<Subject> Subjects { get; set; } = new List<Subject>();
@@ -355,15 +333,6 @@
         public string _firstname { get; set; }
         public string _lastname { get; set; }
     }
-
-    private class ClockDetails
-    {
-        public TimeSpan StartTime { get; set; }
-        public TimeSpan EndTime { get; set; }
-
-    }
-
-
 
 
     private int? SelectedSubjectId { get; set; }
@@ -399,19 +368,12 @@
         {
             ShowTeacherDropdown = true;
 
-            // Überprüfe, ob das Fach bereits hinzugefügt wurde
             var existingTeacherfirstname = Teachers.FirstOrDefault(f => f._firstname == SelectedTeacherfirstname);
             var existingTeacherlastname = Teachers.FirstOrDefault(l => l._lastname == SelectedTeacherlastname);
 
             if (existingTeacherfirstname == null & existingTeacherlastname == null)
             {
                 Teachers.Add(new TeacherDetails { _firstname = SelectedTeacherfirstname, _lastname = SelectedTeacherlastname });
-            }
-            else
-            {
-                // Falls das Fach bereits vorhanden ist, erhöhe nur die Anzahl der Stunden
-                existingTeacherfirstname._firstname = SelectedTeacherfirstname;
-                existingTeacherlastname._lastname = SelectedTeacherlastname;
             }
         }
 
@@ -448,6 +410,29 @@
             ShowWeekDayDropdown = true;
         }
 
+        if (SelectedStartTime != "Select" && SelectedEndTime != "Select" && SelectedWeekDay != "Select")
+        {
+            TimeSpan parsedStartTime;
+            TimeSpan parsedEndTime;
+            bool isStartTimeValid = TimeSpan.TryParse(SelectedStartTime, out parsedStartTime);
+            bool isEndTimeValid = TimeSpan.TryParse(SelectedEndTime, out parsedEndTime);
+
+            DayOfWeek parsedWeekDay;
+            bool isWeekDayValid = Enum.TryParse(SelectedWeekDay, out parsedWeekDay);
+
+            if (isStartTimeValid && isEndTimeValid && isWeekDayValid)
+            {
+                var newClockTime = new ClockTimes
+                    {
+                        Bezeichnung = "TeacherTime",
+                        StartTime = parsedStartTime,
+                        EndTime = parsedEndTime,
+                        DayOfWeek = parsedWeekDay
+                    };
+
+                AddedClockTimes.Add(newClockTime);
+            }
+        }
         SelectedStartTime = "Select";
         SelectedEndTime = "Select";
         SelectedWeekDay = "Select";
@@ -458,39 +443,39 @@
 
     private List<Subject> GetSubjectsFromDatabase()
     {
-        // Call your method from the database connection to get the list of subjects
         return SubjectDatabaseConnection.getSubject();
     }
 
     private List<SubjectDetails> SubjectsList { get; set; }
 
-    // Initialize the SubjectsList in OnInitializedAsync lifecycle method
     protected override async Task OnInitializedAsync()
     {
         SubjectsList = GetSubjectsFromDatabase()
             .Select(subject => new SubjectDetails { Name = subject._designation, NumberOfLessons = 0 })
             .ToList();
 
-        ClockTimeList = GetClockTimesFromDatabase()
-        .Select(clocktime => new ClockDetails { StartTime = clocktime.StartTime, EndTime = clocktime.EndTime })
+        AllClockTimeList = GetClockTimesFromDatabase()
+        .Select(clocktime => new ClockTimes { StartTime = clocktime.StartTime, EndTime = clocktime.EndTime })
         .ToList();
+        uniqueStartTimes = AllClockTimeList.Select(start => start.StartTime).Distinct().ToList();
+        uniqueEndTimes = AllClockTimeList.Select(start => start.EndTime).Distinct().ToList();
+
+
         AllSubjects = GetSubjectsFromDatabase();
         AlleEducation = await EducationDatabaseConnection.getEducation();
     }
 
     private List<ClockTimes> GetClockTimesFromDatabase()
     {
-        // Call your method from the database connection to get the list of subjects
         return ClockTimeDatabaseConnection.getClockTimes();
     }
 
-    private List<ClockDetails> ClockTimeList { get; set; }
+    private List<ClockTimes> AllClockTimeList { get; set; }
 
 
 
-    // Initialize the SubjectsList in OnInitializedAsync lifecycle method
     private Student student = new Student(); 
-    Education education = new Education(); // Annahme: Education ist eine Klasse oder ein Datentyp
+    Education education = new Education();
     List<Teacher> teachers = new List<Teacher>();
     List<Subject> subjects = new List<Subject>(); 
     List<ClockTimes> UnavailableTimes = new List<ClockTimes>();
@@ -498,37 +483,119 @@
 
     private void SubmitSubject()
     {
-        SubjectDatabaseConnection.setSubject(Designation, Description, Premises); 
-
-        // Process the entered subject details here
+        SubjectDatabaseConnection.setSubject(Designation, Description, Premises);
+        ResetFields();
     }
 
     private void SubmitTeacher()
     {
-        TeacherDatabaseConnection.setTeacher(FirstName, LastName, IsAvailable, subjects, Teached, NumberOfWorkDays, UnavailableTimes); 
-        // Process the entered teacher details here
+        TeacherDatabaseConnection.setTeacher(FirstName, LastName, IsAvailable, Subjects, Teached, NumberOfWorkDays, AddedClockTimes);
+        ResetFields();
     }
 
     private void SubmitStudent()
     {
-        StudentDatabaseConnection.setStudent(FirstName, LastName, IsAvailable, education, teachers, NumberOfLessons, EducationSemester, Class);
-        // Process the entered student details here
+        var selectedEducation = AlleEducation.FirstOrDefault(e => e.Id == SelectedEducationId);
+        NumberOfLessons = selectedEducation.AnzLessons;
+        EducationSemester = 1; //for algorithm
+        Class = "default"; //for algorithm 
+
+        StudentDatabaseConnection.setStudent(FirstName, LastName, IsAvailable, selectedEducation, teachers, NumberOfLessons, EducationSemester, Class);
+        ResetFields();
     }
     private async void SubmitEducation()
     {
         EducationDatabaseConnection.setEducation(Name, Subjects, NumberOfLessons);
-        // Wird später durch die tatsächliche Datenbankverbindung ersetzt
-        AlleEducation = await EducationDatabaseConnection.getEducation();
+        ResetFields();
     }
 
     private void SubmitClockTime()
     {
-        ClockTimeDatabaseConnection.setClockTime(ClockTimeStartTime, ClockTimeEndTime, ClockTimeDayOfWeek,ClockTimeDescription );
-        // Verarbeite die eingegebenen Uhrzeitdetails hier
+        ClockTimeDatabaseConnection.setClockTime(ClockTimeStartTime, ClockTimeEndTime, SelectedWeekDayClock, ClockTimeDescription);
+        ResetFields();
     }
     private void SubmitRoom()
     {
         RoomDatabaseConnection.setRoom(RoomDesignation, NumberOfSeats);
-        // Process the entered room details here
+        ResetFields();
     }
+
+
+
+
+
+
+
+
+    private async void ResetFields()
+    {
+        Name = "";
+        SelectedWeekDay = "";
+        SelectedSubject = null;
+        SelectedTeacherfirstname = "";
+        SelectedTeacherlastname = "";
+        SelectedStartTime = "";
+        SelectedEndTime = "";
+        NumberOfLessons = 0;
+        ShowClockTimeForm = false;
+        ShowSubjectDropdown = true;
+        ShowTeacherDropdown = true;
+        ShowStartTimeDropdown = true;
+        ShowEndTimeDropdown = true;
+        ShowWeekDayDropdown = true;
+        ClockTimeId = "";
+        ClockTimeDescription = "";
+        ClockTimeDayOfWeek = default;
+        ClockTimeStartTime = default;
+        ClockTimeEndTime = default;
+        FirstName = "";
+        LastName = "";
+        IsAvailable = false;
+        Education = "";
+        Teacher = "";
+        EducationSemester = 0;
+        Class = "";
+        SelectedEducationId = null;
+        Subject = "";
+        Teached = false;
+        NumberOfWorkDays = 0;
+        ClockTime = "";
+        Designation = "";
+        Description = "";
+        Premises = "";
+        RoomId = 0;
+        RoomDesignation = "";
+        NumberOfSeats = 0;
+        clocktimetemp = null;
+        AddedClockTimes.Clear();
+        uniqueStartTimes = null;
+        uniqueEndTimes = null;
+        Subjects.Clear();
+        Teachers.Clear();
+        AllSubjects.Clear();
+        AllClockTimeList.Clear();
+        SelectedWeekDayClock = default;
+
+        student = new Student();
+        education = new Education();
+        teachers.Clear();
+        subjects.Clear();
+        UnavailableTimes.Clear();
+
+        SubjectsList = GetSubjectsFromDatabase()
+    .Select(subject => new SubjectDetails { Name = subject._designation, NumberOfLessons = 0 })
+    .ToList();
+
+        AllClockTimeList = GetClockTimesFromDatabase()
+        .Select(clocktime => new ClockTimes { StartTime = clocktime.StartTime, EndTime = clocktime.EndTime })
+        .ToList();
+        uniqueStartTimes = AllClockTimeList.Select(start => start.StartTime).Distinct().ToList();
+        uniqueEndTimes = AllClockTimeList.Select(start => start.EndTime).Distinct().ToList();
+
+
+        AllSubjects = GetSubjectsFromDatabase();
+    }
+
 }
+
+
