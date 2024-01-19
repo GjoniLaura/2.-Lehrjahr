@@ -1,0 +1,13 @@
+﻿@using TimeTable.Modules
+
+    <div class="card">
+       <div class="card-body">
+             <h5 class="card-title">Students</h5>
+             <p class="card-title">Name: @student.Firstname @student.Lastname</p>
+      </div>
+    </div>
+
+@code {
+    [Parameter]
+    public Student student { get; set; }
+}

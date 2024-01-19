@@ -8,7 +8,7 @@ namespace TimeTable.Modules
     public class Student : Person
     {
         public Education Education { get; set; }
-        public List<Teacher> Teachers { get; set; }
+        public ICollection<Teacher> Teachers { get; set; }
         public int NumberOfLessons { get; set; }
         public int EducationSemester { get; set; }
         public Person Person { get; set; }

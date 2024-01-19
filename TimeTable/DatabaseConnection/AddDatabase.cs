@@ -17,12 +17,12 @@ namespace TimeTable.DatabaseConnection
 
 			using (var dbContext = new TimeTableContext())
 			{
-				foreach (Subject subject in teachedSubject)
-				{
-					dbContext.Attach(subject);
-				}
+                foreach (Subject subject in teachedSubject)
+                {
+                        dbContext.Attach(subject);
+                }
 
-				if(unavailabel!= null)
+                if (unavailabel!= null)
 				{
 					foreach(ClockTimes time in unavailabel)
 					{
@@ -37,11 +37,11 @@ namespace TimeTable.DatabaseConnection
 			}
 		}
 
-		public static List<Teacher> getTeacher()
+		public static async Task<List<Teacher>> getTeacher()
 		{
 			using (var dbContext = new TimeTableContext())
 			{
-				List<Teacher> teachers = dbContext.teacher.Include(t => t.TeachedSubject).Include(z => z.UnavailableTimeSlots).ToList();
+				List<Teacher> teachers = await dbContext.teacher.Include("TeachedSubject").Include("UnavailableTimeSlots").ToListAsync();
 				return teachers;
 			}
 		}
@@ -49,31 +49,64 @@ namespace TimeTable.DatabaseConnection
 
 	public class StudentDatabaseConnection
 	{
-		public static void setStudent(string firstname, string lastname, bool available, Education education, List<Teacher> teacher, int numberoflesson, int educationsemester, string classe)
-		{
-			using (var dbContext = new TimeTableContext())
-			{
-				foreach(Teacher t in teacher)
-				{
-					dbContext.Attach(t);
-				}
-				dbContext.Attach(education);
+        public static void setStudent(string firstname, string lastname, bool available, Education education, List<Teacher> teacher, int numberoflesson, int educationsemester, string classe)
+        {
+            using (var dbContext = new TimeTableContext())
+            {
+                // Bearbeitung der Subjekte für Education
+                var educationSubjects = new List<Subject>(education.Subjects);
+                education.Subjects.Clear();
 
-				Student student = new Student(firstname, lastname, available, education, teacher, numberoflesson, educationsemester, classe);
+                foreach (var subject in educationSubjects)
+                {
+                    if (!dbContext.subject.Any(s => s.Id == subject.Id))
+                    {
+                        dbContext.subject.Add(subject);
+                    }
+                }
 
-				dbContext.student.Add(student);
-				dbContext.SaveChanges();
-			}
-		}
+                // Bearbeitung der Subjekte für jeden Teacher
+                foreach (Teacher t in teacher)
+                {
+                    var teacherSubjects = new List<Subject>(t.TeachedSubject);
+                    t.TeachedSubject.Clear();
 
-		public static List<Student> getStudent()
-		{
-			using (var dbContext = new TimeTableContext())
-			{
-				List<Student> students = dbContext.student.Include(t => t.Teachers).Include(s => s.Education).ToList();
-				return students;
-			}
-		}
+                    foreach (var subject in teacherSubjects)
+                    {
+                        if (!dbContext.subject.Any(s => s.Id == subject.Id))
+                        {
+                            dbContext.subject.Add(subject);
+                        }
+                    }
+                }
+
+                // Anhängen der Education und Teacher Objekte
+                dbContext.Attach(education);
+                foreach (Teacher t in teacher)
+                {
+                    dbContext.Attach(t);
+                }
+
+                // Erstellen und Hinzufügen des Studenten
+                Student student = new Student(firstname, lastname, available, education, teacher, numberoflesson, educationsemester, classe);
+                dbContext.student.Add(student);
+                dbContext.SaveChanges();
+            }
+        }
+
+
+public static async Task<List<Student>> getStudent()
+{
+    using (var dbContext = new TimeTableContext())
+    {
+        List<Student> students = await dbContext.student
+            .Include("Teachers")
+            .Include(s => s.Education)
+                .ThenInclude(e => e.Subjects)
+            .ToListAsync();
+        return students;
+    }
+}
 	}
 
 	public class SubjectDatabaseConnection
@@ -106,20 +139,20 @@ namespace TimeTable.DatabaseConnection
 			{
 				foreach (Subject S in subjects)
 				{
-					dbContext.Attach(S);
-				}
+                        dbContext.Attach(S);
+                }
 
-				Education education= new Education(name,subjects,anzLessons);
+                Education education= new Education(name,subjects,anzLessons);
 				dbContext.education.Add(education);
 				dbContext.SaveChanges();
 			}
 		}
 
-		public static List<Education> getEducation()
+		public static async Task<List<Education>> getEducation()
 		{
 			using (var dbContext = new TimeTableContext())
 			{
-				List<Education> educations = dbContext.education.ToList();
+                List<Education> educations = await dbContext.education.Include("Subjects").ToListAsync();
 				return educations;
 			}
 		}

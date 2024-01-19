@@ -1,0 +1,47 @@
+﻿@using TimeTable.Modules
+
+<div class="card m-2 shadow" style="width: 18rem;">
+    <div class="card-body">
+        <h5 class="card-title">Teacher: @teacher.Firstname @teacher.Lastname</h5>
+        <p class="card-text">
+            <strong>Number of WorkDays:</strong> @teacher.NumberOfWorkDays
+        </p>
+        <div class="mb-3">
+            @if (teacher.TeachedSubject.Count == 0)
+            {
+                    <p class="text-muted">The Teacher doesn't teach any subjects at the moment.</p>
+            }
+            else
+            {
+                    <h6 class="card-subtitle mb-2 text-muted">Subjects Taught:</h6>
+                    <ul class="list-group list-group-flush">
+                    @foreach (Subject s in teacher.TeachedSubject)
+                    {
+                                <li class="list-group-item">@s._designation</li>
+                    }
+                    </ul>
+            }
+        </div>
+        <div>
+            @if (teacher.UnavailableTimeSlots.Count != 0)
+            {
+                    <h6 class="card-subtitle mb-2 text-muted">Unavailable Times:</h6>
+                    <div class="ps-3">
+                    @foreach (ClockTimes c in teacher.UnavailableTimeSlots)
+                    {
+                                <div class="mb-2">
+                                    <small class="text-muted d-block">Day: @c.DayOfWeek</small>
+                                    <small class="text-muted d-block">From: @c.StartTime</small>
+                                    <small class="text-muted">To: @c.EndTime</small>
+                                </div>
+                    }
+                    </div>
+            }
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public Teacher teacher { get; set; }
+}
