@@ -30,18 +30,15 @@
             <div>
                 @if (ShowSubjectDropdown)
                 {
-                    <label for="subjectDropdown">Subject:</label>
-                    <select id="subjectDropdown" @bind="SelectedSubject">
-                        <option value="Select">Select Subject</option>
-                        @foreach (var subject in SubjectsList)
-                        {
-                            <option value="@subject.Name">@subject.Name</option>
-                        }
+                        <label for="subjectDropdown">Subject:</label>
+                    <select id="subjectDropdown" @bind="SelectedSubjectId">
+                        <option value="">Select Subject</option>
+                                    @foreach (var subject in AllSubjects)
+                                    {
+                                <option value="@subject.Id">@subject._designation</option>
+                                    }
                     </select>
-                }
-                else
-                {
-                    <input @bind="SelectedSubject" placeholder="Subject" />
+
                 }
                 <label for="numberoflessons">Number of Lessons:</label>
                 <input @bind="NumberOfLessons" type="number" placeholder="Number of Lessons" />
@@ -53,15 +50,17 @@
             {
                 @foreach (var subject in Subjects)
                 {
-                    <div>
-                        <input @bind="subject._designation" placeholder="Subject" />
-                    </div>
+                            <div>
+                                <input @bind="subject._designation" placeholder="Subject" />
+                            </div>
                 }
             }
             <br />
             <button @onclick="SubmitEducation">Submit</button>
         </div>
     }
+
+
     else if (SelectedOption == "ClockTime")
     {
         <div>
@@ -82,8 +81,8 @@
         <div>
             <h4>Room Details</h4>
 
-            <label for="designation">Designation:</label>
-            <input @bind="RoomDesignation" placeholder="" />
+                <label for="Designation">Designation:</label>
+                <input @bind="RoomDesignation" placeholder="" />
             <br />
 
             <label for="numberOfSeats">Number of Seats:</label>
@@ -109,38 +108,22 @@
             <input id="isAvailable" @bind="IsAvailable" type="checkbox" />
             <br />
 
-            <label for="education">Education:</label>
-            <input @bind="Education" placeholder="" />
-            <br />
+            @if (AlleEducation != null && AlleEducation.Any())
+            {
+            <label for="educationDropdown">Education:</label>
+            <select id="educationDropdown" @bind="SelectedEducationId">
+                <option value="">Select Education</option>
+                    @foreach (var edu in AlleEducation)
+                    {
+                        <option value="@edu.Id">@edu.Name</option>
+                    }
+            </select>
+            }
+            else
+            {
+            <p>Loading educations...</p>
+            }
 
-            <div>
-                @if (ShowTeacherDropdown)
-                {
-                    <label for="firstnameDropdown">Teachers Firstname:</label>
-                    <select id="firstnameDropdown" @bind="SelectedTeacherfirstname">
-                        <option value="Select">Select Teachers Firstname</option>
-                        @foreach (var firstname in Teachers)
-                        {
-                            <option value="@firstname._firstname">@firstname._firstname</option>
-                        }
-                    </select>
-                    <label for="lastnameDropdown">Teachers Lastname:</label>
-                    <select id="lastnameDropdown" @bind="SelectedTeacherlastname">
-                        <option value="Select">Select Teachers Lastname</option>
-                        @foreach (var lastname in Teachers)
-                        {
-                            <option value="@lastname._lastname">@lastname._lastname</option>
-                        }
-                    </select>
-                }
-                else
-                {
-                    <input @bind="SelectedTeacherfirstname" placeholder="Teachers Firstname" />
-                    <input @bind="SelectedTeacherlastname" placeholder="Teachers Lastname" />
-                }
-                <button @onclick="AddTeacher">Add Teacher</button>
-            </div>
-            <br />
             <br />
             @if (Teachers.Any())
             {
@@ -149,7 +132,6 @@
                     <div>
                         <input @bind="teacher._firstname" placeholder="Teachers Firstname" />
                         <input @bind="teacher._lastname" placeholder="Teachers Lastname" />
-                        
                     </div>
                 }
             }
@@ -189,14 +171,14 @@
             <div>
                 @if (ShowSubjectDropdown)
                 {
-                    <label for="subjectDropdown">Subject:</label>
-                    <select id="subjectDropdown" @bind="SelectedSubject">
-                        <option value="Select">Select Subject</option>
-                        @foreach (var subject in SubjectsList)
+                            <label for="subjectDropdown">Subject:</label>
+                                    <select id="subjectDropdown" @bind="SelectedSubjectId">
+                                        <option value="">Select Subject</option>
+                        @foreach (var subject in AllSubjects)
                         {
-                            <option value="@subject.Name">@subject.Name</option>
+                                       <option value="@subject.Id">@subject._designation</option>
                         }
-                    </select>
+                                </select>
                 }
                 else
                 {
@@ -311,7 +293,7 @@
     private string SelectedOption { get; set; } = "Select";
     private string Name { get; set; }
     private string SelectedWeekDay { get; set; }
-    private string SelectedSubject { get; set; }
+    private Subject SelectedSubject { get; set; }
     private string SelectedTeacherfirstname { get; set; }
     private string SelectedTeacherlastname { get; set; }
     private string SelectedStartTime { get; set; }
@@ -335,6 +317,7 @@
     private string Teacher { get; set; }
     private int EducationSemester { get; set; }
     private string Class { get; set; }
+    private int? SelectedEducationId { get; set; }
 
     private string Subject { get; set; }
     private bool Teached { get; set; }
@@ -352,11 +335,14 @@
     private List<ClockDetails> AddedClockTimes { get; set; } = new List<ClockDetails>();
 
 
-     List<Subject> Subjects { get; set; } = new List<Subject>();
+    List<Subject> Subjects { get; set; } = new List<Subject>();
     private List<TeacherDetails> Teachers { get; set; } = new List<TeacherDetails>();
 
+    List<Subject> AllSubjects = new List<Subject>();
+    List<Education> AlleEducation = new List<Education>();
 
-    
+
+
 
     private class SubjectDetails
     {
@@ -378,28 +364,30 @@
     }
 
 
-    
+
+
+    private int? SelectedSubjectId { get; set; }
 
     private void AddSubject()
     {
-        if (SelectedSubject == "Select")
+        if (SelectedSubjectId == null)
         {
             ShowSubjectDropdown = false;
         }
         else
         {
             ShowSubjectDropdown = true;
-
-            var existingSubject = Subjects.FirstOrDefault(s => s._designation == SelectedSubject);
-            if (existingSubject == null)
+            var existingSubject = AllSubjects.FirstOrDefault(s => s.Id == SelectedSubjectId);
+            if (existingSubject != null && !Subjects.Any(s => s.Id == existingSubject.Id))
             {
-                Subjects.Add(new Subject { _designation = SelectedSubject});
+                Subjects.Add(existingSubject);
             }
         }
-
-        SelectedSubject = "Select";
+        SelectedSubjectId = null;
         NumberOfLessons = 0;
+        AllSubjects = GetSubjectsFromDatabase();
     }
+
 
     private void AddTeacher()
     {
@@ -466,7 +454,7 @@
         ShowClockTimeForm = true;
 
     }
-    
+
 
     private List<Subject> GetSubjectsFromDatabase()
     {
@@ -486,6 +474,8 @@
         ClockTimeList = GetClockTimesFromDatabase()
         .Select(clocktime => new ClockDetails { StartTime = clocktime.StartTime, EndTime = clocktime.EndTime })
         .ToList();
+        AllSubjects = GetSubjectsFromDatabase();
+        AlleEducation = await EducationDatabaseConnection.getEducation();
     }
 
     private List<ClockTimes> GetClockTimesFromDatabase()
@@ -524,10 +514,11 @@
         StudentDatabaseConnection.setStudent(FirstName, LastName, IsAvailable, education, teachers, NumberOfLessons, EducationSemester, Class);
         // Process the entered student details here
     }
-    private void SubmitEducation()
+    private async void SubmitEducation()
     {
         EducationDatabaseConnection.setEducation(Name, Subjects, NumberOfLessons);
         // Wird später durch die tatsächliche Datenbankverbindung ersetzt
+        AlleEducation = await EducationDatabaseConnection.getEducation();
     }
 
     private void SubmitClockTime()
@@ -537,7 +528,7 @@
     }
     private void SubmitRoom()
     {
-        RoomDatabaseConnection.setRoom(Designation, NumberOfSeats);
+        RoomDatabaseConnection.setRoom(RoomDesignation, NumberOfSeats);
         // Process the entered room details here
     }
 }
