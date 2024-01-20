@@ -5,7 +5,7 @@ Wir haben ein Stundenplan Tool erstellt mit dem man Daten einfügen kann und dar
 ## Installation
 Für die Ausführung des Programms benötigt man:
 - MySql Workbench mit Login und Passwort
--Falls man noch kein Login hat, ist es am einfachsten direkt unser Passwort zu nehmen für den root Benutzer.
+- Falls man noch kein Login hat, ist es am einfachsten direkt unser Passwort zu nehmen für den root Benutzer.
 - Passwort: Luna07wenn!
 
 Dieses Passwort muss man im Projekt auch angeben, 
