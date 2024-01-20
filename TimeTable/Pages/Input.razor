@@ -1,5 +1,4 @@
 ﻿@page "/input"
-@using TimeTable.Data
 @using TimeTable.Modules
 @using TimeTable.DatabaseConnection
 @inject NavigationManager NavigationManager
@@ -70,7 +69,7 @@
                             @foreach (var subject in Subjects)
                             {
                                     <div class="form-group">
-                                        <input class="form-control" @bind="subject._designation" placeholder="Subject" />
+                                        <span class="form-control-plaintext">@subject._designation</span>
                                     </div>
                             }
                         </div>
@@ -136,143 +135,197 @@
     }
     else if (SelectedOption == "Student")
     {
-        <div>
-            <h4>Student Details</h4>
-            <label for="firstName">First Name:</label>
-            <input id="firstName" @bind="FirstName" placeholder="" />
-            <br />
+    <div class="card mt-3">
+        <div class="card-body">
+            <h4 class="card-title">Student Details</h4>
 
-            <label for="lastName">Last Name:</label>
-            <input id="lastName" @bind="LastName" placeholder="" />
-            <br />
+            <div class="form-group">
+                <label for="firstName">First Name:</label>
+                <input class="form-control" id="firstName" @bind="FirstName" placeholder="Enter First Name" />
+            </div>
 
-            <label for="isAvailable">Available for the following Semester:</label>
-            <input id="isAvailable" @bind="IsAvailable" type="checkbox" />
-            <br />
+            <div class="form-group">
+                <label for="lastName">Last Name:</label>
+                <input class="form-control" id="lastName" @bind="LastName" placeholder="Enter Last Name" />
+            </div>
 
-            @if (AlleEducation != null && AlleEducation.Any())
-            {
-            <label for="educationDropdown">Education:</label>
-            <select id="educationDropdown" @bind="SelectedEducationId">
-                <option value="">Select Education</option>
-                    @foreach (var edu in AlleEducation.GroupBy(e => e.Name).Select(g => g.First()))
-                    {
-                        <option value="@edu.Id">@edu.Name</option>
-                    }
-            </select>
-            }
-            else
-            {
-            <p>Loading educations...</p>
-            }
-            <button @onclick="SubmitStudent">Submit Student</button>
+            <div class="form-group form-check">
+                <input class="form-check-input" id="isAvailable" @bind="IsAvailable" type="checkbox" />
+                <label class="form-check-label" for="isAvailable">Available for the following Semester</label>
+            </div>
+
+                @if (AlleEducation != null && AlleEducation.Any())
+                {
+                    <div class="form-group">
+                        <label for="educationDropdown">Education:</label>
+                        <select class="form-control" id="educationDropdown" @bind="SelectedEducationId">
+                            <option value="">Select Education</option>
+                            @foreach (var edu in AlleEducation.GroupBy(e => e.Name).Select(g => g.First()))
+                            {
+                                    <option value="@edu.Id">@edu.Name</option>
+                            }
+                        </select>
+                    </div>
+                }
+                else
+                {
+                    <p>Loading educations...</p>
+                }
+
+            <button class="btn btn-success mt-3" @onclick="SubmitStudent">Submit Student</button>
         </div>
+    </div>
+
     }
     else if (SelectedOption == "Teacher")
     {
-        <div>
-            <h4>Teacher Details</h4>
+    <div class="container mt-4">
+        <h4 class="mb-3">Teacher Details</h4>
+
+        <div class="form-group">
             <label for="firstName">First Name:</label>
-            <input id="firstName" @bind="FirstName" placeholder="" />
-            <br />
+            <input type="text" class="form-control" id="firstName" @bind="FirstName" placeholder="Enter first name" />
+        </div>
 
+        <div class="form-group">
             <label for="lastName">Last Name:</label>
-            <input id="lastName" @bind="LastName" placeholder="" />
-            <br />
+            <input type="text" class="form-control" id="lastName" @bind="LastName" placeholder="Enter last name" />
+        </div>
 
-            <div>
-                @if (ShowSubjectDropdown)
-                {
-                            <label for="subjectDropdown">Subject:</label>
-                                    <select id="subjectDropdown" @bind="SelectedSubjectId">
-                                        <option value="">Select Subject</option>
-                        @foreach (var subject in AllSubjects.DistinctBy(s => s._designation))
-                        {
-                    <option value="@subject.Id">@subject._designation</option>
-                        }
-                                </select>
-                }
-                else
-                {
-                    <input @bind="SelectedSubject" placeholder="Subject" />
-                }
-                <button @onclick="AddSubject">Add Subject</button>
+              <div class="card mt-4">
+            <div class="card-header">
+                Add Teached Subjects
             </div>
-            <br />
-            <br />
-            @if (Subjects.Any())
-            {
-                @foreach (var subject in Subjects)
-                {
-                    <div>
-                        <input @bind="subject._designation" placeholder="Subject" />
-                    </div>
-                }
-            }
-            <br />
-
-            <label for="numberOfWorkDays">Number of Work Days:</label>
-            <input id="numberOfWorkDays" @bind="NumberOfWorkDays" type="number" placeholder="Number of Work Days" />
-            <br />
-
-            <div>
-                @if (ShowClockTimeForm){
-                @if (ShowStartTimeDropdown)
-                {
-                    <label for="startDropdown">StartTime: </label>
-                    <select id="startDropdown" @bind="SelectedStartTime">
-                        <option value="Select">Select StartTime</option>
-                        @foreach (var startTime in uniqueStartTimes)
-                        {
-                            <option value="@startTime">@startTime</option>
-                        }
-                                    </select>
-                }
-                else
-                {
-                    <input @bind="SelectedStartTime" placeholder="Start" />
-                }
-                @if (ShowEndTimeDropdown)
-                {
-                    <label for="endDropdown">EndTime: </label>
-                    <select id="EndDropdown" @bind="SelectedEndTime">
-                        <option value="Select">Select EndTime</option>
-                            @foreach (var Endtime in uniqueEndTimes)
-                        {
-                            <option value="@Endtime">@Endtime</option>
-                        }
-                    </select>
-                }
-                else
-                {
-                    <input @bind="SelectedEndTime" placeholder="End" />
-                }
-                <label for="weekdayDropdown">Day Of Week: </label>
-                <select @bind="SelectedWeekDay">
-                    <option value="Select">Select Day Of Week</option>
-                    <option value="Monday">Monday</option>
-                    <option value="Tuesday">Tuesday</option>
-                    <option value="Wednesday">Wednesday</option>
-                    <option value="Thursday">Thursday</option>
-                    <option value="Friday">Friday</option>
-                </select>
-                }
-                <button @onclick="AddClockTime">Add Unavailabel Time</button>
-                @if (AddedClockTimes.Any())
-                {
-                    <h4>Added Unavailabel Times</h4>
-                    @foreach (var clockTime in AddedClockTimes)
+            <div class="card-body">
+                    @if (ShowSubjectDropdown)
                     {
-                        <div>
-                            <span>Start Time: @clockTime.StartTime</span>
-                            <span>End Time: @clockTime.EndTime</span>
+                        <div class="form-group">
+                            <label for="subjectDropdown">Subject:</label>
+                            <select class="form-control" id="subjectDropdown" @bind="SelectedSubjectId">
+                                <option value="">Select Subject</option>
+                                @foreach (var subject in AllSubjects.DistinctBy(s => s._designation))
+                                {
+                                        <option value="@subject.Id">@subject._designation</option>
+                                }
+                            </select>
                         </div>
                     }
-                }
-            </div>
+                    else
+                    {
+                        <div class="form-group">
+                            <input type="text" class="form-control" @bind="SelectedSubject" placeholder="Subject" />
+                        </div>
+                    }
 
-            <button @onclick="SubmitTeacher">Submit Teacher</button>
+                <button class="btn btn-primary" @onclick="AddSubject">Add Subject</button>
+
+                    @if (Subjects.Any())
+                    {
+                        <table class="table table-hover mt-3">
+                            <thead>
+                                <tr>
+                                    <th>Subject</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var subject in Subjects)
+                                {
+                                        <tr>
+                                            <td>@subject._designation</td>
+                                        </tr>
+                                }
+                            </tbody>
+                        </table>
+                    }
+                    else
+                    {
+                        <div class="alert alert-info mt-3">
+                            No subjects added yet.
+                        </div>
+                    }
+            </div>
         </div>
+
+        <div class="form-group">
+            <label for="numberOfWorkDays">Number of Work Days:</label>
+            <input type="number" class="form-control" id="numberOfWorkDays" @bind="NumberOfWorkDays" placeholder="Enter number of work days" />
+        </div>
+
+
+                        <div class="card mt-4">
+            <div class="card-header">
+                Add Unavailable Times
+            </div>
+            <div class="card-body">
+                <div class="row mb-3">
+                    <div class="col-md-4">
+                        <label for="startDropdown">Start Time:</label>
+                        <select class="form-control" id="startDropdown" @bind="SelectedStartTime">
+                            <option value="">Select Start Time</option>
+                                @foreach (var startTime in uniqueStartTimes)
+                                {
+                                    <option value="@startTime">@startTime</option>
+                                }
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="endDropdown">End Time:</label>
+                        <select class="form-control" id="endDropdown" @bind="SelectedEndTime">
+                            <option value="">Select End Time</option>
+                                @foreach (var endTime in uniqueEndTimes)
+                                {
+                                    <option value="@endTime">@endTime</option>
+                                }
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="weekdayDropdown">Day Of Week:</label>
+                        <select class="form-control" id="weekdayDropdown" @bind="SelectedWeekDay">
+                            <option value="">Select Day</option>
+                            <option value="Monday">Monday</option>
+                            <option value="Tuesday">Tuesday</option>
+                            <option value="Wednesday">Wednesday</option>
+                            <option value="Thursday">Thursday</option>
+                            <option value="Friday">Friday</option>
+                        </select>
+                    </div>
+                </div>
+                <button class="btn btn-primary mb-3" @onclick="AddClockTime">Add Unavailable Time</button>
+
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Start Time</th>
+                            <th>End Time</th>
+                            <th>Day of Week</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                            @if (AddedClockTimes.Any())
+                            {
+                                @foreach (var clockTime in AddedClockTimes)
+                                {
+                                        <tr>
+                                            <td>@clockTime.StartTime</td>
+                                            <td>@clockTime.EndTime</td>
+                                            <td>@clockTime.DayOfWeek</td>
+                                        </tr>
+                                }
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td colspan="3" class="text-center">No unavailable times added yet.</td>
+                                </tr>
+                            }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <button class="btn btn-success mt-3" @onclick="SubmitTeacher">Submit Teacher</button>
+    </div>
+
     }
     else if (SelectedOption == "Subject")
     {

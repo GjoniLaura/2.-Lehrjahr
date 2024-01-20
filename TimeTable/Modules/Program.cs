@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.EntityFrameworkCore;
-using TimeTable.Data;
 using TimeTable.DatabaseConnection;
 using Pomelo.EntityFrameworkCore.MySql;
 using System;
@@ -11,7 +10,6 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
-builder.Services.AddSingleton<WeatherForecastService>();
 
 //Datenbank Service
 /*builder.Services.AddDbContext<TimeTableContext>(options =>
