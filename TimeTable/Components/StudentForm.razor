@@ -1,11 +1,32 @@
 ﻿@using TimeTable.Modules
 
-    <div class="card">
-       <div class="card-body">
-             <h5 class="card-title">Students</h5>
-             <p class="card-title">Name: @student.Firstname @student.Lastname</p>
-      </div>
+<div class="card m-2 shadow" style="width: 18rem;">
+    <div class="card-body">
+        <h5 class="card-title">Student: @student.Firstname @student.Lastname</h5>
+        <p class="card-text">
+            <strong>Education:</strong> @student.Education.Name
+        </p>
+        <p class="card-text">
+            <strong>Number of Lessons:</strong> @student.Education.AnzLessons
+        </p>
+        <div class="mb-3">
+            @if (student.Education.Subjects.Count == 0)
+            {
+                    <p class="text-muted">This Education doesn't contain any subjects.</p>
+            }
+            else
+            {
+                    <h6 class="card-subtitle mb-2 text-muted">Has Subjects:</h6>
+                    <ul class="list-group list-group-flush">
+                    @foreach (Subject s in student.Education.Subjects)
+                    {
+                                <li class="list-group-item">@s._designation</li>
+                    }
+                    </ul>
+            }
+        </div>
     </div>
+</div>
 
 @code {
     [Parameter]

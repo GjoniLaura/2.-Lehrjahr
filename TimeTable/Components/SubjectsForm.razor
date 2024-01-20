@@ -1,0 +1,15 @@
+﻿@using TimeTable.Modules
+
+<div class="card mx-auto shadow mb-2" style="width: 18rem;">
+    <div class="card-body">
+        <h5 class="card-title text-center">Subject: @subject._designation</h5>
+        <div class="card-text mt-3">
+            <p class="mb-0"><strong>Description:</strong> @subject._description</p>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public Subject subject { get; set; }
+}

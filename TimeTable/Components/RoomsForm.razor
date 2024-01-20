@@ -1,0 +1,15 @@
+﻿@using TimeTable.Modules
+
+<div class="card mx-auto shadow-lg" style="width: 20rem;">
+    <div class="card-body">
+        <h5 class="card-title text-center">Room: @room.Designation</h5>
+        <div class="card-text text-center mt-3">
+            <p><strong>Number of Seats:</strong> @room.NumberOfSeats</p>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public Room room { get; set; }
+}

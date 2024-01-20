@@ -1,0 +1,31 @@
+﻿@using TimeTable.Modules
+
+<div class="card m-3 shadow" style="width: 20rem;">
+    <div class="card-body">
+        <h5 class="card-title">Education: @education.Name</h5>
+        <p class="card-text"><strong>Number of Lessons:</strong> @education.AnzLessons</p>
+
+        <div class="subjects-section mt-3">
+            @if (education.Subjects.Count == 0)
+            {
+                    <p class="text-muted">This Education doesn't contain any subjects.</p>
+            }
+            else
+            {
+                    <h6 class="card-subtitle mb-2 text-muted">Subjects:</h6>
+                @foreach (Subject s in education.Subjects)
+                {
+                            <div class="subject-card bg-light p-2 mb-2">
+                                <p class="mb-1"><strong>Name:</strong> @s._designation</p>
+                                <p><strong>Description:</strong> @s._description</p>
+                            </div>
+                }
+            }
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public Education education { get; set; }
+}

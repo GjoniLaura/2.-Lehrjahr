@@ -29,11 +29,15 @@
                     <div class="ps-3">
                     @foreach (ClockTimes c in teacher.UnavailableTimeSlots)
                     {
-                                <div class="mb-2">
+                                <div class="unavailable-time mb-2">
                                     <small class="text-muted d-block">Day: @c.DayOfWeek</small>
                                     <small class="text-muted d-block">From: @c.StartTime</small>
                                     <small class="text-muted">To: @c.EndTime</small>
                                 </div>
+                        @if (c != teacher.UnavailableTimeSlots.Last())
+                        {
+                                        <hr class="my-1">
+                        }
                     }
                     </div>
             }

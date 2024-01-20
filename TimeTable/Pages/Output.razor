@@ -18,6 +18,12 @@
 
         <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off" @onclick="() => ChangeSelection(SelectionType.Educations)">
         <label class="btn btn-outline-primary" for="btnradio3">Educations</label>
+
+         <input type="radio" class="btn-check" name="btnradio" id="btnradio5" autocomplete="off" @onclick="() => ChangeSelection(SelectionType.Subjects)">
+        <label class="btn btn-outline-primary" for="btnradio5">Subjects</label>
+
+        <input type="radio" class="btn-check" name="btnradio" id="btnradio4" autocomplete="off" @onclick="() => ChangeSelection(SelectionType.Rooms)">
+        <label class="btn btn-outline-primary" for="btnradio4">Rooms</label>
     </div>
 
     <div class="mt-4 d-flex flex-row flex-wrap">
@@ -51,12 +57,45 @@
         }
         else if (selectedType == SelectionType.Educations)
         {
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Educations Data</h5>
-                        <!-- Your content for Educations here -->
-                    </div>
-                </div>
+            @if(Educations.Count == 0)
+            {
+                <h6>There are currently no Educations saved.</h6>
+            }
+            else
+            {
+                @foreach(Education e in Educations)
+                {
+                    <EducationForm education="e"></EducationForm>
+                }
+            }
+        } 
+        else if (selectedType == SelectionType.Rooms)
+        {
+            @if (Rooms.Count == 0)
+            {
+                <h6>There are currently no rooms saved.</h6>
+            }
+            else
+            {
+                @foreach (Room r in Rooms)
+                {
+                    <RoomsForm room="r"></RoomsForm>
+                }
+            }
+        }
+        else if (selectedType == SelectionType.Subjects)
+        {
+            @if (Subjects.Count == 0)
+            {
+                <h6>There are currently no subjects saved.</h6>
+            }
+            else
+            {
+                @foreach (Subject s in Subjects)
+                {
+                    <SubjectsForm subject="s"></SubjectsForm>
+                }
+            }
         }
     </div>
 </div>
@@ -65,19 +104,25 @@
     public List<Teacher> Teachers = new List<Teacher>();
     public List<Student> Students = new List<Student>();
     public List<Education> Educations = new List<Education>();
+    public List<Room> Rooms = new List<Room>();
+    public List<Subject> Subjects = new List<Subject>();
 
     protected override async Task OnInitializedAsync()
     {
         Teachers = await TeacherDatabaseConnection.getTeacher();
         Students = await StudentDatabaseConnection.getStudent();
         Educations = await EducationDatabaseConnection.getEducation();
+        Rooms = RoomDatabaseConnection.getRoom();
+        Subjects = SubjectDatabaseConnection.getSubject();
     }
 
     private enum SelectionType
     {
         Teachers,
         Students,
-        Educations
+        Educations,
+        Rooms,
+        Subjects
     }
 
     private SelectionType selectedType = SelectionType.Teachers;
