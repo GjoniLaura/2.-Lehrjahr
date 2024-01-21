@@ -10,6 +10,10 @@
 	<h1 class="text-gold">Home</h1>
 	<h3 class="text-gold mb-4">Welcome to the golden Timetable</h3>
 	<img src="https://us.123rf.com/450wm/snhandini/snhandini2210/snhandini221000105/192628713-welcome-word-hand-lettering-for-posters-and-greeting-cards-design.jpg?ver=6" class="img-fluid" alt="Welcome Image">
+
+	<div class="mt-3">
+		<button class="btn btn-primary" @onclick="FillData">Fill Data</button>
+	</div>
 </div>
 
 <style>
@@ -27,67 +31,63 @@
 </style>
 
 
-@*<button @onclick="AddTeacherMethod">Add Teacher</button>
-@foreach(Teacher t in techers)
-{
-	@foreach(Subject s in t.TeachedSubject)
-	{
-				<h1>@s._premises</h1>
-	}
-}
-
-@foreach (Student s in students)
-{
-	<h1>@s.Education.AnzLessons</h1>
-}
 
 @code{
-	List<Subject> sub = new List<Subject>();
-	List<Teacher> techers = new List<Teacher>();
-	List<Student> students = new List<Student>();
-	List<Education> educations = new List<Education>();
-	List<ClockTimes> clocktime = new List<ClockTimes>();
-	List<Room> rooms = new List<Room>();
+	List<Subject> Subjects = new List<Subject>();
+	List<Subject> Subjects2 = new List<Subject>();
+	List<Teacher> Teachers = new List<Teacher>();
+	List<Student> Students = new List<Student>();
+	List<Education> Educations = new List<Education>();
+	List<ClockTimes> Clocktimes = new List<ClockTimes>();
+	List<ClockTimes> Clocktimes2 = new List<ClockTimes>();
+	List<Room> Rooms = new List<Room>();
 
 	protected override async Task OnInitializedAsync()
 	{
 		await base.OnInitializedAsync();
 
-
 		using var context = DbFactory.CreateDbContext();
 		context.InitializeDatabase();
 
-
-		SubjectDatabaseConnection.setSubject("string1", "string2", "string3");
-		SubjectDatabaseConnection.setSubject("math", "string2", "string3");
-		sub = SubjectDatabaseConnection.getSubject();
-
-		ClockTimeDatabaseConnection.setClockTime(new(13, 0, 0), new(18, 0, 0), DayOfWeek.Monday, "confrence");
-
-		clocktime = ClockTimeDatabaseConnection.getClockTimes();
-
-
-		techers = await TeacherDatabaseConnection.getTeacher();
-
-		TeacherDatabaseConnection.setTeacher("fda", "hdfs", true, sub, true, 4, clocktime);
-
-		techers = await TeacherDatabaseConnection.getTeacher();
-
-		EducationDatabaseConnection.setEducation("bminfromatik", sub, 23);
-		 educations = await EducationDatabaseConnection.getEducation();
-
-		Education eductation = educations[1];
-
-		StudentDatabaseConnection.setStudent("aurel", "bieri", true, eductation, techers, 42, 1, "b32");
-
-		students = await StudentDatabaseConnection.getStudent();
-
-		RoomDatabaseConnection.setRoom("computerRoom", 25);
-		rooms = RoomDatabaseConnection.getRoom();
-
 	}
-	private void AddTeacherMethod()
+
+	private async void FillData()
 	{
-		TeacherDatabaseConnection.setTeacher("fda", "hdfs", true, sub, true, 4, clocktime);
+		RoomDatabaseConnection.setRoom("InformatikZimmer", 20);
+		RoomDatabaseConnection.setRoom("ComputerRoom", 15);
+		RoomDatabaseConnection.setRoom("NormalRoom", 20);
+
+		ClockTimeDatabaseConnection.setClockTime(new TimeSpan(8, 0, 0), new TimeSpan(12, 0, 0), DayOfWeek.Monday, "Arbeitszeit Vormittag");
+		ClockTimeDatabaseConnection.setClockTime(new TimeSpan(13, 0, 0), new TimeSpan(18, 0, 0), DayOfWeek.Friday, "Arbeitszeit Nachmittag");
+		ClockTimeDatabaseConnection.setClockTime(new TimeSpan(10, 0, 0), new TimeSpan(15, 0, 0), DayOfWeek.Wednesday, "Zweite Hälfte Morgens");
+
+		SubjectDatabaseConnection.setSubject("Math", "Learning Math", "Allrooms");
+		SubjectDatabaseConnection.setSubject("German", "Learning German", "Allrooms");
+		SubjectDatabaseConnection.setSubject("English", "Learning English", "Allrooms");
+		SubjectDatabaseConnection.setSubject("Modul M106", "Learning Sql Database Programing", "Informatik");
+		SubjectDatabaseConnection.setSubject("Ipt 5.1", "Practise OOP", "Informatik");
+
+		Subjects = SubjectDatabaseConnection.getSubject();
+		Subjects2.Add(Subjects[0]);
+		Subjects2.Add(Subjects[2]);
+
+
+		EducationDatabaseConnection.setEducation("Informatiker with BM", Subjects, 30);
+		EducationDatabaseConnection.setEducation("Informatiker", Subjects2, 30);
+
+		Educations = await EducationDatabaseConnection.getEducation();
+
+		StudentDatabaseConnection.setStudent("Aurel", "Bieri", true, Educations[0], Teachers, Educations[0].AnzLessons, 1, "Default");
+		StudentDatabaseConnection.setStudent("Ana", "Nikolic", true, Educations[0], Teachers, Educations[0].AnzLessons, 1, "Default");
+		StudentDatabaseConnection.setStudent("Larissa", "Fahrni", true, Educations[1], Teachers, Educations[1].AnzLessons, 1, "Default");
+		StudentDatabaseConnection.setStudent("Laura", "Gjoni", true, Educations[1], Teachers, Educations[1].AnzLessons, 1, "Default");
+
+		Clocktimes = ClockTimeDatabaseConnection.getClockTimes();
+		Clocktimes2.Add(Clocktimes[1]);
+
+		TeacherDatabaseConnection.setTeacher("Tom", "Bucher", true, Subjects2, true, 5, Clocktimes);
+		TeacherDatabaseConnection.setTeacher("Paul", "Test", true, Subjects, true, 5, Clocktimes);
+		TeacherDatabaseConnection.setTeacher("Peter", "Bucher", true, Subjects2, true, 5, Clocktimes2);
 	}
-}*@
+}
+
