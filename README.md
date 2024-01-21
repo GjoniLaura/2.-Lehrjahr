@@ -18,7 +18,8 @@ Ihren ConnectionString müssen sie an zwei Orten im Programm angeben und zwar ei
          "server = localhost; database = timetable; persistsecurityinfo=True;  uid = root; pwd =PASSWORT_HIER",
 		MySqlServerVersion.AutoDetect("server = localhost; database = timetable; persistsecurityinfo=True;  uid = root; pwd =PASSWORT_HIER")```
 )
-);
+);```
+
 
 Wenn sie den ConnectionString an beiden Orten richtig eingegeben haben sollten sie das Programm einfach Starten können. Die Datenbank "timetable" sollte es automatisch erstellen.
 Falls es ein Problem Damit gibt können sie auch die "Paket-Manager Konsole" öffnen und dort den Befehlr "Update-Database" ausführen.
