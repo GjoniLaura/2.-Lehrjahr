@@ -1,0 +1,98 @@
+﻿@page "/"
+@using Restaurant_Reservation.Klassen
+@using Restaurant_Reservation.Service
+@inject NavigationManager NavigationManager
+
+<PageTitle>Restaurants</PageTitle>
+
+<h4>Welcome to our restaurant reservation page!</h4>
+<h6>
+    <i>
+        Discover new culinary experiences and book your table directly online!<br />
+        Our site offers a selection of restaurants where you can make a reservation with just one click. <br />
+        Choose your favorite restaurant, learn more about its offerings and opening hours,<br />
+        and secure your seat for an unforgettable meal.<br /><br />
+    </i>
+</h6>
+
+@if (filteredRestaurants.Any())
+{
+    <div class="restaurant-container">
+        @foreach (var restaurant in filteredRestaurants)
+        {
+            <div class="restaurant-block">
+                <h3 @onclick="() => NavigateToReservationPage(restaurant)">@restaurant.Name</h3>
+                <p>
+                    <strong>Location:</strong>
+                    @restaurant.Location.Street
+                    @restaurant.Location.HouseNumber,
+                    @restaurant.Location.City,
+                    @restaurant.Location.PostalCode,
+                    @restaurant.Location.Country
+                </p>
+            </div>
+        }
+    </div>
+}
+else
+{
+    <p>No restaurants found.</p>
+}
+
+@code {
+    private List<Restaurant> restaurants;
+    private List<Restaurant> filteredRestaurants;
+    private string searchTerm = "";
+
+    protected override void OnInitialized()
+    {
+        var restaurantService = new RestaurantService();
+        restaurants = restaurantService.GetRestaurants();
+        FilterRestaurants();
+    }
+
+    private void FilterRestaurants()
+    {
+        if (string.IsNullOrWhiteSpace(searchTerm))
+        {
+            filteredRestaurants = restaurants;
+        }
+        else
+        {
+            filteredRestaurants = restaurants.Where(r => r.Name.Contains(searchTerm, StringComparison.OrdinalIgnoreCase)).ToList();
+        }
+    }
+
+    private void NavigateToReservationPage(Restaurant restaurant)
+    {
+        NavigationManager.NavigateTo($"/reservation/{restaurant.Id}");
+    }
+}
+
+<style>
+    .restaurant-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: space-between;
+    }
+
+    .restaurant-block {
+        background-color: #f9f9f9;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        width: calc(30% - 20px);
+    }
+
+        .restaurant-block h3 {
+            margin-top: 0;
+            font-size: 1.5rem;
+            color: #333;
+        }
+
+        .restaurant-block p {
+            margin-bottom: 0;
+            color: #666;
+        }
+</style>
