@@ -3,8 +3,24 @@
   "WorkspaceRootPath": "C:\\temp\\Reservation\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{D484F70A-7DB5-4B71-98DA-229051C31C05}|Restaurant_Reservation\\Restaurant_Reservation.csproj|c:\\temp\\reservation\\restaurant_reservation\\pages\\restaurants.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D484F70A-7DB5-4B71-98DA-229051C31C05}|Restaurant_Reservation\\Restaurant_Reservation.csproj|solutionrelative:restaurant_reservation\\pages\\restaurants.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{D484F70A-7DB5-4B71-98DA-229051C31C05}|Restaurant_Reservation\\Restaurant_Reservation.csproj|c:\\temp\\reservation\\restaurant_reservation\\datenbank\\databasehelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D484F70A-7DB5-4B71-98DA-229051C31C05}|Restaurant_Reservation\\Restaurant_Reservation.csproj|solutionrelative:restaurant_reservation\\datenbank\\databasehelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D484F70A-7DB5-4B71-98DA-229051C31C05}|Restaurant_Reservation\\Restaurant_Reservation.csproj|c:\\temp\\reservation\\restaurant_reservation\\pages\\reservation.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D484F70A-7DB5-4B71-98DA-229051C31C05}|Restaurant_Reservation\\Restaurant_Reservation.csproj|solutionrelative:restaurant_reservation\\pages\\reservation.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D484F70A-7DB5-4B71-98DA-229051C31C05}|Restaurant_Reservation\\Restaurant_Reservation.csproj|c:\\temp\\reservation\\restaurant_reservation\\service\\restaurantservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D484F70A-7DB5-4B71-98DA-229051C31C05}|Restaurant_Reservation\\Restaurant_Reservation.csproj|solutionrelative:restaurant_reservation\\service\\restaurantservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D484F70A-7DB5-4B71-98DA-229051C31C05}|Restaurant_Reservation\\Restaurant_Reservation.csproj|c:\\temp\\reservation\\restaurant_reservation\\klassen\\restaurant.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D484F70A-7DB5-4B71-98DA-229051C31C05}|Restaurant_Reservation\\Restaurant_Reservation.csproj|solutionrelative:restaurant_reservation\\klassen\\restaurant.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D484F70A-7DB5-4B71-98DA-229051C31C05}|Restaurant_Reservation\\Restaurant_Reservation.csproj|c:\\temp\\reservation\\restaurant_reservation\\klassen\\reservation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -26,7 +42,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -34,20 +50,59 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Reservation.cs",
-              "DocumentMoniker": "C:\\temp\\Reservation\\Restaurant_Reservation\\Klassen\\Reservation.cs",
-              "RelativeDocumentMoniker": "Restaurant_Reservation\\Klassen\\Reservation.cs",
-              "ToolTip": "C:\\temp\\Reservation\\Restaurant_Reservation\\Klassen\\Reservation.cs",
-              "RelativeToolTip": "Restaurant_Reservation\\Klassen\\Reservation.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAAAAAA",
+              "DocumentIndex": 0,
+              "Title": "Restaurants.razor",
+              "DocumentMoniker": "C:\\temp\\Reservation\\Restaurant_Reservation\\Pages\\Restaurants.razor",
+              "RelativeDocumentMoniker": "Restaurant_Reservation\\Pages\\Restaurants.razor",
+              "ToolTip": "C:\\temp\\Reservation\\Restaurant_Reservation\\Pages\\Restaurants.razor",
+              "RelativeToolTip": "Restaurant_Reservation\\Pages\\Restaurants.razor",
+              "ViewState": "AQIAACQAAAAAAAAAAAAWwDIAAAA5AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-17T18:40:08.428Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Restaurant.cs",
+              "DocumentMoniker": "C:\\temp\\Reservation\\Restaurant_Reservation\\Klassen\\Restaurant.cs",
+              "RelativeDocumentMoniker": "Restaurant_Reservation\\Klassen\\Restaurant.cs",
+              "ToolTip": "C:\\temp\\Reservation\\Restaurant_Reservation\\Klassen\\Restaurant.cs",
+              "RelativeToolTip": "Restaurant_Reservation\\Klassen\\Restaurant.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-17T13:23:22.315Z",
+              "WhenOpened": "2024-05-17T13:58:51.236Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "RestaurantService.cs",
+              "DocumentMoniker": "C:\\temp\\Reservation\\Restaurant_Reservation\\Service\\RestaurantService.cs",
+              "RelativeDocumentMoniker": "Restaurant_Reservation\\Service\\RestaurantService.cs",
+              "ToolTip": "C:\\temp\\Reservation\\Restaurant_Reservation\\Service\\RestaurantService.cs",
+              "RelativeToolTip": "Restaurant_Reservation\\Service\\RestaurantService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAAAlAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-17T13:45:14.641Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "Reservation.razor",
+              "DocumentMoniker": "C:\\temp\\Reservation\\Restaurant_Reservation\\Pages\\Reservation.razor",
+              "RelativeDocumentMoniker": "Restaurant_Reservation\\Pages\\Reservation.razor",
+              "ToolTip": "C:\\temp\\Reservation\\Restaurant_Reservation\\Pages\\Reservation.razor",
+              "RelativeToolTip": "Restaurant_Reservation\\Pages\\Reservation.razor",
+              "ViewState": "AQIAAIEAAAAAAAAAAAAAAE8AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-17T13:27:46.373Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "User.cs",
               "DocumentMoniker": "C:\\temp\\Reservation\\Restaurant_Reservation\\Klassen\\User.cs",
               "RelativeDocumentMoniker": "Restaurant_Reservation\\Klassen\\User.cs",
@@ -60,21 +115,34 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "DatabaseHelper.cs",
               "DocumentMoniker": "C:\\temp\\Reservation\\Restaurant_Reservation\\Datenbank\\DatabaseHelper.cs",
               "RelativeDocumentMoniker": "Restaurant_Reservation\\Datenbank\\DatabaseHelper.cs",
               "ToolTip": "C:\\temp\\Reservation\\Restaurant_Reservation\\Datenbank\\DatabaseHelper.cs",
               "RelativeToolTip": "Restaurant_Reservation\\Datenbank\\DatabaseHelper.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABUAAAAAAAAA",
+              "ViewState": "AQIAABoAAAAAAAAAAAAcwCoAAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-17T13:17:54.37Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Restaurant_Reservation",
+              "DocumentIndex": 5,
+              "Title": "Reservation.cs",
+              "DocumentMoniker": "C:\\temp\\Reservation\\Restaurant_Reservation\\Klassen\\Reservation.cs",
+              "RelativeDocumentMoniker": "Restaurant_Reservation\\Klassen\\Reservation.cs",
+              "ToolTip": "C:\\temp\\Reservation\\Restaurant_Reservation\\Klassen\\Reservation.cs",
+              "RelativeToolTip": "Restaurant_Reservation\\Klassen\\Reservation.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-17T13:23:22.315Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Restaurant_Reservation.csproj",
               "DocumentMoniker": "C:\\temp\\Reservation\\Restaurant_Reservation\\Restaurant_Reservation.csproj",
               "RelativeDocumentMoniker": "Restaurant_Reservation\\Restaurant_Reservation.csproj",
               "ToolTip": "C:\\temp\\Reservation\\Restaurant_Reservation\\Restaurant_Reservation.csproj",

@@ -18,12 +18,31 @@ namespace Restaurant_Reservation.Datenbank
 
         public static async Task PostUserInfo(User user)
         {
-            var DatenbankHelper = new DatabaseHelper();
+            var databaseHelper = new DatabaseHelper();
 
-            var result = await DatenbankHelper._firebase
+            var result = await databaseHelper._firebase
                 .Child("UserInfos")
                 .PostAsync(user);
         }
+
+        public static async Task PostRestaurant(Restaurant restaurant)
+        {
+            var databaseHelper = new DatabaseHelper();
+            var restul = await databaseHelper._firebase
+                .Child("Restaurant")
+                .PostAsync(restaurant);
+        }
+
+        public static async Task<List<Restaurant>> GetAllRestaurants()
+        {
+            var databaseHelper = new DatabaseHelper();
+            var restaurants = await databaseHelper._firebase
+                .Child("Restaurant")
+                .OnceAsync<Restaurant>();
+
+            return restaurants.Select(r => r.Object).ToList();
+        }
+
 
     }
 }

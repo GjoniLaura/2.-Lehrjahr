@@ -1,7 +1,7 @@
 ﻿using Restaurant_Reservation.Klassen;
 using Restaurant_Reservation.Pages;
 using System.Net;
-
+using Restaurant_Reservation.Datenbank;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -30,6 +30,11 @@ namespace Restaurant_Reservation.Service
 
         public List<Restaurant> GetRestaurants()
         {
+            /*foreach (Restaurant res in restaurants)
+            {
+                DatabaseHelper.PostRestaurant(res);
+            }*/
+
             return restaurants;
         }
 

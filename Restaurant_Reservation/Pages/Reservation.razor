@@ -1,6 +1,7 @@
 ﻿@page "/reservation/{Id:int}"
 @using Restaurant_Reservation.Klassen
 @using Restaurant_Reservation.Service
+@using Restaurant_Reservation.Datenbank
 
 <PageTitle>Reservation</PageTitle>
 
@@ -31,30 +32,30 @@
 
 <h2>Reservation Form</h2>
 
-<form class="reservation-form">
+<form class="reservation-form" @onsubmit="HandleSubmit">
     <div class="form-group">
         <label for="firstName">First Name:</label>
-        <input type="text" id="firstName" name="firstName" required>
+        <input type="text" id="firstName" @bind="FirstName" required>
     </div>
     <div class="form-group">
         <label for="lastName">Last Name:</label>
-        <input type="text" id="lastName" name="lastName" required>
+        <input type="text" id="lastName" @bind="LastName" required>
     </div>
     <div class="form-group">
         <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
+        <input type="email" id="email" @bind="Email" required>
     </div>
     <div class="form-group">
         <label for="phone">Phone:</label>
-        <input type="tel" id="phone" name="phone" required>
+        <input type="tel" id="phone" @bind="Phone" required>
     </div>
     <div class="form-group">
         <label for="guests">Number of Guests:</label>
-        <input type="number" id="guests" name="guests" min="1" required>
+        <input type="number" id="guests" @bind="NumberOfGuests" min="1" required>
     </div>
     <div class="form-group">
         <label for="notes">Additional Notes:</label>
-        <textarea id="notes" name="notes" rows="4"></textarea>
+        <textarea id="notes" @bind="Notes" rows="4"></textarea>
     </div>
     <button type="submit">Submit Reservation</button>
 </form>
@@ -64,6 +65,21 @@
     public int Id { get; set; }
 
     private Restaurant Restaurant { get; set; }
+
+    private string FirstName { get; set; }
+    private string LastName { get; set; }
+    private string Email { get; set; }
+    private string Phone { get; set; }
+    private int NumberOfGuests { get; set; }
+    private string Notes { get; set; }
+
+    private void HandleSubmit()
+    {
+        User ResU = new User(FirstName, LastName, NumberOfGuests, Phone, Notes);
+        DatabaseHelper.PostUserInfo(ResU);
+
+       // Reservation Res = new Reservation()
+    }
 
     protected override void OnInitialized()
     {
