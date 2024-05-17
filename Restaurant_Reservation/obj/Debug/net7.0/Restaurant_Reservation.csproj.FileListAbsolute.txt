@@ -826,3 +826,13 @@ C:\Users\laura\OneDrive - sluz\Dokumente\BBZW Sursee\IPT 7.1\RestaurantReservati
 C:\Users\laura\OneDrive - sluz\Dokumente\BBZW Sursee\IPT 7.1\RestaurantReservation\Restaurant_Reservation\Restaurant_Reservation\obj\Debug\net7.0\refint\Restaurant_Reservation.dll
 C:\Users\laura\OneDrive - sluz\Dokumente\BBZW Sursee\IPT 7.1\RestaurantReservation\Restaurant_Reservation\Restaurant_Reservation\obj\Debug\net7.0\Restaurant_Reservation.pdb
 C:\Users\laura\OneDrive - sluz\Dokumente\BBZW Sursee\IPT 7.1\RestaurantReservation\Restaurant_Reservation\Restaurant_Reservation\obj\Debug\net7.0\ref\Restaurant_Reservation.dll
+C:\temp\Reservation\Restaurant_Reservation\obj\Debug\net7.0\Restaurant_Reservation.csproj.AssemblyReference.cache
+C:\temp\Reservation\Restaurant_Reservation\obj\Debug\net7.0\Restaurant_Reservation.GeneratedMSBuildEditorConfig.editorconfig
+C:\temp\Reservation\Restaurant_Reservation\obj\Debug\net7.0\Restaurant_Reservation.AssemblyInfoInputs.cache
+C:\temp\Reservation\Restaurant_Reservation\obj\Debug\net7.0\Restaurant_Reservation.AssemblyInfo.cs
+C:\temp\Reservation\Restaurant_Reservation\obj\Debug\net7.0\Restaurant_Reservation.csproj.CoreCompileInputs.cache
+C:\temp\Reservation\Restaurant_Reservation\obj\Debug\net7.0\Restaurant_Reservation.MvcApplicationPartsAssemblyInfo.cache
+C:\temp\Reservation\Restaurant_Reservation\obj\Debug\net7.0\Restaurant_Reservation.sourcelink.json
+C:\temp\Reservation\Restaurant_Reservation\obj\Debug\net7.0\Restaurant_Reservation.dll
+C:\temp\Reservation\Restaurant_Reservation\obj\Debug\net7.0\refint\Restaurant_Reservation.dll
+C:\temp\Reservation\Restaurant_Reservation\obj\Debug\net7.0\Restaurant_Reservation.pdb
