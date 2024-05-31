@@ -10,8 +10,11 @@ namespace Restaurant_Reservation.Klassen
         public string Description { get; set; }
         public Location Location { get; set; }
         public int Valuation { get; set; }
-        public List<OpeningHours> OpeningHours { get; set; }
+        public TimeSpan OpeningTime { get; set; }
+        public TimeSpan ClosingTime { get; set; }
         public string Cuisine { get; set; }
+        public List<Table> Tables { get; set; } = new List<Table>();
+
     }
 
     public class Location
@@ -21,12 +24,5 @@ namespace Restaurant_Reservation.Klassen
         public string City { get; set; }
         public string PostalCode { get; set; }
         public string Country { get; set; }
-    }
-
-    public class OpeningHours
-    {
-        public DayOfWeek DayOfWeek { get; set; }
-        public TimeSpan OpeningTime { get; set; }
-        public TimeSpan ClosingTime { get; set; }
     }
 }

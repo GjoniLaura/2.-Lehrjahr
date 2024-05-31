@@ -43,6 +43,25 @@ namespace Restaurant_Reservation.Datenbank
             return restaurants.Select(r => r.Object).ToList();
         }
 
+        public async Task<List<Reservation>> GetReservationsForRestaurant(int restaurantId)
+        {
+            var reservations = await _firebase
+                .Child("reservations")
+                .OnceAsync<Reservation>();
+
+            return reservations
+                .Select(item => item.Object)
+                .Where(reservation => reservation.restaurant.Id == restaurantId)
+                .ToList();
+        }
+
+        public async Task SaveReservation(Reservation reservation)
+        {
+            await _firebase
+                .Child("reservations")
+                .PostAsync(reservation);
+        }
+
 
     }
 }

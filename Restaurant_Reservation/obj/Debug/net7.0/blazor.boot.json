@@ -1,7 +1,7 @@
 {
   "entryAssembly": "Restaurant_Reservation",
   "resources": {
-    "hash": "sha256-088wyFdD/jsWMXQt3U5QPkJDtDuNxIwbXP4kIPkJDPw=",
+    "hash": "sha256-6l386eMZG4X9gFeIapEJMqNAiL4tDtOFnVPYTJ6tUWs=",
     "runtime": {
       "dotnet.7.0.19.vnknkknftx.js": "sha256-J9IVsSLjfEIyn/0XKSDWXHMve5eK11v9Aj06G7zPUYo=",
       "dotnet.timezones.blat": "sha256-kK6U8Vo/Xb8zgDH6JtdgAGSA6NUASHhvZoB+hINV0ms=",
@@ -29,12 +29,15 @@
       "Microsoft.Extensions.FileProviders.Abstractions.dll": "sha256-Zt6OY6gg/1Tzt9oFOQBkezPvUVkFK4dyM6Pfk+MTUvg=",
       "Microsoft.Extensions.FileProviders.Physical.dll": "sha256-9xkIbIienaRj9Td2MyWYzL9JmVx6CKbGCPrvJ1Pxfn8=",
       "Microsoft.Extensions.FileSystemGlobbing.dll": "sha256-Gm0yiS5fySh2nZXdCRKZIbASK8sSukwjogLc+a9EBZY=",
+      "Microsoft.Extensions.Localization.dll": "sha256-pQiSK5mlv8ZnKSyCWuV2D0RpzUSoq/RQLgZTY79aFEk=",
+      "Microsoft.Extensions.Localization.Abstractions.dll": "sha256-+l4b058wgEjArrWrQdzA4wIFnThKXYVeBUTrOYMpj7Q=",
       "Microsoft.Extensions.Logging.dll": "sha256-WMsuY8rhtg+vvssGFSR7ZLKhqYPAzOi538IXMoiJ6bI=",
       "Microsoft.Extensions.Logging.Abstractions.dll": "sha256-7mzUlhcvGxpAVO4h/Tka7P/8IXF9ZsHkGt0fp5aufkU=",
       "Microsoft.Extensions.Options.dll": "sha256-gcHJrSv1wTqvF9SyWTEKcbiShn4mkgfnm9+tRQr4OqY=",
       "Microsoft.Extensions.Primitives.dll": "sha256-q4ruoDSCjV/QJY9ZkzV6uxvEvZUVrDbyUjU3SSh5SlE=",
       "Microsoft.JSInterop.dll": "sha256-xenAnavn/a92BD+qN9enjJLVttI91ZqW5ulI6Y81VdI=",
       "Microsoft.JSInterop.WebAssembly.dll": "sha256-ECKh1S96xdsHV9EhDvH4KfG1ihaSfcZ/Ys4I2zy5V+M=",
+      "MudBlazor.dll": "sha256-qLSnA+9E3mTkwg77JTNyf3hYblMa1KIbfUYSb3X8BsE=",
       "Newtonsoft.Json.dll": "sha256-cs8pHUurDt0IqbB8YXPh560au3q3J/1wRL9jBddRVmE=",
       "System.IO.Pipelines.dll": "sha256-P/MqD0fCBd5bgTM16JC1QC/Zz7s+CwViyzmDFkBG4/c=",
       "System.Reactive.dll": "sha256-DGRJ/1LpbsyfraCrxSrhsO8daPSmqo+CURp0EeYBhZk=",
@@ -207,10 +210,10 @@
       "mscorlib.dll": "sha256-lo3zWxda3c3QawbfHvOghgqCpdHXBTdqPT0UJceBT2A=",
       "netstandard.dll": "sha256-BvougKnccTedjRXZ+Ll94v1qqBt4cr0MqBVYFpGvYLA=",
       "System.Private.CoreLib.dll": "sha256-i0lh8QB6xhbEgqLyhh/0TaUFxAB3Iz2y0VH8m68TIdY=",
-      "Restaurant_Reservation.dll": "sha256-Ln2jfWkjZEFbYGlisB2ny3sb9dYf7hbv+Y+absBSRos="
+      "Restaurant_Reservation.dll": "sha256-ap21CrsLCmYZXD2tv5muLpCXeU/xqCMTi4NAskLuubg="
     },
     "pdb": {
-      "Restaurant_Reservation.pdb": "sha256-EyTkdy9lN7O4bR2faVXRoHh0ZsUua/7pGQA890AAgLM="
+      "Restaurant_Reservation.pdb": "sha256-DkvuhsNSetTaBeCKjq1VO+il3KgJQtxDOOh59iuCVFs="
     },
     "runtimeAssets": {
       "dotnet.wasm": {

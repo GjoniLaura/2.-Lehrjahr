@@ -15,11 +15,15 @@
 </p>
 
 <p>
+    <strong>@Restaurant.Name</strong><br />
     <strong>Opening Hours:</strong><br />
     <ul>
-        @foreach (var hours in Restaurant.OpeningHours)
-        {
-            <li>@hours.DayOfWeek: @hours.OpeningTime - @hours.ClosingTime</li>
+        @{
+            var daysOfWeek = new string[] { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
+            foreach (var day in daysOfWeek)
+            {
+                <li>@day: @Restaurant.OpeningTime - @Restaurant.ClosingTime</li>
+            }
         }
     </ul>
 </p>
@@ -57,6 +61,7 @@
         <label for="notes">Additional Notes:</label>
         <textarea id="notes" @bind="Notes" rows="4"></textarea>
     </div>
+
     <button type="submit">Submit Reservation</button>
 </form>
 
@@ -78,7 +83,7 @@
         User ResU = new User(FirstName, LastName, NumberOfGuests, Phone, Notes);
         DatabaseHelper.PostUserInfo(ResU);
 
-       // Reservation Res = new Reservation()
+       //Reservation Res = new Reservation(ResU, Restaurant )
     }
 
     protected override void OnInitialized()
