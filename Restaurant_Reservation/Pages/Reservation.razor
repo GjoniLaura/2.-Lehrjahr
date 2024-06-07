@@ -2,6 +2,7 @@
 @using Restaurant_Reservation.Klassen
 @using Restaurant_Reservation.Service
 @using Restaurant_Reservation.Datenbank
+@inject ReservationService ReservationService
 
 <PageTitle>Reservation</PageTitle>
 
@@ -58,6 +59,19 @@
         <input type="number" id="guests" @bind="NumberOfGuests" min="1" required>
     </div>
     <div class="form-group">
+        <label for="date">Date:</label>
+        <InputDate id="date" @bind-Value="ReservationDate" @onchange="OnDateChanged" required />
+    </div>
+    <div class="form-group">
+        <label for="time">Time:</label>
+        <InputSelect id="time" @bind-Value="ReservationTime">
+            @foreach (var time in availableTimes)
+            {
+                <option value="@time">@time</option>
+            }
+        </InputSelect>
+    </div>
+    <div class="form-group">
         <label for="notes">Additional Notes:</label>
         <textarea id="notes" @bind="Notes" rows="4"></textarea>
     </div>
@@ -76,20 +90,48 @@
     private string Email { get; set; }
     private string Phone { get; set; }
     private int NumberOfGuests { get; set; }
+    private DateTime ReservationDate { get; set; }
+    private string ReservationTime { get; set; }
     private string Notes { get; set; }
 
-    private void HandleSubmit()
-    {
-        User ResU = new User(FirstName, LastName, NumberOfGuests, Phone, Notes);
-        DatabaseHelper.PostUserInfo(ResU);
+    private List<string> availableTimes = new List<string>();
 
-       //Reservation Res = new Reservation(ResU, Restaurant )
+    private async Task OnDateChanged(ChangeEventArgs e)
+    {
+        await UpdateAvailableTimes();
     }
 
-    protected override void OnInitialized()
+    private async Task UpdateAvailableTimes()
+    {
+        if (Restaurant != null && ReservationDate != default)
+        {
+            var times = await ReservationService.GetAvailableTimesAsync(Restaurant, ReservationDate, NumberOfGuests);
+            availableTimes = times.Select(t => t.ToString("HH:mm")).ToList();
+        }
+
+        StateHasChanged();
+    }
+
+    private async Task HandleSubmit()
+    {
+        var user = new User(FirstName, LastName, NumberOfGuests, Phone, Notes);
+        var dateTimeString = $"{ReservationDate:yyyy-MM-dd} {ReservationTime}";
+        if (DateTime.TryParse(dateTimeString, out var reservationDateTime))
+        {
+            var result = await ReservationService.MakeReservationAsync(Restaurant, user, reservationDateTime, NumberOfGuests);
+            // Handle reservation result (e.g., show confirmation message)
+        }
+    }
+
+    protected override async Task OnInitializedAsync()
     {
         var restaurantService = new RestaurantService();
         Restaurant = restaurantService.GetRestaurantById(Id);
+
+        if (Restaurant != null)
+        {
+            await UpdateAvailableTimes();
+        }
     }
 }
 
@@ -113,7 +155,9 @@
     input[type="email"],
     input[type="tel"],
     textarea,
-    input[type="number"] {
+    input[type="number"],
+    input[type="date"],
+    select {
         width: 100%;
         padding: 10px;
         border: 1px solid #ccc;
@@ -136,7 +180,7 @@
         transition: background-color 0.3s;
     }
 
-    button[type="submit"]:hover {
-        background-color: #45a049;
-    }
+        button[type="submit"]:hover {
+            background-color: #45a049;
+        }
 </style>

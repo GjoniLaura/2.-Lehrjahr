@@ -45,10 +45,10 @@ else
     private List<Restaurant> filteredRestaurants;
     private string searchTerm = "";
 
-    protected override void OnInitialized()
+    protected async override void OnInitialized()
     {
-        var restaurantService = new RestaurantService();
-        restaurants = restaurantService.GetRestaurants();
+        
+        restaurants = await DatabaseHelper.GetAllRestaurants();
         FilterRestaurants();
     }
 

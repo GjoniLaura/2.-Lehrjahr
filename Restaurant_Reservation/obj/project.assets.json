@@ -3446,11 +3446,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\temp\\restaurantreservation\\Restaurant_Reservation\\Restaurant_Reservation.csproj",
+      "projectUniqueName": "C:\\temp\\restaurant\\Restaurant_Reservation\\Restaurant_Reservation.csproj",
       "projectName": "Restaurant_Reservation",
-      "projectPath": "C:\\temp\\restaurantreservation\\Restaurant_Reservation\\Restaurant_Reservation.csproj",
+      "projectPath": "C:\\temp\\restaurant\\Restaurant_Reservation\\Restaurant_Reservation.csproj",
       "packagesPath": "C:\\Users\\Aurel\\.nuget\\packages\\",
-      "outputPath": "C:\\temp\\restaurantreservation\\Restaurant_Reservation\\obj\\",
+      "outputPath": "C:\\temp\\restaurant\\Restaurant_Reservation\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

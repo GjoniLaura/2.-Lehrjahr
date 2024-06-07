@@ -4,195 +4,188 @@ using System.Net;
 using Restaurant_Reservation.Datenbank;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
+using MudBlazor;
+using System.Threading.Tasks;
 
 namespace Restaurant_Reservation.Service
 {
-    public class RestaurantService
+    public class RestaurantInitializer
     {
-        private List<Restaurant> restaurants;
-
-        public RestaurantService()
+        public static async Task<List<Restaurant>> InitializeRestaurantsAsync()
         {
             var restaurants = new List<Restaurant>
-      {
-        new Restaurant
-        {
-            Id = 1,
-            Name = "La Petite France",
-            Description = "French cuisine in a cozy atmosphere.",
-            Location = new Location { Street = "1470 rue Peel", HouseNumber = "1", City = "Montreal", PostalCode = "H3A 1T1", Country = "Canada" },
-            Valuation = 4,
-            Cuisine = "French",
-            OpeningTime = TimeSpan.FromHours(18),
-            ClosingTime = TimeSpan.FromHours(22),
-            Tables = new List<Table>
             {
-                new Table { TableId = 1, Seats = 4 },
-                new Table { TableId = 2, Seats = 2 },
-                new Table { TableId = 3, Seats = 6 }
-            }
-        },
-        new Restaurant
-        {
-            Id = 2,
-            Name = "The Spotted Pig",
-            Description = "Gastropub with seasonal dishes.",
-            Location = new Location { Street = "314 West 11th Street", HouseNumber = "", City = "New York", PostalCode = "10014", Country = "USA" },
-            Valuation = 5,
-            Cuisine = "Gastropub",
-            OpeningTime = TimeSpan.FromHours(17),
-            ClosingTime = TimeSpan.FromHours(23),
-            Tables = new List<Table>
-            {
-                new Table { TableId = 4, Seats = 4 },
-                new Table { TableId = 5, Seats = 2 },
-                new Table { TableId = 6, Seats = 6 }
-            }
-        },
-        new Restaurant
-        {
-            Id = 3,
-            Name = "Dinner by Heston Blumenthal",
-            Description = "Innovative British dishes by a renowned chef.",
-            Location = new Location { Street = "66 Knightsbridge", HouseNumber = "", City = "London", PostalCode = "SW1X 7LA", Country = "UK" },
-            Valuation = 5,
-            Cuisine = "British",
-            OpeningTime = TimeSpan.FromHours(18),
-            ClosingTime = TimeSpan.FromHours(23),
-            Tables = new List<Table>
-            {
-                new Table { TableId = 7, Seats = 4 },
-                new Table { TableId = 8, Seats = 2 },
-                new Table { TableId = 9, Seats = 6 }
-            }
-        },
-        new Restaurant
-        {
-            Id = 4,
-            Name = "El Celler de Can Roca",
-            Description = "Award-winning restaurant serving creative Catalan cuisine.",
-            Location = new Location { Street = "Carrer de Can Sunyer", HouseNumber = "48", City = "Girona", PostalCode = "17007", Country = "Spain" },
-            Valuation = 5,
-            Cuisine = "Spanish",
-            OpeningTime = TimeSpan.FromHours(13),
-            ClosingTime = TimeSpan.FromHours(15),
-            Tables = new List<Table>
-            {
-                new Table { TableId = 10, Seats = 4 },
-                new Table { TableId = 11, Seats = 2 },
-                new Table { TableId = 12, Seats = 6 }
-            }
-        },
-        new Restaurant
-        {
-            Id = 5,
-            Name = "Sukiyabashi Jiro",
-            Description = "Renowned sushi restaurant with a fixed menu.",
-            Location = new Location { Street = "2 Chome-15-2 Roppongi", HouseNumber = "", City = "Minato City", PostalCode = "106-0032", Country = "Japan" },
-            Valuation = 5,
-            Cuisine = "Japanese",
-            OpeningTime = TimeSpan.FromHours(12),
-            ClosingTime = TimeSpan.FromHours(15),
-            Tables = new List<Table>
-            {
-                new Table { TableId = 13, Seats = 4 },
-                new Table { TableId = 14, Seats = 2 },
-                new Table { TableId = 15, Seats = 6 }
-            }
-        },
-        new Restaurant
-        {
-            Id = 6,
-            Name = "Osteria Francescana",
-            Description = "Michelin-starred Italian restaurant.",
-            Location = new Location { Street = "Via Stella", HouseNumber = "22", City = "Modena", PostalCode = "41121", Country = "Italy" },
-            Valuation = 5,
-            Cuisine = "Italian",
-            OpeningTime = TimeSpan.FromHours(12),
-            ClosingTime = TimeSpan.FromHours(14),
-            Tables = new List<Table>
-            {
-                new Table { TableId = 16, Seats = 4 },
-                new Table { TableId = 17, Seats = 2 },
-                new Table { TableId = 18, Seats = 6 }
-            }
-        },
-        new Restaurant
-        {
-            Id = 7,
-            Name = "Narisawa",
-            Description = "Innovative Japanese cuisine with a focus on sustainability.",
-            Location = new Location { Street = "Minami Aoyama", HouseNumber = "2 Chome-6-15", City = "Minato City", PostalCode = "107-0062", Country = "Japan" },
-            Valuation = 5,
-            Cuisine = "Japanese",
-            OpeningTime = TimeSpan.FromHours(12),
-            ClosingTime = TimeSpan.FromHours(14),
-            Tables = new List<Table>
-            {
-                new Table { TableId = 19, Seats = 4 },
-                new Table { TableId = 20, Seats = 2 },
-                new Table { TableId = 21, Seats = 6 }
-            }
-        },
-        new Restaurant
-        {
-            Id = 8,
-            Name = "Mirazur",
-            Description = "Seaside restaurant with panoramic views and innovative cuisine.",
-            Location = new Location { Street = "30 Avenue Aristide Briand", HouseNumber = "", City = "Menton", PostalCode = "06500", Country = "France" },
-            Valuation = 5,
-            Cuisine = "French",
-            OpeningTime = TimeSpan.FromHours(12),
-            ClosingTime = TimeSpan.FromHours(14),
-            Tables = new List<Table>
-            {
-                new Table { TableId = 22, Seats = 4 },
-                new Table { TableId = 23, Seats = 2 },
-                new Table { TableId = 24, Seats = 6 }
-            }
-        },
-        new Restaurant
-        {
-            Id = 9,
-            Name = "Geranium",
-            Description = "Modern Nordic cuisine in an elegant setting.",
-            Location = new Location { Street = "Per Henrik Lings Allé", HouseNumber = "4", City = "Copenhagen", PostalCode = "06500", Country = "France" },
-            Valuation = 5,
-            Cuisine = "French",
-            OpeningTime = TimeSpan.FromHours(12),
-            ClosingTime = TimeSpan.FromHours(14),
-            Tables = new List<Table>
-            {
-                new Table { TableId = 25, Seats = 4 },
-                new Table { TableId = 26, Seats = 2 },
-                new Table { TableId = 27, Seats = 6 }
-            }
-        }
-    };
+                new Restaurant
+                {
+                    Id = 1,
+                    Name = "La Petite France",
+                    Description = "French cuisine in a cozy atmosphere.",
+                    Location = new Location { Street = "1470 rue Peel", HouseNumber = "1", City = "Montreal", PostalCode = "H3A 1T1", Country = "Canada" },
+                    Valuation = 4,
+                    Cuisine = "French",
+                    OpeningTime = TimeSpan.FromHours(18),
+                    ClosingTime = TimeSpan.FromHours(22),
+                    Tables = new List<Table>
+                    {
+                        new Table { TableId = 1, Seats = 4 },
+                        new Table { TableId = 2, Seats = 2 },
+                        new Table { TableId = 3, Seats = 6 }
+                    }
+                },
+                new Restaurant
+                {
+                    Id = 2,
+                    Name = "The Spotted Pig",
+                    Description = "Gastropub with seasonal dishes.",
+                    Location = new Location { Street = "314 West 11th Street", HouseNumber = "", City = "New York", PostalCode = "10014", Country = "USA" },
+                    Valuation = 5,
+                    Cuisine = "Gastropub",
+                    OpeningTime = TimeSpan.FromHours(17),
+                    ClosingTime = TimeSpan.FromHours(23),
+                    Tables = new List<Table>
+                    {
+                        new Table { TableId = 4, Seats = 4 },
+                        new Table { TableId = 5, Seats = 2 },
+                        new Table { TableId = 6, Seats = 6 }
+                    }
+                },
+                new Restaurant
+                {
+                    Id = 3,
+                    Name = "Dinner by Heston Blumenthal",
+                    Description = "Innovative British dishes by a renowned chef.",
+                    Location = new Location { Street = "66 Knightsbridge", HouseNumber = "", City = "London", PostalCode = "SW1X 7LA", Country = "UK" },
+                    Valuation = 5,
+                    Cuisine = "British",
+                    OpeningTime = TimeSpan.FromHours(18),
+                    ClosingTime = TimeSpan.FromHours(23),
+                    Tables = new List<Table>
+                    {
+                        new Table { TableId = 7, Seats = 4 },
+                        new Table { TableId = 8, Seats = 2 },
+                        new Table { TableId = 9, Seats = 6 }
+                    }
+                },
+                new Restaurant
+                {
+                    Id = 4,
+                    Name = "El Celler de Can Roca",
+                    Description = "Award-winning restaurant serving creative Catalan cuisine.",
+                    Location = new Location { Street = "Carrer de Can Sunyer", HouseNumber = "48", City = "Girona", PostalCode = "17007", Country = "Spain" },
+                    Valuation = 5,
+                    Cuisine = "Spanish",
+                    OpeningTime = TimeSpan.FromHours(13),
+                    ClosingTime = TimeSpan.FromHours(15),
+                    Tables = new List<Table>
+                    {
+                        new Table { TableId = 10, Seats = 4 },
+                        new Table { TableId = 11, Seats = 2 },
+                        new Table { TableId = 12, Seats = 6 }
+                    }
+                },
+                new Restaurant
+                {
+                    Id = 5,
+                    Name = "Sukiyabashi Jiro",
+                    Description = "Renowned sushi restaurant with a fixed menu.",
+                    Location = new Location { Street = "2 Chome-15-2 Roppongi", HouseNumber = "", City = "Minato City", PostalCode = "106-0032", Country = "Japan" },
+                    Valuation = 5,
+                    Cuisine = "Japanese",
+                    OpeningTime = TimeSpan.FromHours(12),
+                    ClosingTime = TimeSpan.FromHours(15),
+                    Tables = new List<Table>
+                    {
+                        new Table { TableId = 13, Seats = 4 },
+                        new Table { TableId = 14, Seats = 2 },
+                        new Table { TableId = 15, Seats = 6 }
+                    }
+                },
+                new Restaurant
+                {
+                    Id = 6,
+                    Name = "Osteria Francescana",
+                    Description = "Michelin-starred Italian restaurant.",
+                    Location = new Location { Street = "Via Stella", HouseNumber = "22", City = "Modena", PostalCode = "41121", Country = "Italy" },
+                    Valuation = 5,
+                    Cuisine = "Italian",
+                    OpeningTime = TimeSpan.FromHours(12),
+                    ClosingTime = TimeSpan.FromHours(14),
+                    Tables = new List<Table>
+                    {
+                        new Table { TableId = 16, Seats = 4 },
+                        new Table { TableId = 17, Seats = 2 },
+                        new Table { TableId = 18, Seats = 6 }
+                    }
+                },
+                new Restaurant
+                {
+                    Id = 7,
+                    Name = "Narisawa",
+                    Description = "Innovative Japanese cuisine with a focus on sustainability.",
+                    Location = new Location { Street = "Minami Aoyama", HouseNumber = "2 Chome-6-15", City = "Minato City", PostalCode = "107-0062", Country = "Japan" },
+                    Valuation = 5,
+                    Cuisine = "Japanese",
+                    OpeningTime = TimeSpan.FromHours(12),
+                    ClosingTime = TimeSpan.FromHours(14),
+                    Tables = new List<Table>
+                    {
+                        new Table { TableId = 19, Seats = 4 },
+                        new Table { TableId = 20, Seats = 2 },
+                        new Table { TableId = 21, Seats = 6 }
+                    }
+                },
+                new Restaurant
+                {
+                    Id = 8,
+                    Name = "Mirazur",
+                    Description = "Seaside restaurant with panoramic views and innovative cuisine.",
+                    Location = new Location { Street = "30 Avenue Aristide Briand", HouseNumber = "", City = "Menton", PostalCode = "06500", Country = "France" },
+                    Valuation = 5,
+                    Cuisine = "French",
+                    OpeningTime = TimeSpan.FromHours(12),
+                    ClosingTime = TimeSpan.FromHours(14),
+                    Tables = new List<Table>
+                    {
+                        new Table { TableId = 22, Seats = 4 },
+                        new Table { TableId = 23, Seats = 2 },
+                        new Table { TableId = 24, Seats = 6 }
+                    }
+                },
+                new Restaurant
+                {
+                    Id = 9,
+                    Name = "Geranium",
+                    Description = "Modern Nordic cuisine in an elegant setting.",
+                    Location = new Location { Street = "Per Henrik Lings Allé", HouseNumber = "4", City = "Copenhagen", PostalCode = "06500", Country = "France" },
+                    Valuation = 5,
+                    Cuisine = "French",
+                    OpeningTime = TimeSpan.FromHours(12),
+                    ClosingTime = TimeSpan.FromHours(14),
+                    Tables = new List<Table>
+                    {
+                        new Table { TableId = 25, Seats = 4 },
+                        new Table { TableId = 26, Seats = 2 },
+                        new Table { TableId = 27, Seats = 6 }
+                    }
+                }
+            };
 
             // Assign each restaurant to its tables
             foreach (var restaurant in restaurants)
             {
                 foreach (var table in restaurant.Tables)
                 {
-                    table.restaurant = restaurant;
+                    table.restaurant = restaurant; // Fixed the property name to match convention
                 }
             }
-        }
 
-        public List<Restaurant> GetRestaurants()
-        {
-            foreach (Restaurant res in restaurants)
+            foreach (var restaurant in restaurants)
             {
-                DatabaseHelper.PostRestaurant(res);
+                await DatabaseHelper.PostRestaurant(restaurant);
             }
 
             return restaurants;
-        }
-
-        public Restaurant GetRestaurantById(int id)
-        {
-            return restaurants.FirstOrDefault(r => r.Id == id);
         }
     }
 }
