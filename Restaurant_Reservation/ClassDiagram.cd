@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Restaurant_Reservation.Datenbank.DatabaseHelper">
+    <Position X="17.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAAAAAAAAAAAAIBAQAAAAAAACCEAAAA=</HashCode>
+      <FileName>Datenbank\DatabaseHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Restaurant_Reservation.Klassen.Reservation">
+    <Position X="21" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIBACAAACAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Klassen\Reservation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Restaurant_Reservation.Klassen.Restaurant">
+    <Position X="23" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACACAAAAAAAgAAIAAAIAAAQAEAACAAAAgAAAAAAAAAA=</HashCode>
+      <FileName>Klassen\Restaurant.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Restaurant_Reservation.Klassen.Location">
+    <Position X="19.25" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAIIAAAAAAAAEIAAAAAAAIAAAAAAAA=</HashCode>
+      <FileName>Klassen\Restaurant.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Restaurant_Reservation.Klassen.Table">
+    <Position X="16.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAAAEgAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Klassen\Table.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Restaurant_Reservation.Klassen.User">
+    <Position X="18.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAIAAAAAAAAAAAAAAAAAAAIgAACAA=</HashCode>
+      <FileName>Klassen\User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Restaurant_Reservation.Service.ReservationService" Collapsed="true">
+    <Position X="18.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAUAAAAAAAAAAASAAAAAAAAAAAA=</HashCode>
+      <FileName>Service\ReservationService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Restaurant_Reservation.Service.RestaurantInitializer">
+    <Position X="20.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service\RestaurantService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
