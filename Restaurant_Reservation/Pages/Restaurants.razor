@@ -16,7 +16,15 @@
     </i>
 </h6>
 
-@if (filteredRestaurants.Any())
+@if (restaurants == null)
+{
+    <p>Loading restaurants...</p>
+}
+else if (!filteredRestaurants.Any())
+{
+    <p>No restaurants found.</p>
+}
+else
 {
     <div class="restaurant-container">
         @foreach (var restaurant in filteredRestaurants)
@@ -35,20 +43,25 @@
         }
     </div>
 }
-else
-{
-    <p>No restaurants found.</p>
-}
 
 @code {
-    private List<Restaurant> restaurants;
-    private List<Restaurant> filteredRestaurants;
+    private List<Restaurant> restaurants = new List<Restaurant>();
+    private List<Restaurant> filteredRestaurants = new List<Restaurant>();
     private string searchTerm = "";
 
-    protected async override void OnInitialized()
+    protected override async Task OnInitializedAsync()
     {
-        
-        restaurants = await DatabaseHelper.GetAllRestaurants();
+        try
+        {
+            restaurants = await DatabaseHelper.GetAllRestaurants();
+            filteredRestaurants = new List<Restaurant>(restaurants); // Initialize filteredRestaurants
+        }
+        catch (Exception ex)
+        {
+            // Log the exception
+            Console.WriteLine($"Error fetching restaurants: {ex.Message}");
+        }
+
         FilterRestaurants();
     }
 
@@ -56,7 +69,7 @@ else
     {
         if (string.IsNullOrWhiteSpace(searchTerm))
         {
-            filteredRestaurants = restaurants;
+            filteredRestaurants = new List<Restaurant>(restaurants);
         }
         else
         {

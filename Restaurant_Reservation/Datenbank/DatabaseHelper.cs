@@ -51,7 +51,7 @@ namespace Restaurant_Reservation.Datenbank
 
             return reservations
                 .Select(item => item.Object)
-                .Where(reservation => reservation.restaurant.Id == restaurantId)
+                .Where(reservation => reservation.Restaurant != null && reservation.Restaurant.Id == restaurantId)
                 .ToList();
         }
 

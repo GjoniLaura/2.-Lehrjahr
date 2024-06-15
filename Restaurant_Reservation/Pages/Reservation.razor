@@ -6,111 +6,153 @@
 
 <PageTitle>Reservation</PageTitle>
 
-<h1>Reservation for @Restaurant.Name</h1>
+<div class="container mt-5">
+    <h1 class="mb-4">Reservation for @Restaurant?.Name</h1>
 
-<p>
-    <strong>Location:</strong><br />
-    @Restaurant.Location.Street @Restaurant.Location.HouseNumber,<br />
-    @Restaurant.Location.City, @Restaurant.Location.PostalCode,<br />
-    @Restaurant.Location.Country
-</p>
+    @if (Restaurant != null)
+    {
+        <div class="card mb-4">
+            <div class="card-body">
+                <p>
+                    <strong>Location:</strong><br />
+                    @Restaurant.Location.Street @Restaurant.Location.HouseNumber,<br />
+                    @Restaurant.Location.City, @Restaurant.Location.PostalCode,<br />
+                    @Restaurant.Location.Country
+                </p>
 
-<p>
-    <strong>@Restaurant.Name</strong><br />
-    <strong>Opening Hours:</strong><br />
-    <ul>
-        @{
-            var daysOfWeek = new string[] { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
-            foreach (var day in daysOfWeek)
-            {
-                <li>@day: @Restaurant.OpeningTime - @Restaurant.ClosingTime</li>
-            }
-        }
-    </ul>
-</p>
+                <p>
+                    <strong>@Restaurant.Name</strong><br />
+                    <strong>Opening Hours:</strong><br />
+                    <ul>
+                        @foreach (var day in daysOfWeek)
+                        {
+                            <li>@day: @Restaurant.OpeningTime - @Restaurant.ClosingTime</li>
+                        }
+                    </ul>
+                </p>
 
-<p>
-    <strong>Restaurantinformation:</strong>
-    @Restaurant.Description,<br />
-    @Restaurant.Cuisine
-</p>
+                <p>
+                    <strong>Restaurant information:</strong>
+                    @Restaurant.Description,<br />
+                    @Restaurant.Cuisine
+                </p>
+            </div>
+        </div>
 
-<h2>Reservation Form</h2>
+        <h2 class="mb-4">Reservation Form</h2>
 
-<form class="reservation-form" @onsubmit="HandleSubmit">
-    <div class="form-group">
-        <label for="firstName">First Name:</label>
-        <input type="text" id="firstName" @bind="FirstName" required>
-    </div>
-    <div class="form-group">
-        <label for="lastName">Last Name:</label>
-        <input type="text" id="lastName" @bind="LastName" required>
-    </div>
-    <div class="form-group">
-        <label for="email">Email:</label>
-        <input type="email" id="email" @bind="Email" required>
-    </div>
-    <div class="form-group">
-        <label for="phone">Phone:</label>
-        <input type="tel" id="phone" @bind="Phone" required>
-    </div>
-    <div class="form-group">
-        <label for="guests">Number of Guests:</label>
-        <input type="number" id="guests" @bind="NumberOfGuests" min="1" required>
-    </div>
-    <div class="form-group">
-        <label for="date">Date:</label>
-        <InputDate id="date" @bind-Value="ReservationDate" @onchange="OnDateChanged" required />
-    </div>
-    <div class="form-group">
-        <label for="time">Time:</label>
-        <InputSelect id="time" @bind-Value="ReservationTime">
-            @foreach (var time in availableTimes)
-            {
-                <option value="@time">@time</option>
-            }
-        </InputSelect>
-    </div>
-    <div class="form-group">
-        <label for="notes">Additional Notes:</label>
-        <textarea id="notes" @bind="Notes" rows="4"></textarea>
-    </div>
+        <form class="reservation-form" @onsubmit="HandleSubmit">
+            <div class="mb-3">
+                <label for="firstName" class="form-label">First Name:</label>
+                <input type="text" id="firstName" @bind="FirstName" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="lastName" class="form-label">Last Name:</label>
+                <input type="text" id="lastName" @bind="LastName" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email:</label>
+                <input type="email" id="email" @bind="Email" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="phone" class="form-label">Phone:</label>
+                <input type="tel" id="phone" @bind="Phone" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="guests" class="form-label">Number of Guests:</label>
+                <input type="number" id="guests" value="@NumberOfGuests" @onchange="OnGuestsChanged" class="form-control" min="1" required>
+            </div>
+            <div class="mb-3">
+                <label for="date" class="form-label">Date:</label>
+                <InputDate id="date" @bind-Value="ReservationDate" @onchange="OnDateChanged" class="form-control" required />
+            </div>
+            <div class="mb-3">
+                <label for="time" class="form-label">Time:</label>
+                <InputSelect id="time" @bind-Value="ReservationTime" class="form-select">
+                    @foreach (var time in availableTimes)
+                    {
+                        <option value="@time">@time</option>
+                    }
+                </InputSelect>
+            </div>
+            <div class="mb-3">
+                <label for="notes" class="form-label">Additional Notes:</label>
+                <textarea id="notes" @bind="Notes" class="form-control" rows="4"></textarea>
+            </div>
 
-    <button type="submit">Submit Reservation</button>
-</form>
+            <button type="submit" class="btn btn-primary">Submit Reservation</button>
+        </form>
+    }
+    else
+    {
+        <p>Loading restaurant information...</p>
+    }
+</div>
 
 @code {
     [Parameter]
     public int Id { get; set; }
 
     private Restaurant Restaurant { get; set; }
-
     private string FirstName { get; set; }
     private string LastName { get; set; }
     private string Email { get; set; }
     private string Phone { get; set; }
-    private int NumberOfGuests { get; set; }
-    private DateTime ReservationDate { get; set; }
+    private int NumberOfGuests { get; set; } = 1; // Default value to prevent 0 guests
+    private DateTime ReservationDate { get; set; } = DateTime.Today;
     private string ReservationTime { get; set; }
     private string Notes { get; set; }
-
     private List<string> availableTimes = new List<string>();
+    private string[] daysOfWeek = new string[] { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
 
-    private async Task OnDateChanged(ChangeEventArgs e)
+    protected override async Task OnInitializedAsync()
     {
-        await UpdateAvailableTimes();
+        var restaurants = await DatabaseHelper.GetAllRestaurants();
+        Restaurant = restaurants.FirstOrDefault(r => r.Id == Id);
+
+        if (Restaurant != null)
+        {
+            await UpdateAvailableTimes();
+        }
     }
 
     private async Task UpdateAvailableTimes()
     {
-        if (Restaurant != null && ReservationDate != default)
+        if (Restaurant == null)
+        {
+            Console.WriteLine("Error: No restaurant found.");
+            return;
+        }
+
+        if (ReservationDate == default)
+        {
+            Console.WriteLine("Error: Invalid reservation date.");
+            return;
+        }
+
+        Console.WriteLine($"Updating available times for {NumberOfGuests} guests on {ReservationDate}");
+        try
         {
             var times = await ReservationService.GetAvailableTimesAsync(Restaurant, ReservationDate, NumberOfGuests);
             availableTimes = times.Select(t => t.ToString("HH:mm")).ToList();
+
+            if (availableTimes.Any())
+            {
+                Console.WriteLine($"Available times: {string.Join(", ", availableTimes)}");
+            }
+            else
+            {
+                Console.WriteLine("No available times found.");
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Failed to fetch available times: {ex.Message}");
         }
 
-        StateHasChanged();
+        StateHasChanged(); // Ensure the UI is updated
     }
+
 
     private async Task HandleSubmit()
     {
@@ -123,64 +165,21 @@
         }
     }
 
-    protected override async Task OnInitializedAsync()
+    private async Task OnGuestsChanged(ChangeEventArgs e)
     {
-        var restaurantService = new RestaurantService();
-        Restaurant = restaurantService.GetRestaurantById(Id);
-
-        if (Restaurant != null)
+        if (int.TryParse(e.Value.ToString(), out int guests))
         {
+            NumberOfGuests = guests;
+            await UpdateAvailableTimes();
+        }
+    }
+
+    private async Task OnDateChanged(ChangeEventArgs e)
+    {
+        if (DateTime.TryParse(e.Value.ToString(), out DateTime date))
+        {
+            ReservationDate = date;
             await UpdateAvailableTimes();
         }
     }
 }
-
-<style>
-    .reservation-form {
-        max-width: 400px;
-        margin: 0 auto;
-    }
-
-    .form-group {
-        margin-bottom: 20px;
-    }
-
-    label {
-        display: block;
-        font-weight: bold;
-        margin-bottom: 5px;
-    }
-
-    input[type="text"],
-    input[type="email"],
-    input[type="tel"],
-    textarea,
-    input[type="number"],
-    input[type="date"],
-    select {
-        width: 100%;
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        box-sizing: border-box;
-    }
-
-    textarea {
-        resize: vertical;
-    }
-
-    button[type="submit"] {
-        background-color: #4CAF50;
-        color: white;
-        padding: 12px 20px;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        width: 100%;
-        transition: background-color 0.3s;
-    }
-
-        button[type="submit"]:hover {
-            background-color: #45a049;
-        }
-</style>

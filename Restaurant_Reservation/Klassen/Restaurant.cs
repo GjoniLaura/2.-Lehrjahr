@@ -13,7 +13,9 @@ namespace Restaurant_Reservation.Klassen
         public TimeSpan OpeningTime { get; set; }
         public TimeSpan ClosingTime { get; set; }
         public string Cuisine { get; set; }
-        public List<Table> Tables { get; set; } = new List<Table>();
+
+        // Maintains count of tables by capacity
+        public Dictionary<int, int> TableCapacities { get; set; } = new Dictionary<int, int>();
 
     }
 

@@ -1,20 +1,24 @@
-﻿namespace Restaurant_Reservation.Klassen
+﻿using Newtonsoft.Json;
+using System;
+
+namespace Restaurant_Reservation.Klassen
 {
     public class Reservation
     {
         public User User { get; set; }
-        public Restaurant restaurant { get; set; }
+        public Restaurant Restaurant { get; set; }
         public DateTime Start { get; set; }
         public DateTime End { get; set; }
         public int Numpeople { get; set; }
 
-        public Reservation(User user, Restaurant res, DateTime start, DateTime end, int numpeople)
+        public Reservation(User user, Restaurant restaurant, DateTime start, DateTime end, int numPeople)
         {
             User = user;
-            this.restaurant = res;
+            Restaurant = restaurant;
             Start = start;
             End = end;
-            Numpeople = numpeople;
+            Numpeople = numPeople;
         }
     }
+
 }

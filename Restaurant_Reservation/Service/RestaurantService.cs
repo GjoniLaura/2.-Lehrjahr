@@ -1,18 +1,13 @@
-﻿using Restaurant_Reservation.Klassen;
-using Restaurant_Reservation.Pages;
-using System.Net;
-using Restaurant_Reservation.Datenbank;
+﻿using Restaurant_Reservation.Datenbank;
+using Restaurant_Reservation.Klassen;
 using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
-using MudBlazor;
 using System.Threading.Tasks;
 
 namespace Restaurant_Reservation.Service
 {
     public class RestaurantInitializer
     {
-        public static async Task<List<Restaurant>> InitializeRestaurantsAsync()
+        public async Task<List<Restaurant>> InitializeRestaurantsAsync()
         {
             var restaurants = new List<Restaurant>
             {
@@ -26,12 +21,7 @@ namespace Restaurant_Reservation.Service
                     Cuisine = "French",
                     OpeningTime = TimeSpan.FromHours(18),
                     ClosingTime = TimeSpan.FromHours(22),
-                    Tables = new List<Table>
-                    {
-                        new Table { TableId = 1, Seats = 4 },
-                        new Table { TableId = 2, Seats = 2 },
-                        new Table { TableId = 3, Seats = 6 }
-                    }
+                    TableCapacities = new Dictionary<int, int> { {4, 1}, {2, 1}, {6, 1} }
                 },
                 new Restaurant
                 {
@@ -43,12 +33,7 @@ namespace Restaurant_Reservation.Service
                     Cuisine = "Gastropub",
                     OpeningTime = TimeSpan.FromHours(17),
                     ClosingTime = TimeSpan.FromHours(23),
-                    Tables = new List<Table>
-                    {
-                        new Table { TableId = 4, Seats = 4 },
-                        new Table { TableId = 5, Seats = 2 },
-                        new Table { TableId = 6, Seats = 6 }
-                    }
+                    TableCapacities = new Dictionary<int, int> { {4, 1}, {2, 1}, {6, 1} }
                 },
                 new Restaurant
                 {
@@ -60,12 +45,7 @@ namespace Restaurant_Reservation.Service
                     Cuisine = "British",
                     OpeningTime = TimeSpan.FromHours(18),
                     ClosingTime = TimeSpan.FromHours(23),
-                    Tables = new List<Table>
-                    {
-                        new Table { TableId = 7, Seats = 4 },
-                        new Table { TableId = 8, Seats = 2 },
-                        new Table { TableId = 9, Seats = 6 }
-                    }
+                    TableCapacities = new Dictionary<int, int> { {4, 1}, {2, 1}, {6, 1} }
                 },
                 new Restaurant
                 {
@@ -77,12 +57,7 @@ namespace Restaurant_Reservation.Service
                     Cuisine = "Spanish",
                     OpeningTime = TimeSpan.FromHours(13),
                     ClosingTime = TimeSpan.FromHours(15),
-                    Tables = new List<Table>
-                    {
-                        new Table { TableId = 10, Seats = 4 },
-                        new Table { TableId = 11, Seats = 2 },
-                        new Table { TableId = 12, Seats = 6 }
-                    }
+                    TableCapacities = new Dictionary<int, int> { {4, 1}, {2, 1}, {6, 1} }
                 },
                 new Restaurant
                 {
@@ -94,12 +69,7 @@ namespace Restaurant_Reservation.Service
                     Cuisine = "Japanese",
                     OpeningTime = TimeSpan.FromHours(12),
                     ClosingTime = TimeSpan.FromHours(15),
-                    Tables = new List<Table>
-                    {
-                        new Table { TableId = 13, Seats = 4 },
-                        new Table { TableId = 14, Seats = 2 },
-                        new Table { TableId = 15, Seats = 6 }
-                    }
+                    TableCapacities = new Dictionary<int, int> { {4, 1}, {2, 1}, {6, 1} }
                 },
                 new Restaurant
                 {
@@ -111,12 +81,7 @@ namespace Restaurant_Reservation.Service
                     Cuisine = "Italian",
                     OpeningTime = TimeSpan.FromHours(12),
                     ClosingTime = TimeSpan.FromHours(14),
-                    Tables = new List<Table>
-                    {
-                        new Table { TableId = 16, Seats = 4 },
-                        new Table { TableId = 17, Seats = 2 },
-                        new Table { TableId = 18, Seats = 6 }
-                    }
+                    TableCapacities = new Dictionary<int, int> { {4, 1}, {2, 1}, {6, 1} }
                 },
                 new Restaurant
                 {
@@ -128,12 +93,7 @@ namespace Restaurant_Reservation.Service
                     Cuisine = "Japanese",
                     OpeningTime = TimeSpan.FromHours(12),
                     ClosingTime = TimeSpan.FromHours(14),
-                    Tables = new List<Table>
-                    {
-                        new Table { TableId = 19, Seats = 4 },
-                        new Table { TableId = 20, Seats = 2 },
-                        new Table { TableId = 21, Seats = 6 }
-                    }
+                    TableCapacities = new Dictionary<int, int> { {4, 1}, {2, 1}, {6, 1} }
                 },
                 new Restaurant
                 {
@@ -145,41 +105,23 @@ namespace Restaurant_Reservation.Service
                     Cuisine = "French",
                     OpeningTime = TimeSpan.FromHours(12),
                     ClosingTime = TimeSpan.FromHours(14),
-                    Tables = new List<Table>
-                    {
-                        new Table { TableId = 22, Seats = 4 },
-                        new Table { TableId = 23, Seats = 2 },
-                        new Table { TableId = 24, Seats = 6 }
-                    }
+                    TableCapacities = new Dictionary<int, int> { {4, 1}, {2, 1}, {6, 1} }
                 },
                 new Restaurant
                 {
                     Id = 9,
                     Name = "Geranium",
                     Description = "Modern Nordic cuisine in an elegant setting.",
-                    Location = new Location { Street = "Per Henrik Lings Allé", HouseNumber = "4", City = "Copenhagen", PostalCode = "06500", Country = "France" },
+                    Location = new Location { Street = "Per Henrik Lings Allé", HouseNumber = "4", City = "Copenhagen", PostalCode = "2100", Country = "Denmark" },
                     Valuation = 5,
-                    Cuisine = "French",
+                    Cuisine = "Nordic",
                     OpeningTime = TimeSpan.FromHours(12),
                     ClosingTime = TimeSpan.FromHours(14),
-                    Tables = new List<Table>
-                    {
-                        new Table { TableId = 25, Seats = 4 },
-                        new Table { TableId = 26, Seats = 2 },
-                        new Table { TableId = 27, Seats = 6 }
-                    }
+                    TableCapacities = new Dictionary<int, int> { {4, 1}, {2, 1}, {6, 1} }
                 }
             };
 
-            // Assign each restaurant to its tables
-            foreach (var restaurant in restaurants)
-            {
-                foreach (var table in restaurant.Tables)
-                {
-                    table.restaurant = restaurant; // Fixed the property name to match convention
-                }
-            }
-
+            // Upload each restaurant to the database
             foreach (var restaurant in restaurants)
             {
                 await DatabaseHelper.PostRestaurant(restaurant);
