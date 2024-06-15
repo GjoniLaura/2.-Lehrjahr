@@ -48,8 +48,9 @@ namespace Restaurant_Reservation.Service
 
         private bool IsTimeSlotAvailable(Restaurant restaurant, DateTime startTime, int numPeople, HashSet<ReservationTime> reservedTimes)
         {
-            DateTime endTime = startTime.AddHours(2); 
+            DateTime endTime = startTime.AddHours(2);
 
+            // Berechnen der gesamten Kapazität des Restaurants
             int totalSeats = restaurant.TableCapacities.Sum(tc => tc.Key * tc.Value);
 
             int reservedSeatsDuringSlot = reservedTimes
