@@ -6,43 +6,43 @@
 
 <PageTitle>Restaurants</PageTitle>
 
-<h4>Welcome to our restaurant reservation page!</h4>
-<h6>
-    <i>
-        Discover new culinary experiences and book your table directly online!<br />
-        Our site offers a selection of restaurants where you can make a reservation with just one click. <br />
-        Choose your favorite restaurant, learn more about its offerings and opening hours,<br />
-        and secure your seat for an unforgettable meal.<br /><br />
-    </i>
-</h6>
+<div class="container">
+    <div class="row">
+        <div class="col-md-10 offset-md-1">
+            <h3 class="text-center mb-4">Willkommen auf unserer Restaurantreservierungsseite!</h3>
+            <p class="text-center">
+                <i>
+                    Entdecken Sie neue kulinarische Erlebnisse und reservieren Sie Ihren Tisch direkt online!<br />
+                    Wählen Sie Ihr Lieblingsrestaurant, erfahren Sie mehr über sein Angebot und die Öffnungszeiten,<br />
+                    und sichern Sie sich Ihren Platz für ein unvergessliches Essen.
+                </i>
+            </p>
 
-@if (restaurants == null)
-{
-    <p>Loading restaurants...</p>
-}
-else if (!filteredRestaurants.Any())
-{
-    <p>No restaurants found.</p>
-}
-else
-{
-    <div class="restaurant-container">
-        @foreach (var restaurant in filteredRestaurants)
-        {
-            <div class="restaurant-block">
-                <h3 @onclick="() => NavigateToReservationPage(restaurant)">@restaurant.Name</h3>
-                <p>
-                    <strong>Location:</strong>
-                    @restaurant.Location.Street
-                    @restaurant.Location.HouseNumber,
-                    @restaurant.Location.City,
-                    @restaurant.Location.PostalCode,
-                    @restaurant.Location.Country
-                </p>
-            </div>
-        }
+            @if (filteredRestaurants.Any())
+            {
+                <div class="row">
+                    @foreach (var restaurant in filteredRestaurants)
+                    {
+                        <div class="col-lg-4 col-md-6 mb-4">
+                            <div class="restaurant-block">
+                                <h3 @onclick="() => NavigateToReservationPage(restaurant)" style="cursor: pointer;">@restaurant.Name</h3>
+                                <p>
+                                    <strong>Standort:</strong><br />
+                                    @restaurant.Location.Street @restaurant.Location.HouseNumber,<br />
+                                    @restaurant.Location.City, @restaurant.Location.PostalCode, @restaurant.Location.Country
+                                </p>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+            else
+            {
+                <p class="text-center">Keine Restaurants gefunden.</p>
+            }
+        </div>
     </div>
-}
+</div>
 
 @code {
     private List<Restaurant> restaurants = new List<Restaurant>();
@@ -84,11 +84,28 @@ else
 }
 
 <style>
-    .restaurant-container {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 20px;
-        justify-content: space-between;
+    body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        font-size: 16px;
+        color: #333;
+        margin: 0;
+        padding: 0;
+    }
+
+    h1, h2, h3, h4, h5 {
+        font-weight: bold;
+        color: #333;
+    }
+
+    h3 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .container {
+        margin-top: 50px;
     }
 
     .restaurant-block {
@@ -96,13 +113,19 @@ else
         border-radius: 10px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         padding: 20px;
-        width: calc(30% - 20px);
+        transition: transform 0.3s ease-in-out;
+        height: 100%;
     }
+
+        .restaurant-block:hover {
+            transform: translateY(-5px);
+        }
 
         .restaurant-block h3 {
             margin-top: 0;
             font-size: 1.5rem;
             color: #333;
+            cursor: pointer;
         }
 
         .restaurant-block p {

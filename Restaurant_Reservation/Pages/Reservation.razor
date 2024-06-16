@@ -3,11 +3,22 @@
 @using Restaurant_Reservation.Service
 @using Restaurant_Reservation.Datenbank
 @inject ReservationService ReservationService
+@inject NavigationManager NavigationManager
 
 <PageTitle>Reservation</PageTitle>
 
 <div class="container mt-5">
-    <h1 class="mb-4">Reservation for @Restaurant?.Name</h1>
+    <div class="d-flex justify-content-between mb-4">
+        <h1>Reservation for @Restaurant?.Name</h1>
+        <button class="btn btn-secondary" @onclick="GoBack">Zurück</button>
+    </div>
+
+    @if (showConfirmation)
+    {
+        <div class="alert alert-success fixed-top w-100 text-center" role="alert">
+            Reservierung erfolgreich! Ihre Bestätigung wurde gesendet.
+        </div>
+    }
 
     @if (Restaurant != null)
     {
@@ -98,12 +109,13 @@
     private string LastName { get; set; }
     private string Email { get; set; }
     private string Phone { get; set; }
-    private int NumberOfGuests { get; set; } = 1; // Default value to prevent 0 guests
+    private int NumberOfGuests { get; set; } = 1; 
     private DateTime ReservationDate { get; set; } = DateTime.Today;
     private string ReservationTime { get; set; }
     private string Notes { get; set; }
     private List<string> availableTimes = new List<string>();
     private string[] daysOfWeek = new string[] { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
+    private bool showConfirmation = false;
 
     protected override async Task OnInitializedAsync()
     {
@@ -150,19 +162,44 @@
             Console.WriteLine($"Failed to fetch available times: {ex.Message}");
         }
 
-        StateHasChanged(); // Ensure the UI is updated
+        StateHasChanged(); // Updaten der UI Wichtig nich entfernen
     }
-
 
     private async Task HandleSubmit()
     {
-        var user = new User(FirstName, LastName, NumberOfGuests, Phone, Notes);
+        var user = new User(FirstName, LastName, NumberOfGuests, Phone, Notes, Email);
         var dateTimeString = $"{ReservationDate:yyyy-MM-dd} {ReservationTime}";
         if (DateTime.TryParse(dateTimeString, out var reservationDateTime))
         {
             var result = await ReservationService.MakeReservationAsync(Restaurant, user, reservationDateTime, NumberOfGuests);
-            // Handle reservation result (e.g., show confirmation message)
+            if (result.Contains("Reservation made"))
+            {
+                showConfirmation = true;
+                ResetFormFields();
+                StateHasChanged(); 
+                await Task.Delay(5000); 
+                showConfirmation = false;
+                StateHasChanged(); 
+            }
         }
+    }
+
+    private void ResetFormFields()
+    {
+        FirstName = "";
+        LastName = "";
+        Email = "";
+        Phone = "";
+        Notes = "";
+        NumberOfGuests = 1;
+        ReservationDate = DateTime.Today;
+        ReservationTime = null;
+        availableTimes.Clear();
+    }
+
+    private void GoBack()
+    {
+        NavigationManager.NavigateTo("/");
     }
 
     private async Task OnGuestsChanged(ChangeEventArgs e)

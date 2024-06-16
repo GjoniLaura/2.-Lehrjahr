@@ -3288,11 +3288,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Temp\\reservation\\Restaurant_Reservation\\Restaurant_Reservation.csproj",
+      "projectUniqueName": "C:\\Temp\\finalreservation\\Restaurant_Reservation\\Restaurant_Reservation.csproj",
       "projectName": "Restaurant_Reservation",
-      "projectPath": "C:\\Temp\\reservation\\Restaurant_Reservation\\Restaurant_Reservation.csproj",
+      "projectPath": "C:\\Temp\\finalreservation\\Restaurant_Reservation\\Restaurant_Reservation.csproj",
       "packagesPath": "C:\\Users\\xbloc\\.nuget\\packages\\",
-      "outputPath": "C:\\Temp\\reservation\\Restaurant_Reservation\\obj\\",
+      "outputPath": "C:\\Temp\\finalreservation\\Restaurant_Reservation\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

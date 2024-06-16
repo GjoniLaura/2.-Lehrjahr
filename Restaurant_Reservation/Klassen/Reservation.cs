@@ -5,6 +5,7 @@ namespace Restaurant_Reservation.Klassen
 {
     public class Reservation
     {
+        public int Id { get; set; }
         public User User { get; set; }
         public Restaurant Restaurant { get; set; }
         public DateTime Start { get; set; }

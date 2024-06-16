@@ -11,7 +11,8 @@ namespace Restaurant_Reservation.Service
         {
             var restaurants = new List<Restaurant>
             {
-                new Restaurant
+                //Dieser Code wird verwendet um Beispiel Daten einzufügen
+                /*new Restaurant
                 {
                     Id = 1,
                     Name = "La Petite France",
@@ -118,7 +119,7 @@ namespace Restaurant_Reservation.Service
                     OpeningTime = TimeSpan.FromHours(12),
                     ClosingTime = TimeSpan.FromHours(14),
                     TableCapacities = new Dictionary<int, int> { {4, 1}, {2, 1}, {6, 1} }
-                }
+                }*/
             };
 
             // Upload each restaurant to the database

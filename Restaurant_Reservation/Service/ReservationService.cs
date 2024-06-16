@@ -16,6 +16,7 @@ namespace Restaurant_Reservation.Service
             _databaseHelper = databaseHelper;
         }
 
+        //Diese Funktion Kann gerfen werden um alle Verfügbaren Zeiten für eine Reservation zu bekommen.(Hollt die Daten von der Datenbank)
         public async Task<List<DateTime>> GetAvailableTimesAsync(Restaurant restaurant, DateTime date, int numPeople)
         {
             if (restaurant == null) return new List<DateTime>();
@@ -29,6 +30,7 @@ namespace Restaurant_Reservation.Service
             return GetAvailableTimesForRestaurant(restaurant, date, numPeople, reservedTimes);
         }
 
+        //Das ist die Funktion Welche die Daten dann Weiteverarbeitet.
         private List<DateTime> GetAvailableTimesForRestaurant(Restaurant restaurant, DateTime date, int numPeople, HashSet<ReservationTime> reservedTimes)
         {
             var availableTimes = new List<DateTime>();
@@ -46,6 +48,7 @@ namespace Restaurant_Reservation.Service
             return availableTimes;
         }
 
+        //Diese Funktion rechent dann die wirlich verfügbaren Zeiten aus.
         private bool IsTimeSlotAvailable(Restaurant restaurant, DateTime startTime, int numPeople, HashSet<ReservationTime> reservedTimes)
         {
             DateTime endTime = startTime.AddHours(2);
@@ -61,6 +64,14 @@ namespace Restaurant_Reservation.Service
             return totalSeats - reservedSeatsDuringSlot >= numPeople;
         }
 
+        public async Task<List<Reservation>> GetReservationsForRestaurant(int restaurantId)
+        {
+            var reservations = await _databaseHelper.GetReservationsForRestaurant(restaurantId);
+            return reservations;
+        }
+
+
+        //Macht eine Reservation
         public async Task<string> MakeReservationAsync(Restaurant restaurant, User user, DateTime startTime, int numPeople)
         {
             if (restaurant == null) return "Restaurant not found";
