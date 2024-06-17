@@ -10,7 +10,7 @@
 <div class="container mt-5">
     <div class="d-flex justify-content-between mb-4">
         <h1>Reservation for @Restaurant?.Name</h1>
-        <button class="btn btn-secondary" @onclick="GoBack">Zurück</button>
+        <button class="btn-primary.btn-nav" @onclick="GoBack">Zurück</button>
     </div>
 
     @if (showConfirmation)
@@ -91,7 +91,7 @@
                 <textarea id="notes" @bind="Notes" class="form-control" rows="4"></textarea>
             </div>
 
-            <button type="submit" class="btn btn-primary">Submit Reservation</button>
+            <button type="submit" class="btn-reservation">Submit Reservation</button>
         </form>
     }
     else
@@ -220,3 +220,23 @@
 
     }
 }
+
+<style>
+    .btn-primary.btn-nav {
+        background-color: #f9842a; /* Light orange color */
+        border-color: #f9842a;
+        color: white;
+    }
+
+    .btn-reservation { /* New class for reservation buttons */
+        background-color: #f9842a; /* Light orange color */
+        border-color: #f9842a;
+        color: white;
+        padding: 10px 20px; /* Adjust padding as needed */
+        border-radius: 5px; /* Add border radius for a softer look */
+    }
+    h1 {
+  color: #f9842a; /* Light orange color for the title */
+}
+
+</style>

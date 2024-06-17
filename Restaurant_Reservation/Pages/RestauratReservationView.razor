@@ -18,7 +18,7 @@
     <div class="mb-4">
         <label for="restaurantName" class="form-label">Enter Restaurant Name:</label>
         <input type="text" id="restaurantName" @bind="restaurantName" class="form-control" placeholder="Restaurant Name" />
-        <button class="btn btn-primary mt-2" @onclick="LoadReservations">Search</button>
+        <button class="btn btn-primary mt-2   btn-search" @onclick="LoadReservations">Search</button>
     </div>
 
     @if (reservations != null)
@@ -109,12 +109,20 @@
 
         .date-group h3 {
             margin-top: 20px;
-            color: #333;
+            color: #f9842a;
             border-bottom: 2px solid #ddd;
             padding-bottom: 5px;
         }
 
     .btn-back {
         font-size: 16px;
+    }
+
+    .btn-search { 
+        background-color: #f9842a; 
+        border-color: #f9842a;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px; 
     }
 </style>
