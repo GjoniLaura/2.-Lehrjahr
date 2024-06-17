@@ -9,41 +9,41 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = browser
 build_property.RootNamespace = Restaurant_Reservation
 build_property.RootNamespace = Restaurant_Reservation
-build_property.ProjectDir = C:\Temp\finalreservation\Restaurant_Reservation\
+build_property.ProjectDir = C:\Temp\reserveforsesres\Restaurant_Reservation\
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Temp\finalreservation\Restaurant_Reservation
+build_property.MSBuildProjectDirectory = C:\Temp\reserveforsesres\Restaurant_Reservation
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Temp/finalreservation/Restaurant_Reservation/App.razor]
+[C:/Temp/reserveforsesres/Restaurant_Reservation/App.razor]
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Temp/finalreservation/Restaurant_Reservation/Pages/Reservation.razor]
+[C:/Temp/reserveforsesres/Restaurant_Reservation/Pages/Reservation.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVzZXJ2YXRpb24ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Temp/finalreservation/Restaurant_Reservation/Pages/Restaurants.razor]
+[C:/Temp/reserveforsesres/Restaurant_Reservation/Pages/Restaurants.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVzdGF1cmFudHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Temp/finalreservation/Restaurant_Reservation/Pages/RestauratReservationView.razor]
+[C:/Temp/reserveforsesres/Restaurant_Reservation/Pages/RestauratReservationView.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVzdGF1cmF0UmVzZXJ2YXRpb25WaWV3LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Temp/finalreservation/Restaurant_Reservation/Shared/SurveyPrompt.razor]
+[C:/Temp/reserveforsesres/Restaurant_Reservation/Shared/SurveyPrompt.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFN1cnZleVByb21wdC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Temp/finalreservation/Restaurant_Reservation/_Imports.razor]
+[C:/Temp/reserveforsesres/Restaurant_Reservation/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Temp/finalreservation/Restaurant_Reservation/Shared/MainLayout.razor]
+[C:/Temp/reserveforsesres/Restaurant_Reservation/Shared/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-dvtotn3fbr
 
-[C:/Temp/finalreservation/Restaurant_Reservation/Shared/NavMenu.razor]
+[C:/Temp/reserveforsesres/Restaurant_Reservation/Shared/NavMenu.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE5hdk1lbnUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-av5du0koig

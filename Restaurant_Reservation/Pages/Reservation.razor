@@ -70,12 +70,12 @@
                 <input type="tel" id="phone" @bind="Phone" class="form-control" required>
             </div>
             <div class="mb-3">
-                <label for="guests" class="form-label">Number of Guests:</label>
-                <input type="number" id="guests" value="@NumberOfGuests" @onchange="OnGuestsChanged" class="form-control" min="1" required>
+                <label for="date" class="form-label">Date:</label>
+                <InputDate id="date" @bind-Value="ReservationDate" class="form-control" required />
             </div>
             <div class="mb-3">
-                <label for="date" class="form-label">Date:</label>
-                <InputDate id="date" @bind-Value="ReservationDate" @onchange="OnDateChanged" class="form-control" required />
+                <label for="guests" class="form-label">Number of Guests:</label>
+                <input type="number" id="guests" value="@NumberOfGuests" @onchange="OnGuestsChanged" class="form-control" min="1" required>
             </div>
             <div class="mb-3">
                 <label for="time" class="form-label">Time:</label>
@@ -194,7 +194,6 @@
         NumberOfGuests = 1;
         ReservationDate = DateTime.Today;
         ReservationTime = null;
-        availableTimes.Clear();
     }
 
     private void GoBack()
@@ -218,5 +217,6 @@
             ReservationDate = date;
             await UpdateAvailableTimes();
         }
+
     }
 }

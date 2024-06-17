@@ -6,40 +6,50 @@
 
 <PageTitle>Restaurants</PageTitle>
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-10 offset-md-1">
-            <h3 class="text-center mb-4">Willkommen auf unserer Restaurantreservierungsseite!</h3>
-            <p class="text-center">
-                <i>
-                    Entdecken Sie neue kulinarische Erlebnisse und reservieren Sie Ihren Tisch direkt online!<br />
-                    Wählen Sie Ihr Lieblingsrestaurant, erfahren Sie mehr über sein Angebot und die Öffnungszeiten,<br />
-                    und sichern Sie sich Ihren Platz für ein unvergessliches Essen.
-                </i>
-            </p>
+<!-- Sidebar Menu on the Left -->
+<div class="d-flex">
+    <div class="sidebar-menu bg-light p-3 m-3">
+        <h4>Menu</h4>
+        <button class="btn btn-primary btn-nav my-2" @onclick="NavigateToReservations">Reservations Overview</button>
+    </div>
 
-            @if (filteredRestaurants.Any())
-            {
-                <div class="row">
-                    @foreach (var restaurant in filteredRestaurants)
+    <div class="flex-grow-1 p-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 offset-md-1">
+                    <h3 class="text-center mb-4">Willkommen auf unserer Restaurantreservierungsseite!</h3>
+                    <p class="text-center">
+                        <i>
+                            Entdecken Sie neue kulinarische Erlebnisse und reservieren Sie Ihren Tisch direkt online!<br />
+                            Wählen Sie Ihr Lieblingsrestaurant, erfahren Sie mehr über sein Angebot und die Öffnungszeiten,<br />
+                            und sichern Sie sich Ihren Platz für ein unvergessliches Essen.
+                        </i>
+                    </p>
+
+                    @if (filteredRestaurants.Any())
                     {
-                        <div class="col-lg-4 col-md-6 mb-4">
-                            <div class="restaurant-block">
-                                <h3 @onclick="() => NavigateToReservationPage(restaurant)" style="cursor: pointer;">@restaurant.Name</h3>
-                                <p>
-                                    <strong>Standort:</strong><br />
-                                    @restaurant.Location.Street @restaurant.Location.HouseNumber,<br />
-                                    @restaurant.Location.City, @restaurant.Location.PostalCode, @restaurant.Location.Country
-                                </p>
-                            </div>
+                        <div class="row">
+                            @foreach (var restaurant in filteredRestaurants)
+                            {
+                                <div class="col-lg-4 col-md-6 mb-4">
+                                    <div class="restaurant-block">
+                                        <h3 @onclick="() => NavigateToReservationPage(restaurant)" style="cursor: pointer;">@restaurant.Name</h3>
+                                        <p>
+                                            <strong>Standort:</strong><br />
+                                            @restaurant.Location.Street @restaurant.Location.HouseNumber,<br />
+                                            @restaurant.Location.City, @restaurant.Location.PostalCode, @restaurant.Location.Country
+                                        </p>
+                                    </div>
+                                </div>
+                            }
                         </div>
                     }
+                    else
+                    {
+                        <p class="text-center">Keine Restaurants gefunden.</p>
+                    }
                 </div>
-            }
-            else
-            {
-                <p class="text-center">Keine Restaurants gefunden.</p>
-            }
+            </div>
         </div>
     </div>
 </div>
@@ -80,6 +90,16 @@
     private void NavigateToReservationPage(Restaurant restaurant)
     {
         NavigationManager.NavigateTo($"/reservation/{restaurant.Id}");
+    }
+
+    private void NavigateToRestaurants()
+    {
+        NavigationManager.NavigateTo("/");
+    }
+
+    private void NavigateToReservations()
+    {
+        NavigationManager.NavigateTo("/reservations-overview");
     }
 }
 
@@ -132,4 +152,16 @@
             margin-bottom: 0;
             color: #666;
         }
+
+    .sidebar-menu {
+        width: 200px;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        margin-right: 20px;
+    }
+
+    .btn-nav {
+        width: 100%;
+        font-size: 16px;
+    }
 </style>
