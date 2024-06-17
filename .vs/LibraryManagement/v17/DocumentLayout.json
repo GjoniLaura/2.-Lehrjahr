@@ -1,0 +1,510 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\laura\\OneDrive - sluz\\Dokumente\\BBZW Sursee\\IPT 6.1\\LibraryManagement_ServerApp\\LibraryManagement\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{FE188C5A-FA5F-4C33-8A5C-E1B1FF87A719}|LibraryManagement\\LibraryManagement.csproj|c:\\users\\laura\\onedrive - sluz\\dokumente\\bbzw sursee\\ipt 6.1\\librarymanagement_serverapp\\librarymanagement\\librarymanagement\\data\\databaseinitializer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FE188C5A-FA5F-4C33-8A5C-E1B1FF87A719}|LibraryManagement\\LibraryManagement.csproj|solutionrelative:librarymanagement\\data\\databaseinitializer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FE188C5A-FA5F-4C33-8A5C-E1B1FF87A719}|LibraryManagement\\LibraryManagement.csproj|c:\\users\\laura\\onedrive - sluz\\dokumente\\bbzw sursee\\ipt 6.1\\librarymanagement_serverapp\\librarymanagement\\librarymanagement\\data\\dbcontextsingleton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FE188C5A-FA5F-4C33-8A5C-E1B1FF87A719}|LibraryManagement\\LibraryManagement.csproj|solutionrelative:librarymanagement\\data\\dbcontextsingleton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FE188C5A-FA5F-4C33-8A5C-E1B1FF87A719}|LibraryManagement\\LibraryManagement.csproj|c:\\users\\laura\\onedrive - sluz\\dokumente\\bbzw sursee\\ipt 6.1\\librarymanagement_serverapp\\librarymanagement\\librarymanagement\\data\\librarycontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FE188C5A-FA5F-4C33-8A5C-E1B1FF87A719}|LibraryManagement\\LibraryManagement.csproj|solutionrelative:librarymanagement\\data\\librarycontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FE188C5A-FA5F-4C33-8A5C-E1B1FF87A719}|LibraryManagement\\LibraryManagement.csproj|c:\\users\\laura\\onedrive - sluz\\dokumente\\bbzw sursee\\ipt 6.1\\librarymanagement_serverapp\\librarymanagement\\librarymanagement\\scripts\\insertsampledata.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}",
+      "RelativeMoniker": "D:0:0:{FE188C5A-FA5F-4C33-8A5C-E1B1FF87A719}|LibraryManagement\\LibraryManagement.csproj|solutionrelative:librarymanagement\\scripts\\insertsampledata.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FE188C5A-FA5F-4C33-8A5C-E1B1FF87A719}|LibraryManagement\\LibraryManagement.csproj|c:\\users\\laura\\onedrive - sluz\\dokumente\\bbzw sursee\\ipt 6.1\\librarymanagement_serverapp\\librarymanagement\\librarymanagement\\services\\databaseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FE188C5A-FA5F-4C33-8A5C-E1B1FF87A719}|LibraryManagement\\LibraryManagement.csproj|solutionrelative:librarymanagement\\services\\databaseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FE188C5A-FA5F-4C33-8A5C-E1B1FF87A719}|LibraryManagement\\LibraryManagement.csproj|c:\\users\\laura\\onedrive - sluz\\dokumente\\bbzw sursee\\ipt 6.1\\librarymanagement_serverapp\\librarymanagement\\librarymanagement\\scripts\\createdatabase.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}",
+      "RelativeMoniker": "D:0:0:{FE188C5A-FA5F-4C33-8A5C-E1B1FF87A719}|LibraryManagement\\LibraryManagement.csproj|solutionrelative:librarymanagement\\scripts\\createdatabase.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FE188C5A-FA5F-4C33-8A5C-E1B1FF87A719}|LibraryManagement\\LibraryManagement.csproj|c:\\users\\laura\\onedrive - sluz\\dokumente\\bbzw sursee\\ipt 6.1\\librarymanagement_serverapp\\librarymanagement\\librarymanagement\\scripts\\updatedatabase.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}",
+      "RelativeMoniker": "D:0:0:{FE188C5A-FA5F-4C33-8A5C-E1B1FF87A719}|LibraryManagement\\LibraryManagement.csproj|solutionrelative:librarymanagement\\scripts\\updatedatabase.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FE188C5A-FA5F-4C33-8A5C-E1B1FF87A719}|LibraryManagement\\LibraryManagement.csproj|c:\\users\\laura\\onedrive - sluz\\dokumente\\bbzw sursee\\ipt 6.1\\librarymanagement_serverapp\\librarymanagement\\librarymanagement\\pages\\bookmanagement.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{FE188C5A-FA5F-4C33-8A5C-E1B1FF87A719}|LibraryManagement\\LibraryManagement.csproj|solutionrelative:librarymanagement\\pages\\bookmanagement.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FE188C5A-FA5F-4C33-8A5C-E1B1FF87A719}|LibraryManagement\\LibraryManagement.csproj|c:\\users\\laura\\onedrive - sluz\\dokumente\\bbzw sursee\\ipt 6.1\\librarymanagement_serverapp\\librarymanagement\\librarymanagement\\services\\memberservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FE188C5A-FA5F-4C33-8A5C-E1B1FF87A719}|LibraryManagement\\LibraryManagement.csproj|solutionrelative:librarymanagement\\services\\memberservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FE188C5A-FA5F-4C33-8A5C-E1B1FF87A719}|LibraryManagement\\LibraryManagement.csproj|c:\\users\\laura\\onedrive - sluz\\dokumente\\bbzw sursee\\ipt 6.1\\librarymanagement_serverapp\\librarymanagement\\librarymanagement\\models\\members.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FE188C5A-FA5F-4C33-8A5C-E1B1FF87A719}|LibraryManagement\\LibraryManagement.csproj|solutionrelative:librarymanagement\\models\\members.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8D7A3255-75F1-43DD-9F9E-796B8103BCFB}|LibraryManagement.Tests\\LibraryManagement.Tests.csproj|c:\\users\\laura\\onedrive - sluz\\dokumente\\bbzw sursee\\ipt 6.1\\librarymanagement_serverapp\\librarymanagement\\librarymanagement.tests\\test\\bookservicetest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8D7A3255-75F1-43DD-9F9E-796B8103BCFB}|LibraryManagement.Tests\\LibraryManagement.Tests.csproj|solutionrelative:librarymanagement.tests\\test\\bookservicetest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8D7A3255-75F1-43DD-9F9E-796B8103BCFB}|LibraryManagement.Tests\\LibraryManagement.Tests.csproj|c:\\users\\laura\\onedrive - sluz\\dokumente\\bbzw sursee\\ipt 6.1\\librarymanagement_serverapp\\librarymanagement\\librarymanagement.tests\\test\\idbcontextfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8D7A3255-75F1-43DD-9F9E-796B8103BCFB}|LibraryManagement.Tests\\LibraryManagement.Tests.csproj|solutionrelative:librarymanagement.tests\\test\\idbcontextfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FE188C5A-FA5F-4C33-8A5C-E1B1FF87A719}|LibraryManagement\\LibraryManagement.csproj|c:\\users\\laura\\onedrive - sluz\\dokumente\\bbzw sursee\\ipt 6.1\\librarymanagement_serverapp\\librarymanagement\\librarymanagement\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FE188C5A-FA5F-4C33-8A5C-E1B1FF87A719}|LibraryManagement\\LibraryManagement.csproj|solutionrelative:librarymanagement\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8D7A3255-75F1-43DD-9F9E-796B8103BCFB}|LibraryManagement.Tests\\LibraryManagement.Tests.csproj|c:\\users\\laura\\onedrive - sluz\\dokumente\\bbzw sursee\\ipt 6.1\\librarymanagement_serverapp\\librarymanagement\\librarymanagement.tests\\librarymanagement.tests.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{8D7A3255-75F1-43DD-9F9E-796B8103BCFB}|LibraryManagement.Tests\\LibraryManagement.Tests.csproj|solutionrelative:librarymanagement.tests\\librarymanagement.tests.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FE188C5A-FA5F-4C33-8A5C-E1B1FF87A719}|LibraryManagement\\LibraryManagement.csproj|c:\\users\\laura\\onedrive - sluz\\dokumente\\bbzw sursee\\ipt 6.1\\librarymanagement_serverapp\\librarymanagement\\librarymanagement\\librarymanagement.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{FE188C5A-FA5F-4C33-8A5C-E1B1FF87A719}|LibraryManagement\\LibraryManagement.csproj|solutionrelative:librarymanagement\\librarymanagement.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FE188C5A-FA5F-4C33-8A5C-E1B1FF87A719}|LibraryManagement\\LibraryManagement.csproj|c:\\users\\laura\\onedrive - sluz\\dokumente\\bbzw sursee\\ipt 6.1\\librarymanagement_serverapp\\librarymanagement\\librarymanagement\\services\\bookservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FE188C5A-FA5F-4C33-8A5C-E1B1FF87A719}|LibraryManagement\\LibraryManagement.csproj|solutionrelative:librarymanagement\\services\\bookservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FE188C5A-FA5F-4C33-8A5C-E1B1FF87A719}|LibraryManagement\\LibraryManagement.csproj|c:\\users\\laura\\onedrive - sluz\\dokumente\\bbzw sursee\\ipt 6.1\\librarymanagement_serverapp\\librarymanagement\\librarymanagement\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{FE188C5A-FA5F-4C33-8A5C-E1B1FF87A719}|LibraryManagement\\LibraryManagement.csproj|solutionrelative:librarymanagement\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FE188C5A-FA5F-4C33-8A5C-E1B1FF87A719}|LibraryManagement\\LibraryManagement.csproj|c:\\users\\laura\\onedrive - sluz\\dokumente\\bbzw sursee\\ipt 6.1\\librarymanagement_serverapp\\librarymanagement\\librarymanagement\\services\\loanservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FE188C5A-FA5F-4C33-8A5C-E1B1FF87A719}|LibraryManagement\\LibraryManagement.csproj|solutionrelative:librarymanagement\\services\\loanservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FE188C5A-FA5F-4C33-8A5C-E1B1FF87A719}|LibraryManagement\\LibraryManagement.csproj|c:\\users\\laura\\onedrive - sluz\\dokumente\\bbzw sursee\\ipt 6.1\\librarymanagement_serverapp\\librarymanagement\\librarymanagement\\interfaces\\ibookservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FE188C5A-FA5F-4C33-8A5C-E1B1FF87A719}|LibraryManagement\\LibraryManagement.csproj|solutionrelative:librarymanagement\\interfaces\\ibookservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FE188C5A-FA5F-4C33-8A5C-E1B1FF87A719}|LibraryManagement\\LibraryManagement.csproj|c:\\users\\laura\\onedrive - sluz\\dokumente\\bbzw sursee\\ipt 6.1\\librarymanagement_serverapp\\librarymanagement\\librarymanagement\\interfaces\\iloanservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FE188C5A-FA5F-4C33-8A5C-E1B1FF87A719}|LibraryManagement\\LibraryManagement.csproj|solutionrelative:librarymanagement\\interfaces\\iloanservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FE188C5A-FA5F-4C33-8A5C-E1B1FF87A719}|LibraryManagement\\LibraryManagement.csproj|c:\\users\\laura\\onedrive - sluz\\dokumente\\bbzw sursee\\ipt 6.1\\librarymanagement_serverapp\\librarymanagement\\librarymanagement\\interfaces\\imemberservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FE188C5A-FA5F-4C33-8A5C-E1B1FF87A719}|LibraryManagement\\LibraryManagement.csproj|solutionrelative:librarymanagement\\interfaces\\imemberservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FE188C5A-FA5F-4C33-8A5C-E1B1FF87A719}|LibraryManagement\\LibraryManagement.csproj|c:\\users\\laura\\onedrive - sluz\\dokumente\\bbzw sursee\\ipt 6.1\\librarymanagement_serverapp\\librarymanagement\\librarymanagement\\models\\books.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FE188C5A-FA5F-4C33-8A5C-E1B1FF87A719}|LibraryManagement\\LibraryManagement.csproj|solutionrelative:librarymanagement\\models\\books.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FE188C5A-FA5F-4C33-8A5C-E1B1FF87A719}|LibraryManagement\\LibraryManagement.csproj|c:\\users\\laura\\onedrive - sluz\\dokumente\\bbzw sursee\\ipt 6.1\\librarymanagement_serverapp\\librarymanagement\\librarymanagement\\models\\loan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FE188C5A-FA5F-4C33-8A5C-E1B1FF87A719}|LibraryManagement\\LibraryManagement.csproj|solutionrelative:librarymanagement\\models\\loan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FE188C5A-FA5F-4C33-8A5C-E1B1FF87A719}|LibraryManagement\\LibraryManagement.csproj|c:\\users\\laura\\onedrive - sluz\\dokumente\\bbzw sursee\\ipt 6.1\\librarymanagement_serverapp\\librarymanagement\\librarymanagement\\pages\\_host.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{FE188C5A-FA5F-4C33-8A5C-E1B1FF87A719}|LibraryManagement\\LibraryManagement.csproj|solutionrelative:librarymanagement\\pages\\_host.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FE188C5A-FA5F-4C33-8A5C-E1B1FF87A719}|LibraryManagement\\LibraryManagement.csproj|c:\\users\\laura\\onedrive - sluz\\dokumente\\bbzw sursee\\ipt 6.1\\librarymanagement_serverapp\\librarymanagement\\librarymanagement\\pages\\loanmanagement.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{FE188C5A-FA5F-4C33-8A5C-E1B1FF87A719}|LibraryManagement\\LibraryManagement.csproj|solutionrelative:librarymanagement\\pages\\loanmanagement.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FE188C5A-FA5F-4C33-8A5C-E1B1FF87A719}|LibraryManagement\\LibraryManagement.csproj|c:\\users\\laura\\onedrive - sluz\\dokumente\\bbzw sursee\\ipt 6.1\\librarymanagement_serverapp\\librarymanagement\\librarymanagement\\pages\\membermanagement.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{FE188C5A-FA5F-4C33-8A5C-E1B1FF87A719}|LibraryManagement\\LibraryManagement.csproj|solutionrelative:librarymanagement\\pages\\membermanagement.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FE188C5A-FA5F-4C33-8A5C-E1B1FF87A719}|LibraryManagement\\LibraryManagement.csproj|c:\\users\\laura\\onedrive - sluz\\dokumente\\bbzw sursee\\ipt 6.1\\librarymanagement_serverapp\\librarymanagement\\librarymanagement\\shared\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{FE188C5A-FA5F-4C33-8A5C-E1B1FF87A719}|LibraryManagement\\LibraryManagement.csproj|solutionrelative:librarymanagement\\shared\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FE188C5A-FA5F-4C33-8A5C-E1B1FF87A719}|LibraryManagement\\LibraryManagement.csproj|c:\\users\\laura\\onedrive - sluz\\dokumente\\bbzw sursee\\ipt 6.1\\librarymanagement_serverapp\\librarymanagement\\librarymanagement\\shared\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{FE188C5A-FA5F-4C33-8A5C-E1B1FF87A719}|LibraryManagement\\LibraryManagement.csproj|solutionrelative:librarymanagement\\shared\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FE188C5A-FA5F-4C33-8A5C-E1B1FF87A719}|LibraryManagement\\LibraryManagement.csproj|c:\\users\\laura\\onedrive - sluz\\dokumente\\bbzw sursee\\ipt 6.1\\librarymanagement_serverapp\\librarymanagement\\librarymanagement\\app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{FE188C5A-FA5F-4C33-8A5C-E1B1FF87A719}|LibraryManagement\\LibraryManagement.csproj|solutionrelative:librarymanagement\\app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 15,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1656527415:0:{bf84ea66-d821-4dba-b1b1-2777d8574775}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1293149942:0:{bf84ea66-d821-4dba-b1b1-2777d8574775}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1335678109:0:{bf84ea66-d821-4dba-b1b1-2777d8574775}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1250644387:0:{bf84ea66-d821-4dba-b1b1-2777d8574775}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1509397881:0:{bf84ea66-d821-4dba-b1b1-2777d8574775}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "LibraryManagement.Tests.csproj",
+              "DocumentMoniker": "C:\\Users\\laura\\OneDrive - sluz\\Dokumente\\BBZW Sursee\\IPT 6.1\\LibraryManagement_ServerApp\\LibraryManagement\\LibraryManagement.Tests\\LibraryManagement.Tests.csproj",
+              "RelativeDocumentMoniker": "LibraryManagement.Tests\\LibraryManagement.Tests.csproj",
+              "ToolTip": "C:\\Users\\laura\\OneDrive - sluz\\Dokumente\\BBZW Sursee\\IPT 6.1\\LibraryManagement_ServerApp\\LibraryManagement\\LibraryManagement.Tests\\LibraryManagement.Tests.csproj",
+              "RelativeToolTip": "LibraryManagement.Tests\\LibraryManagement.Tests.csproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-06-14T18:14:38.384Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "IDbContextFactory.cs",
+              "DocumentMoniker": "C:\\Users\\laura\\OneDrive - sluz\\Dokumente\\BBZW Sursee\\IPT 6.1\\LibraryManagement_ServerApp\\LibraryManagement\\LibraryManagement.Tests\\Test\\IDbContextFactory.cs",
+              "RelativeDocumentMoniker": "LibraryManagement.Tests\\Test\\IDbContextFactory.cs",
+              "ToolTip": "C:\\Users\\laura\\OneDrive - sluz\\Dokumente\\BBZW Sursee\\IPT 6.1\\LibraryManagement_ServerApp\\LibraryManagement\\LibraryManagement.Tests\\Test\\IDbContextFactory.cs",
+              "RelativeToolTip": "LibraryManagement.Tests\\Test\\IDbContextFactory.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-14T18:14:22.899Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "BookServiceTest.cs",
+              "DocumentMoniker": "C:\\Users\\laura\\OneDrive - sluz\\Dokumente\\BBZW Sursee\\IPT 6.1\\LibraryManagement_ServerApp\\LibraryManagement\\LibraryManagement.Tests\\Test\\BookServiceTest.cs",
+              "RelativeDocumentMoniker": "LibraryManagement.Tests\\Test\\BookServiceTest.cs",
+              "ToolTip": "C:\\Users\\laura\\OneDrive - sluz\\Dokumente\\BBZW Sursee\\IPT 6.1\\LibraryManagement_ServerApp\\LibraryManagement\\LibraryManagement.Tests\\Test\\BookServiceTest.cs",
+              "RelativeToolTip": "LibraryManagement.Tests\\Test\\BookServiceTest.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAcwCgAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-14T18:12:28.182Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\laura\\OneDrive - sluz\\Dokumente\\BBZW Sursee\\IPT 6.1\\LibraryManagement_ServerApp\\LibraryManagement\\LibraryManagement\\appsettings.json",
+              "RelativeDocumentMoniker": "LibraryManagement\\appsettings.json",
+              "ToolTip": "C:\\Users\\laura\\OneDrive - sluz\\Dokumente\\BBZW Sursee\\IPT 6.1\\LibraryManagement_ServerApp\\LibraryManagement\\LibraryManagement\\appsettings.json",
+              "RelativeToolTip": "LibraryManagement\\appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-06-14T16:18:30.088Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "UpdateDatabase.sql",
+              "DocumentMoniker": "C:\\Users\\laura\\OneDrive - sluz\\Dokumente\\BBZW Sursee\\IPT 6.1\\LibraryManagement_ServerApp\\LibraryManagement\\LibraryManagement\\Scripts\\UpdateDatabase.sql",
+              "RelativeDocumentMoniker": "LibraryManagement\\Scripts\\UpdateDatabase.sql",
+              "ToolTip": "C:\\Users\\laura\\OneDrive - sluz\\Dokumente\\BBZW Sursee\\IPT 6.1\\LibraryManagement_ServerApp\\LibraryManagement\\LibraryManagement\\Scripts\\UpdateDatabase.sql",
+              "RelativeToolTip": "LibraryManagement\\Scripts\\UpdateDatabase.sql",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2024-06-14T16:15:37.843Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "DatabaseService.cs",
+              "DocumentMoniker": "C:\\Users\\laura\\OneDrive - sluz\\Dokumente\\BBZW Sursee\\IPT 6.1\\LibraryManagement_ServerApp\\LibraryManagement\\LibraryManagement\\Services\\DatabaseService.cs",
+              "RelativeDocumentMoniker": "LibraryManagement\\Services\\DatabaseService.cs",
+              "ToolTip": "C:\\Users\\laura\\OneDrive - sluz\\Dokumente\\BBZW Sursee\\IPT 6.1\\LibraryManagement_ServerApp\\LibraryManagement\\LibraryManagement\\Services\\DatabaseService.cs",
+              "RelativeToolTip": "LibraryManagement\\Services\\DatabaseService.cs",
+              "ViewState": "AQIAAEUAAAAAAAAAAAAcwFsAAAAcAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-14T16:06:19.778Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "CreateDatabase.sql",
+              "DocumentMoniker": "C:\\Users\\laura\\OneDrive - sluz\\Dokumente\\BBZW Sursee\\IPT 6.1\\LibraryManagement_ServerApp\\LibraryManagement\\LibraryManagement\\Scripts\\CreateDatabase.sql",
+              "RelativeDocumentMoniker": "LibraryManagement\\Scripts\\CreateDatabase.sql",
+              "ToolTip": "C:\\Users\\laura\\OneDrive - sluz\\Dokumente\\BBZW Sursee\\IPT 6.1\\LibraryManagement_ServerApp\\LibraryManagement\\LibraryManagement\\Scripts\\CreateDatabase.sql",
+              "RelativeToolTip": "LibraryManagement\\Scripts\\CreateDatabase.sql",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2024-06-14T16:04:42.01Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "InsertSampleData.sql",
+              "DocumentMoniker": "C:\\Users\\laura\\OneDrive - sluz\\Dokumente\\BBZW Sursee\\IPT 6.1\\LibraryManagement_ServerApp\\LibraryManagement\\LibraryManagement\\Scripts\\InsertSampleData.sql",
+              "RelativeDocumentMoniker": "LibraryManagement\\Scripts\\InsertSampleData.sql",
+              "ToolTip": "C:\\Users\\laura\\OneDrive - sluz\\Dokumente\\BBZW Sursee\\IPT 6.1\\LibraryManagement_ServerApp\\LibraryManagement\\LibraryManagement\\Scripts\\InsertSampleData.sql",
+              "RelativeToolTip": "LibraryManagement\\Scripts\\InsertSampleData.sql",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2024-06-14T15:58:14.69Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "DatabaseInitializer.cs",
+              "DocumentMoniker": "C:\\Users\\laura\\OneDrive - sluz\\Dokumente\\BBZW Sursee\\IPT 6.1\\LibraryManagement_ServerApp\\LibraryManagement\\LibraryManagement\\Data\\DatabaseInitializer.cs",
+              "RelativeDocumentMoniker": "LibraryManagement\\Data\\DatabaseInitializer.cs",
+              "ToolTip": "C:\\Users\\laura\\OneDrive - sluz\\Dokumente\\BBZW Sursee\\IPT 6.1\\LibraryManagement_ServerApp\\LibraryManagement\\LibraryManagement\\Data\\DatabaseInitializer.cs",
+              "RelativeToolTip": "LibraryManagement\\Data\\DatabaseInitializer.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABsAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-14T15:52:45.724Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "LibraryManagement.csproj",
+              "DocumentMoniker": "C:\\Users\\laura\\OneDrive - sluz\\Dokumente\\BBZW Sursee\\IPT 6.1\\LibraryManagement_ServerApp\\LibraryManagement\\LibraryManagement\\LibraryManagement.csproj",
+              "RelativeDocumentMoniker": "LibraryManagement\\LibraryManagement.csproj",
+              "ToolTip": "C:\\Users\\laura\\OneDrive - sluz\\Dokumente\\BBZW Sursee\\IPT 6.1\\LibraryManagement_ServerApp\\LibraryManagement\\LibraryManagement\\LibraryManagement.csproj",
+              "RelativeToolTip": "LibraryManagement\\LibraryManagement.csproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABcAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-06-14T15:51:05.338Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "DbContextSingleton.cs",
+              "DocumentMoniker": "C:\\Users\\laura\\OneDrive - sluz\\Dokumente\\BBZW Sursee\\IPT 6.1\\LibraryManagement_ServerApp\\LibraryManagement\\LibraryManagement\\Data\\DbContextSingleton.cs",
+              "RelativeDocumentMoniker": "LibraryManagement\\Data\\DbContextSingleton.cs",
+              "ToolTip": "C:\\Users\\laura\\OneDrive - sluz\\Dokumente\\BBZW Sursee\\IPT 6.1\\LibraryManagement_ServerApp\\LibraryManagement\\LibraryManagement\\Data\\DbContextSingleton.cs",
+              "RelativeToolTip": "LibraryManagement\\Data\\DbContextSingleton.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAZAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-14T15:49:34.345Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "LibraryContext.cs",
+              "DocumentMoniker": "C:\\Users\\laura\\OneDrive - sluz\\Dokumente\\BBZW Sursee\\IPT 6.1\\LibraryManagement_ServerApp\\LibraryManagement\\LibraryManagement\\Data\\LibraryContext.cs",
+              "RelativeDocumentMoniker": "LibraryManagement\\Data\\LibraryContext.cs",
+              "ToolTip": "C:\\Users\\laura\\OneDrive - sluz\\Dokumente\\BBZW Sursee\\IPT 6.1\\LibraryManagement_ServerApp\\LibraryManagement\\LibraryManagement\\Data\\LibraryContext.cs",
+              "RelativeToolTip": "LibraryManagement\\Data\\LibraryContext.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACcAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-14T15:48:17.808Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "MemberService.cs",
+              "DocumentMoniker": "C:\\Users\\laura\\OneDrive - sluz\\Dokumente\\BBZW Sursee\\IPT 6.1\\LibraryManagement_ServerApp\\LibraryManagement\\LibraryManagement\\Services\\MemberService.cs",
+              "RelativeDocumentMoniker": "LibraryManagement\\Services\\MemberService.cs",
+              "ToolTip": "C:\\Users\\laura\\OneDrive - sluz\\Dokumente\\BBZW Sursee\\IPT 6.1\\LibraryManagement_ServerApp\\LibraryManagement\\LibraryManagement\\Services\\MemberService.cs",
+              "RelativeToolTip": "LibraryManagement\\Services\\MemberService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAADoAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-14T15:29:54.42Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "LoanService.cs",
+              "DocumentMoniker": "C:\\Users\\laura\\OneDrive - sluz\\Dokumente\\BBZW Sursee\\IPT 6.1\\LibraryManagement_ServerApp\\LibraryManagement\\LibraryManagement\\Services\\LoanService.cs",
+              "RelativeDocumentMoniker": "LibraryManagement\\Services\\LoanService.cs",
+              "ToolTip": "C:\\Users\\laura\\OneDrive - sluz\\Dokumente\\BBZW Sursee\\IPT 6.1\\LibraryManagement_ServerApp\\LibraryManagement\\LibraryManagement\\Services\\LoanService.cs",
+              "RelativeToolTip": "LibraryManagement\\Services\\LoanService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAIBJwDoAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-14T15:28:36.378Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Members.cs",
+              "DocumentMoniker": "C:\\Users\\laura\\OneDrive - sluz\\Dokumente\\BBZW Sursee\\IPT 6.1\\LibraryManagement_ServerApp\\LibraryManagement\\LibraryManagement\\Models\\Members.cs",
+              "RelativeDocumentMoniker": "LibraryManagement\\Models\\Members.cs",
+              "ToolTip": "C:\\Users\\laura\\OneDrive - sluz\\Dokumente\\BBZW Sursee\\IPT 6.1\\LibraryManagement_ServerApp\\LibraryManagement\\LibraryManagement\\Models\\Members.cs",
+              "RelativeToolTip": "LibraryManagement\\Models\\Members.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACAAAAATAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-14T15:26:36.248Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "Loan.cs",
+              "DocumentMoniker": "C:\\Users\\laura\\OneDrive - sluz\\Dokumente\\BBZW Sursee\\IPT 6.1\\LibraryManagement_ServerApp\\LibraryManagement\\LibraryManagement\\Models\\Loan.cs",
+              "RelativeDocumentMoniker": "LibraryManagement\\Models\\Loan.cs",
+              "ToolTip": "C:\\Users\\laura\\OneDrive - sluz\\Dokumente\\BBZW Sursee\\IPT 6.1\\LibraryManagement_ServerApp\\LibraryManagement\\LibraryManagement\\Models\\Loan.cs",
+              "RelativeToolTip": "LibraryManagement\\Models\\Loan.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-14T15:26:33.131Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "IMemberService.cs",
+              "DocumentMoniker": "C:\\Users\\laura\\OneDrive - sluz\\Dokumente\\BBZW Sursee\\IPT 6.1\\LibraryManagement_ServerApp\\LibraryManagement\\LibraryManagement\\Interfaces\\IMemberService.cs",
+              "RelativeDocumentMoniker": "LibraryManagement\\Interfaces\\IMemberService.cs",
+              "ToolTip": "C:\\Users\\laura\\OneDrive - sluz\\Dokumente\\BBZW Sursee\\IPT 6.1\\LibraryManagement_ServerApp\\LibraryManagement\\LibraryManagement\\Interfaces\\IMemberService.cs",
+              "RelativeToolTip": "LibraryManagement\\Interfaces\\IMemberService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-14T15:26:08.102Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "ILoanService.cs",
+              "DocumentMoniker": "C:\\Users\\laura\\OneDrive - sluz\\Dokumente\\BBZW Sursee\\IPT 6.1\\LibraryManagement_ServerApp\\LibraryManagement\\LibraryManagement\\Interfaces\\ILoanService.cs",
+              "RelativeDocumentMoniker": "LibraryManagement\\Interfaces\\ILoanService.cs",
+              "ToolTip": "C:\\Users\\laura\\OneDrive - sluz\\Dokumente\\BBZW Sursee\\IPT 6.1\\LibraryManagement_ServerApp\\LibraryManagement\\LibraryManagement\\Interfaces\\ILoanService.cs",
+              "RelativeToolTip": "LibraryManagement\\Interfaces\\ILoanService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-14T15:26:04.637Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "MemberManagement.razor",
+              "DocumentMoniker": "C:\\Users\\laura\\OneDrive - sluz\\Dokumente\\BBZW Sursee\\IPT 6.1\\LibraryManagement_ServerApp\\LibraryManagement\\LibraryManagement\\Pages\\MemberManagement.razor",
+              "RelativeDocumentMoniker": "LibraryManagement\\Pages\\MemberManagement.razor",
+              "ToolTip": "C:\\Users\\laura\\OneDrive - sluz\\Dokumente\\BBZW Sursee\\IPT 6.1\\LibraryManagement_ServerApp\\LibraryManagement\\LibraryManagement\\Pages\\MemberManagement.razor",
+              "RelativeToolTip": "LibraryManagement\\Pages\\MemberManagement.razor",
+              "ViewState": "AQIAALIAAAAAAAAAAIBJwNUAAAAaAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-06-14T15:23:53.803Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "LoanManagement.razor",
+              "DocumentMoniker": "C:\\Users\\laura\\OneDrive - sluz\\Dokumente\\BBZW Sursee\\IPT 6.1\\LibraryManagement_ServerApp\\LibraryManagement\\LibraryManagement\\Pages\\LoanManagement.razor",
+              "RelativeDocumentMoniker": "LibraryManagement\\Pages\\LoanManagement.razor",
+              "ToolTip": "C:\\Users\\laura\\OneDrive - sluz\\Dokumente\\BBZW Sursee\\IPT 6.1\\LibraryManagement_ServerApp\\LibraryManagement\\LibraryManagement\\Pages\\LoanManagement.razor",
+              "RelativeToolTip": "LibraryManagement\\Pages\\LoanManagement.razor",
+              "ViewState": "AQIAALIAAAAAAAAAAIBJwNQAAAARAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-06-14T15:23:36.639Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "MainLayout.razor",
+              "DocumentMoniker": "C:\\Users\\laura\\OneDrive - sluz\\Dokumente\\BBZW Sursee\\IPT 6.1\\LibraryManagement_ServerApp\\LibraryManagement\\LibraryManagement\\Shared\\MainLayout.razor",
+              "RelativeDocumentMoniker": "LibraryManagement\\Shared\\MainLayout.razor",
+              "ToolTip": "C:\\Users\\laura\\OneDrive - sluz\\Dokumente\\BBZW Sursee\\IPT 6.1\\LibraryManagement_ServerApp\\LibraryManagement\\LibraryManagement\\Shared\\MainLayout.razor",
+              "RelativeToolTip": "LibraryManagement\\Shared\\MainLayout.razor",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-06-14T15:21:50.109Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "App.razor",
+              "DocumentMoniker": "C:\\Users\\laura\\OneDrive - sluz\\Dokumente\\BBZW Sursee\\IPT 6.1\\LibraryManagement_ServerApp\\LibraryManagement\\LibraryManagement\\App.razor",
+              "RelativeDocumentMoniker": "LibraryManagement\\App.razor",
+              "ToolTip": "C:\\Users\\laura\\OneDrive - sluz\\Dokumente\\BBZW Sursee\\IPT 6.1\\LibraryManagement_ServerApp\\LibraryManagement\\LibraryManagement\\App.razor",
+              "RelativeToolTip": "LibraryManagement\\App.razor",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-06-14T15:17:22.699Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "NavMenu.razor",
+              "DocumentMoniker": "C:\\Users\\laura\\OneDrive - sluz\\Dokumente\\BBZW Sursee\\IPT 6.1\\LibraryManagement_ServerApp\\LibraryManagement\\LibraryManagement\\Shared\\NavMenu.razor",
+              "RelativeDocumentMoniker": "LibraryManagement\\Shared\\NavMenu.razor",
+              "ToolTip": "C:\\Users\\laura\\OneDrive - sluz\\Dokumente\\BBZW Sursee\\IPT 6.1\\LibraryManagement_ServerApp\\LibraryManagement\\LibraryManagement\\Shared\\NavMenu.razor",
+              "RelativeToolTip": "LibraryManagement\\Shared\\NavMenu.razor",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACcAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-06-14T15:15:49.691Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "BookService.cs",
+              "DocumentMoniker": "C:\\Users\\laura\\OneDrive - sluz\\Dokumente\\BBZW Sursee\\IPT 6.1\\LibraryManagement_ServerApp\\LibraryManagement\\LibraryManagement\\Services\\BookService.cs",
+              "RelativeDocumentMoniker": "LibraryManagement\\Services\\BookService.cs",
+              "ToolTip": "C:\\Users\\laura\\OneDrive - sluz\\Dokumente\\BBZW Sursee\\IPT 6.1\\LibraryManagement_ServerApp\\LibraryManagement\\LibraryManagement\\Services\\BookService.cs",
+              "RelativeToolTip": "LibraryManagement\\Services\\BookService.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAA+wEAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-14T15:15:28.817Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "BookManagement.razor",
+              "DocumentMoniker": "C:\\Users\\laura\\OneDrive - sluz\\Dokumente\\BBZW Sursee\\IPT 6.1\\LibraryManagement_ServerApp\\LibraryManagement\\LibraryManagement\\Pages\\BookManagement.razor",
+              "RelativeDocumentMoniker": "LibraryManagement\\Pages\\BookManagement.razor",
+              "ToolTip": "C:\\Users\\laura\\OneDrive - sluz\\Dokumente\\BBZW Sursee\\IPT 6.1\\LibraryManagement_ServerApp\\LibraryManagement\\LibraryManagement\\Pages\\BookManagement.razor",
+              "RelativeToolTip": "LibraryManagement\\Pages\\BookManagement.razor",
+              "ViewState": "AQIAAI8AAAAAAAAAAAAAAKoAAAAVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-06-14T15:15:03.895Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "Books.cs",
+              "DocumentMoniker": "C:\\Users\\laura\\OneDrive - sluz\\Dokumente\\BBZW Sursee\\IPT 6.1\\LibraryManagement_ServerApp\\LibraryManagement\\LibraryManagement\\Models\\Books.cs",
+              "RelativeDocumentMoniker": "LibraryManagement\\Models\\Books.cs",
+              "ToolTip": "C:\\Users\\laura\\OneDrive - sluz\\Dokumente\\BBZW Sursee\\IPT 6.1\\LibraryManagement_ServerApp\\LibraryManagement\\LibraryManagement\\Models\\Books.cs",
+              "RelativeToolTip": "LibraryManagement\\Models\\Books.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-14T15:14:54.967Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "IBookService.cs",
+              "DocumentMoniker": "C:\\Users\\laura\\OneDrive - sluz\\Dokumente\\BBZW Sursee\\IPT 6.1\\LibraryManagement_ServerApp\\LibraryManagement\\LibraryManagement\\Interfaces\\IBookService.cs",
+              "RelativeDocumentMoniker": "LibraryManagement\\Interfaces\\IBookService.cs",
+              "ToolTip": "C:\\Users\\laura\\OneDrive - sluz\\Dokumente\\BBZW Sursee\\IPT 6.1\\LibraryManagement_ServerApp\\LibraryManagement\\LibraryManagement\\Interfaces\\IBookService.cs",
+              "RelativeToolTip": "LibraryManagement\\Interfaces\\IBookService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-14T15:14:33.597Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "_Host.cshtml",
+              "DocumentMoniker": "C:\\Users\\laura\\OneDrive - sluz\\Dokumente\\BBZW Sursee\\IPT 6.1\\LibraryManagement_ServerApp\\LibraryManagement\\LibraryManagement\\Pages\\_Host.cshtml",
+              "RelativeDocumentMoniker": "LibraryManagement\\Pages\\_Host.cshtml",
+              "ToolTip": "C:\\Users\\laura\\OneDrive - sluz\\Dokumente\\BBZW Sursee\\IPT 6.1\\LibraryManagement_ServerApp\\LibraryManagement\\LibraryManagement\\Pages\\_Host.cshtml",
+              "RelativeToolTip": "LibraryManagement\\Pages\\_Host.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-06-14T15:14:12.09Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\laura\\OneDrive - sluz\\Dokumente\\BBZW Sursee\\IPT 6.1\\LibraryManagement_ServerApp\\LibraryManagement\\LibraryManagement\\Program.cs",
+              "RelativeDocumentMoniker": "LibraryManagement\\Program.cs",
+              "ToolTip": "C:\\Users\\laura\\OneDrive - sluz\\Dokumente\\BBZW Sursee\\IPT 6.1\\LibraryManagement_ServerApp\\LibraryManagement\\LibraryManagement\\Program.cs",
+              "RelativeToolTip": "LibraryManagement\\Program.cs",
+              "ViewState": "AQIAAA0AAAAAAAAAAAAowCAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-14T15:08:04.208Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

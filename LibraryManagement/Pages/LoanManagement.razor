@@ -1,0 +1,236 @@
+﻿@page "/loans"
+@using LibraryManagement.Models
+@using LibraryManagement.Interfaces
+@inject ILoanService LoanService
+@inject IMemberService MemberService
+
+<h3>Loan Management</h3>
+
+<div class="form-container">
+    <input class="form-control" @bind="search" @bind:event="oninput" placeholder="Search by Status" />
+    <button class="btn btn-secondary" @onclick="@(() => { search = string.Empty; SearchLoans(); })">Reset Search</button>
+    <button class="btn btn-primary" @onclick="ShowAddLoanForm">Add Loan</button>
+</div>
+
+@if (showAddLoanForm)
+{
+    <EditForm Model="newLoan" OnValidSubmit="HandleValidSubmit">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+        <div class="mb-3">
+            <label>Member ID:</label>
+            <InputNumber class="form-control" @bind-Value="newLoan.MemberId" />
+        </div>
+        <div class="mb-3">
+            <label>Start Date:</label>
+            <InputDate class="form-control" @bind-Value="newLoan.StartDate" />
+        </div>
+        <div class="mb-3">
+            <label>Due Date:</label>
+            <InputDate class="form-control" @bind-Value="newLoan.DueDate" />
+        </div>
+        <div class="mb-3">
+            <label>Status:</label>
+            <InputText class="form-control" @bind-Value="newLoan.Status" />
+        </div>
+        <div class="mb-3">
+            <label>Renewal Count:</label>
+            <InputNumber class="form-control" @bind-Value="newLoan.RenewalCount" />
+        </div>
+        <div class="mb-3">
+            <label>Fine:</label>
+            <InputNumber class="form-control" @bind-Value="newLoan.Fine" />
+        </div>
+        <button type="submit" class="btn btn-success">Add Loan</button>
+        <button type="button" class="btn btn-danger" @onclick="CancelAddLoan">Cancel</button>
+    </EditForm>
+}
+
+@if (loanList is not null)
+{
+    <table class="table mt-3">
+        <thead>
+            <tr>
+                <th>Loan ID</th>
+                <th>Member Name</th>
+                <th>Start Date</th>
+                <th>Due Date</th>
+                <th>Return Date</th>
+                <th>Renewal Count</th>
+                <th>Status</th>
+                <th>Fine</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var loan in loanList)
+            {
+                <tr>
+                    <td>@loan.LoanId</td>
+                    <td>@GetMemberName(loan.MemberId)</td>
+                    <td>@loan.StartDate.ToString("d")</td>
+                    <td>@loan.DueDate.ToString("d")</td>
+                    <td>@(loan.ReturnDate.HasValue ? loan.ReturnDate.Value.ToString("d") : "Not Returned Yet")</td>
+                    <td>@loan.RenewalCount</td>
+                    <td>@loan.Status</td>
+                    <td>@(loan.Fine.HasValue ? $"${loan.Fine.Value}" : "None")</td>
+                    <td>
+                        <button class="btn btn-danger btn-sm" @onclick="() => RemoveLoan(loan.LoanId)">Remove</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p><em>Loading loans...</em></p>
+}
+
+@code {
+    private string search = "";
+    private List<Loan> loanList = new();
+    private Loan newLoan = new Loan();
+    private bool showAddLoanForm = false;
+    private Dictionary<int, Members> membersDict = new Dictionary<int, Members>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadLoans();
+        await LoadMembers();
+    }
+
+    private async Task LoadLoans()
+    {
+        try
+        {
+            loanList = await LoanService.GetLoansAsync();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error loading loans: {ex.Message}");
+        }
+    }
+
+    private async Task LoadMembers()
+    {
+        try
+        {
+            var members = await MemberService.GetMembersAsync();
+            membersDict = members.ToDictionary(m => m.MemberId, m => m);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error loading members: {ex.Message}");
+        }
+    }
+
+    private string GetMemberName(int memberId)
+    {
+        if (membersDict.TryGetValue(memberId, out var member))
+        {
+            return $"{member.FirstName} {member.LastName}";
+        }
+        return "Unknown";
+    }
+
+    private void ShowAddLoanForm()
+    {
+        showAddLoanForm = true;
+        newLoan = new Loan
+            {
+                StartDate = DateTime.Today,
+                DueDate = DateTime.Today.AddDays(14),
+                RenewalCount = 0,
+                Status = "Active",
+                Fine = 0
+            };
+    }
+
+    private async Task HandleValidSubmit()
+    {
+        try
+        {
+            await LoanService.AddLoanAsync(newLoan);
+            await LoadLoans();
+            showAddLoanForm = false;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error adding loan: {ex.Message}");
+        }
+    }
+
+    private void CancelAddLoan()
+    {
+        showAddLoanForm = false;
+    }
+
+    private async Task RemoveLoan(int loanId)
+    {
+        try
+        {
+            await LoanService.RemoveLoanAsync(loanId);
+            await LoadLoans();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error removing loan: {ex.Message}");
+        }
+    }
+
+    private async Task SearchLoans()
+    {
+        try
+        {
+            if (string.IsNullOrWhiteSpace(search))
+            {
+                await LoadLoans();
+            }
+            else
+            {
+                loanList = await LoanService.SearchLoansAsync(search);
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error searching loans: {ex.Message}");
+        }
+    }
+
+    private void OnSearchChanged(ChangeEventArgs e)
+    {
+        search = e.Value.ToString();
+        SearchLoans();
+    }
+}
+
+<style>
+    .form-container {
+        margin-bottom: 20px;
+    }
+
+    .form-label {
+        font-weight: bold;
+    }
+
+    .form-control {
+        margin-bottom: 10px;
+    }
+
+    .table th, .table td {
+        vertical-align: middle;
+    }
+
+    .btn {
+        margin-right: 5px;
+    }
+
+    .mt-2 {
+        margin-top: 0.5rem;
+    }
+
+    .mt-3 {
+        margin-top: 1rem;
+    }
+</style>
