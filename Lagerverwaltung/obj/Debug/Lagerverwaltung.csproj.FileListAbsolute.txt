@@ -1,0 +1,7 @@
+C:\Users\laura\OneDrive - sluz\Dokumente\BBZW Sursee\Projekte\Lagerverwaltung\Lagerverwaltung\Lagerverwaltung\bin\Debug\Lagerverwaltung.exe.config
+C:\Users\laura\OneDrive - sluz\Dokumente\BBZW Sursee\Projekte\Lagerverwaltung\Lagerverwaltung\Lagerverwaltung\bin\Debug\Lagerverwaltung.exe
+C:\Users\laura\OneDrive - sluz\Dokumente\BBZW Sursee\Projekte\Lagerverwaltung\Lagerverwaltung\Lagerverwaltung\bin\Debug\Lagerverwaltung.pdb
+C:\Users\laura\OneDrive - sluz\Dokumente\BBZW Sursee\Projekte\Lagerverwaltung\Lagerverwaltung\Lagerverwaltung\obj\Debug\Lagerverwaltung.csproj.AssemblyReference.cache
+C:\Users\laura\OneDrive - sluz\Dokumente\BBZW Sursee\Projekte\Lagerverwaltung\Lagerverwaltung\Lagerverwaltung\obj\Debug\Lagerverwaltung.csproj.CoreCompileInputs.cache
+C:\Users\laura\OneDrive - sluz\Dokumente\BBZW Sursee\Projekte\Lagerverwaltung\Lagerverwaltung\Lagerverwaltung\obj\Debug\Lagerverwaltung.exe
+C:\Users\laura\OneDrive - sluz\Dokumente\BBZW Sursee\Projekte\Lagerverwaltung\Lagerverwaltung\Lagerverwaltung\obj\Debug\Lagerverwaltung.pdb
