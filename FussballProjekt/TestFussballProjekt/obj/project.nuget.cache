@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "1OZM2G9Y636x7qrbpkVlL8pPwMMsK2qO0FlqN3Pzs718gYaeOSr0xMNApFAS5t+WEkhl3Vu0j8tAx2P872OyEg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\laura\\OneDrive - sluz\\Dokumente\\BBZW Sursee\\Projekte\\FussballProjekt\\FussballProjekt\\TestFussballProjekt\\TestFussballProjekt.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\laura\\.nuget\\packages\\nunit\\4.0.1\\nunit.4.0.1.nupkg.sha512",
+    "C:\\Users\\laura\\.nuget\\packages\\nunit3testadapter\\4.5.0\\nunit3testadapter.4.5.0.nupkg.sha512"
+  ],
+  "logs": []
+}

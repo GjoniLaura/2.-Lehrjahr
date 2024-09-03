@@ -1,0 +1,228 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\laura\\OneDrive - sluz\\Dokumente\\BBZW Sursee\\Projekte\\FussballProjekt\\FussballProjekt\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{FEAB43C3-0A06-4C63-AFDC-C2F98B17EC12}|FussballProjekt\\FussballProjekt.csproj|c:\\users\\laura\\onedrive - sluz\\dokumente\\bbzw sursee\\projekte\\fussballprojekt\\fussballprojekt\\fussballprojekt\\leaguemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FEAB43C3-0A06-4C63-AFDC-C2F98B17EC12}|FussballProjekt\\FussballProjekt.csproj|solutionrelative:fussballprojekt\\leaguemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FEAB43C3-0A06-4C63-AFDC-C2F98B17EC12}|FussballProjekt\\FussballProjekt.csproj|C:\\Users\\laura\\OneDrive - sluz\\Dokumente\\BBZW Sursee\\Projekte\\FussballProjekt\\FussballProjekt\\fussballprojekt\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FEAB43C3-0A06-4C63-AFDC-C2F98B17EC12}|FussballProjekt\\FussballProjekt.csproj|solutionrelative:fussballprojekt\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FEAB43C3-0A06-4C63-AFDC-C2F98B17EC12}|FussballProjekt\\FussballProjekt.csproj|C:\\Users\\laura\\OneDrive - sluz\\Dokumente\\BBZW Sursee\\Projekte\\FussballProjekt\\FussballProjekt\\fussballprojekt\\team.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FEAB43C3-0A06-4C63-AFDC-C2F98B17EC12}|FussballProjekt\\FussballProjekt.csproj|solutionrelative:fussballprojekt\\team.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C5C05AFA-7DA2-489F-8138-77E2B9DD8DBC}|TestFussballProjekt\\TestFussballProjekt.csproj|c:\\users\\laura\\onedrive - sluz\\dokumente\\bbzw sursee\\projekte\\fussballprojekt\\fussballprojekt\\testfussballprojekt\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C5C05AFA-7DA2-489F-8138-77E2B9DD8DBC}|TestFussballProjekt\\TestFussballProjekt.csproj|solutionrelative:testfussballprojekt\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FEAB43C3-0A06-4C63-AFDC-C2F98B17EC12}|FussballProjekt\\FussballProjekt.csproj|C:\\Users\\laura\\OneDrive - sluz\\Dokumente\\BBZW Sursee\\Projekte\\FussballProjekt\\FussballProjekt\\fussballprojekt\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FEAB43C3-0A06-4C63-AFDC-C2F98B17EC12}|FussballProjekt\\FussballProjekt.csproj|solutionrelative:fussballprojekt\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FEAB43C3-0A06-4C63-AFDC-C2F98B17EC12}|FussballProjekt\\FussballProjekt.csproj|C:\\Users\\laura\\OneDrive - sluz\\Dokumente\\BBZW Sursee\\Projekte\\FussballProjekt\\FussballProjekt\\fussballprojekt\\game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FEAB43C3-0A06-4C63-AFDC-C2F98B17EC12}|FussballProjekt\\FussballProjekt.csproj|solutionrelative:fussballprojekt\\game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C5C05AFA-7DA2-489F-8138-77E2B9DD8DBC}|TestFussballProjekt\\TestFussballProjekt.csproj|c:\\users\\laura\\onedrive - sluz\\dokumente\\bbzw sursee\\projekte\\fussballprojekt\\fussballprojekt\\testfussballprojekt\\testfussballprojekt.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{C5C05AFA-7DA2-489F-8138-77E2B9DD8DBC}|TestFussballProjekt\\TestFussballProjekt.csproj|solutionrelative:testfussballprojekt\\testfussballprojekt.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C5C05AFA-7DA2-489F-8138-77E2B9DD8DBC}|TestFussballProjekt\\TestFussballProjekt.csproj|c:\\users\\laura\\onedrive - sluz\\dokumente\\bbzw sursee\\projekte\\fussballprojekt\\fussballprojekt\\testfussballprojekt\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C5C05AFA-7DA2-489F-8138-77E2B9DD8DBC}|TestFussballProjekt\\TestFussballProjekt.csproj|solutionrelative:testfussballprojekt\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FEAB43C3-0A06-4C63-AFDC-C2F98B17EC12}|FussballProjekt\\FussballProjekt.csproj|C:\\Users\\laura\\OneDrive - sluz\\Dokumente\\BBZW Sursee\\Projekte\\FussballProjekt\\FussballProjekt\\fussballprojekt\\playable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FEAB43C3-0A06-4C63-AFDC-C2F98B17EC12}|FussballProjekt\\FussballProjekt.csproj|solutionrelative:fussballprojekt\\playable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FEAB43C3-0A06-4C63-AFDC-C2F98B17EC12}|FussballProjekt\\FussballProjekt.csproj|C:\\Users\\laura\\OneDrive - sluz\\Dokumente\\BBZW Sursee\\Projekte\\FussballProjekt\\FussballProjekt\\fussballprojekt\\classdiagram1.cd||{59B0B277-7DDF-4E36-A3ED-02DAC5B9E2FA}|",
+      "RelativeMoniker": "D:0:0:{FEAB43C3-0A06-4C63-AFDC-C2F98B17EC12}|FussballProjekt\\FussballProjekt.csproj|solutionrelative:fussballprojekt\\classdiagram1.cd||{59B0B277-7DDF-4E36-A3ED-02DAC5B9E2FA}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FEAB43C3-0A06-4C63-AFDC-C2F98B17EC12}|FussballProjekt\\FussballProjekt.csproj|C:\\Users\\laura\\OneDrive - sluz\\Dokumente\\BBZW Sursee\\Projekte\\FussballProjekt\\FussballProjekt\\fussballprojekt\\matchday.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FEAB43C3-0A06-4C63-AFDC-C2F98B17EC12}|FussballProjekt\\FussballProjekt.csproj|solutionrelative:fussballprojekt\\matchday.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 14,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1656527415:0:{bf84ea66-d821-4dba-b1b1-2777d8574775}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1293149942:0:{bf84ea66-d821-4dba-b1b1-2777d8574775}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1335678109:0:{bf84ea66-d821-4dba-b1b1-2777d8574775}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1250644387:0:{bf84ea66-d821-4dba-b1b1-2777d8574775}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1509397881:0:{bf84ea66-d821-4dba-b1b1-2777d8574775}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "TestFussballProjekt.csproj",
+              "DocumentMoniker": "C:\\Users\\laura\\OneDrive - sluz\\Dokumente\\BBZW Sursee\\Projekte\\FussballProjekt\\FussballProjekt\\TestFussballProjekt\\TestFussballProjekt.csproj",
+              "RelativeDocumentMoniker": "TestFussballProjekt\\TestFussballProjekt.csproj",
+              "ToolTip": "C:\\Users\\laura\\OneDrive - sluz\\Dokumente\\BBZW Sursee\\Projekte\\FussballProjekt\\FussballProjekt\\TestFussballProjekt\\TestFussballProjekt.csproj",
+              "RelativeToolTip": "TestFussballProjekt\\TestFussballProjekt.csproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-09-02T11:29:26.103Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Player.cs",
+              "DocumentMoniker": "C:\\Users\\laura\\OneDrive - sluz\\Dokumente\\BBZW Sursee\\Projekte\\FussballProjekt\\FussballProjekt\\TestFussballProjekt\\Player.cs",
+              "RelativeDocumentMoniker": "TestFussballProjekt\\Player.cs",
+              "ToolTip": "C:\\Users\\laura\\OneDrive - sluz\\Dokumente\\BBZW Sursee\\Projekte\\FussballProjekt\\FussballProjekt\\TestFussballProjekt\\Player.cs",
+              "RelativeToolTip": "TestFussballProjekt\\Player.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAADAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-02T11:29:26.179Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\laura\\OneDrive - sluz\\Dokumente\\BBZW Sursee\\Projekte\\FussballProjekt\\FussballProjekt\\TestFussballProjekt\\Program.cs",
+              "RelativeDocumentMoniker": "TestFussballProjekt\\Program.cs",
+              "ToolTip": "C:\\Users\\laura\\OneDrive - sluz\\Dokumente\\BBZW Sursee\\Projekte\\FussballProjekt\\FussballProjekt\\TestFussballProjekt\\Program.cs",
+              "RelativeToolTip": "TestFussballProjekt\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-02T11:29:26.181Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Game.cs",
+              "DocumentMoniker": "C:\\Users\\laura\\OneDrive - sluz\\Dokumente\\BBZW Sursee\\Projekte\\FussballProjekt\\FussballProjekt\\FussballProjekt\\Game.cs",
+              "RelativeDocumentMoniker": "FussballProjekt\\Game.cs",
+              "ToolTip": "C:\\Users\\laura\\OneDrive - sluz\\Dokumente\\BBZW Sursee\\Projekte\\FussballProjekt\\FussballProjekt\\FussballProjekt\\Game.cs",
+              "RelativeToolTip": "FussballProjekt\\Game.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAAAgAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-02T11:29:26.183Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "ClassDiagram1.cd",
+              "DocumentMoniker": "C:\\Users\\laura\\OneDrive - sluz\\Dokumente\\BBZW Sursee\\Projekte\\FussballProjekt\\FussballProjekt\\FussballProjekt\\ClassDiagram1.cd",
+              "RelativeDocumentMoniker": "FussballProjekt\\ClassDiagram1.cd",
+              "ToolTip": "C:\\Users\\laura\\OneDrive - sluz\\Dokumente\\BBZW Sursee\\Projekte\\FussballProjekt\\FussballProjekt\\FussballProjekt\\ClassDiagram1.cd",
+              "RelativeToolTip": "FussballProjekt\\ClassDiagram1.cd",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000463|",
+              "WhenOpened": "2024-09-02T11:29:26.184Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Playable.cs",
+              "DocumentMoniker": "C:\\Users\\laura\\OneDrive - sluz\\Dokumente\\BBZW Sursee\\Projekte\\FussballProjekt\\FussballProjekt\\FussballProjekt\\Playable.cs",
+              "RelativeDocumentMoniker": "FussballProjekt\\Playable.cs",
+              "ToolTip": "C:\\Users\\laura\\OneDrive - sluz\\Dokumente\\BBZW Sursee\\Projekte\\FussballProjekt\\FussballProjekt\\FussballProjekt\\Playable.cs",
+              "RelativeToolTip": "FussballProjekt\\Playable.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAuwBAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-02T11:29:26.185Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "LeagueManager.cs",
+              "DocumentMoniker": "C:\\Users\\laura\\OneDrive - sluz\\Dokumente\\BBZW Sursee\\Projekte\\FussballProjekt\\FussballProjekt\\FussballProjekt\\LeagueManager.cs",
+              "RelativeDocumentMoniker": "FussballProjekt\\LeagueManager.cs",
+              "ToolTip": "C:\\Users\\laura\\OneDrive - sluz\\Dokumente\\BBZW Sursee\\Projekte\\FussballProjekt\\FussballProjekt\\FussballProjekt\\LeagueManager.cs",
+              "RelativeToolTip": "FussballProjekt\\LeagueManager.cs",
+              "ViewState": "AQIAAFkAAAAAAAAAAAAmwGgAAABgAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-02T11:29:26.248Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Matchday.cs",
+              "DocumentMoniker": "C:\\Users\\laura\\OneDrive - sluz\\Dokumente\\BBZW Sursee\\Projekte\\FussballProjekt\\FussballProjekt\\FussballProjekt\\Matchday.cs",
+              "RelativeDocumentMoniker": "FussballProjekt\\Matchday.cs",
+              "ToolTip": "C:\\Users\\laura\\OneDrive - sluz\\Dokumente\\BBZW Sursee\\Projekte\\FussballProjekt\\FussballProjekt\\FussballProjekt\\Matchday.cs",
+              "RelativeToolTip": "FussballProjekt\\Matchday.cs",
+              "ViewState": "AQIAAB8AAAAAAAAAAAAkwCgAAAAeAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-02T11:29:26.269Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Player.cs",
+              "DocumentMoniker": "C:\\Users\\laura\\OneDrive - sluz\\Dokumente\\BBZW Sursee\\Projekte\\FussballProjekt\\FussballProjekt\\FussballProjekt\\Player.cs",
+              "RelativeDocumentMoniker": "FussballProjekt\\Player.cs",
+              "ToolTip": "C:\\Users\\laura\\OneDrive - sluz\\Dokumente\\BBZW Sursee\\Projekte\\FussballProjekt\\FussballProjekt\\FussballProjekt\\Player.cs",
+              "RelativeToolTip": "FussballProjekt\\Player.cs",
+              "ViewState": "AQIAAAsAAAAAAAAAAAAAwCkAAAAdAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-02T11:29:26.27Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Team.cs",
+              "DocumentMoniker": "C:\\Users\\laura\\OneDrive - sluz\\Dokumente\\BBZW Sursee\\Projekte\\FussballProjekt\\FussballProjekt\\FussballProjekt\\Team.cs",
+              "RelativeDocumentMoniker": "FussballProjekt\\Team.cs",
+              "ToolTip": "C:\\Users\\laura\\OneDrive - sluz\\Dokumente\\BBZW Sursee\\Projekte\\FussballProjekt\\FussballProjekt\\FussballProjekt\\Team.cs",
+              "RelativeToolTip": "FussballProjekt\\Team.cs",
+              "ViewState": "AQIAACIAAAAAAAAAAAAwwC4AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-02T11:29:26.271Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\laura\\OneDrive - sluz\\Dokumente\\BBZW Sursee\\Projekte\\FussballProjekt\\FussballProjekt\\FussballProjekt\\Program.cs",
+              "RelativeDocumentMoniker": "FussballProjekt\\Program.cs",
+              "ToolTip": "C:\\Users\\laura\\OneDrive - sluz\\Dokumente\\BBZW Sursee\\Projekte\\FussballProjekt\\FussballProjekt\\FussballProjekt\\Program.cs",
+              "RelativeToolTip": "FussballProjekt\\Program.cs",
+              "ViewState": "AQIAAG4AAAAAAAAAAAAAAF0AAAAjAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-02T11:29:26.272Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
