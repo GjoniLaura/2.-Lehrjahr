@@ -20,8 +20,3 @@ Es gibt eine Suchfunktion, mit der man nach Büchern, Mitgliedern und Ausleihen 
 Bei einem Buch stehen die generellen Informationen darüber wie Titel, Autor, Beschreibung etc. 
 Bei einem Mitglied die Mitgliedsinformationen wie Name, Alter etc. Bei einer Ausleihe kann man nach dem Buch suchen und sieht, 
 wann es ausgeliehen wurde und wann es zurückgebracht werden muss.
-Die Navigationsbar sieht folgendermaßen aus:
-
-## Projektpräsentation
-Die Präsentation meines Projekts finden Sie in den Dokumenten, die ich im Main Branch eingefügt habe.
-(IPT6.1_Video01 & IPT6.1_Video02)
